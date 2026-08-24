@@ -500,14 +500,19 @@
                   </button>
                 </div>
 
-                <!-- Cocktail Names -->
-                <div class="mb-3">
-                  <h3 class="text-xl sm:text-2xl font-black text-slate-100 group-hover:text-amber-400 transition tracking-wide">
-                    {{ cocktail.name_zh }}
-                  </h3>
-                  <p class="text-sm font-bold text-amber-400/90 tracking-wide font-pixel-title">
-                    {{ cocktail.name_en }}
-                  </p>
+                <!-- Cocktail Names with Pixel Art Icon -->
+                <div class="flex items-center space-x-3.5 mb-3">
+                  <div class="w-13 h-13 sm:w-14 sm:h-14 flex-shrink-0 bg-slate-900/90 rounded-xl border-2 border-slate-700 group-hover:border-amber-500 shadow-pixel-sm p-1.5 flex items-center justify-center transition-all duration-200 group-hover:scale-105 overflow-hidden">
+                    <span v-html="getCocktailPixelSvg(cocktail, 42)" class="inline-flex items-center justify-center"></span>
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-xl sm:text-2xl font-black text-slate-100 group-hover:text-amber-400 transition tracking-wide truncate">
+                      {{ cocktail.name_zh }}
+                    </h3>
+                    <p class="text-sm font-bold text-amber-400/90 tracking-wide font-pixel-title truncate">
+                      {{ cocktail.name_en }}
+                    </p>
+                  </div>
                 </div>
 
                 <!-- Specs Pills -->
@@ -612,12 +617,19 @@
             </span>
           </div>
 
-          <h2 class="text-3xl sm:text-4xl font-black text-slate-100 mb-1.5 tracking-wide">
-            {{ selectedCocktail.name_zh }}
-          </h2>
-          <p class="text-base font-bold text-amber-400 font-pixel-title tracking-wider">
-            {{ selectedCocktail.name_en }}
-          </p>
+          <div class="flex items-center space-x-4 mb-3">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 bg-slate-900 rounded-2xl border-2 border-amber-500/70 shadow-pixel-gold p-2 flex items-center justify-center">
+              <span v-html="getCocktailPixelSvg(selectedCocktail, 56)" class="inline-flex items-center justify-center"></span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h2 class="text-3xl sm:text-4xl font-black text-slate-100 mb-1 tracking-wide">
+                {{ selectedCocktail.name_zh }}
+              </h2>
+              <p class="text-base font-bold text-amber-400 font-pixel-title tracking-wider">
+                {{ selectedCocktail.name_en }}
+              </p>
+            </div>
+          </div>
 
           <p class="text-sm text-slate-300 mt-4 leading-relaxed font-medium">
             {{ selectedCocktail.description }}
@@ -788,8 +800,8 @@
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
 
-        <div class="w-18 h-18 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto border-2 border-amber-500/50 shadow-pixel-sm">
-          <i data-lucide="party-popper" class="w-9 h-9"></i>
+        <div class="w-20 h-20 rounded-2xl bg-slate-900 border-2 border-amber-500/70 shadow-pixel-gold flex items-center justify-center mx-auto p-2">
+          <span v-html="getCocktailPixelSvg(shakerPickedCocktail, 56)" class="inline-flex items-center justify-center"></span>
         </div>
 
         <div>
@@ -1466,6 +1478,278 @@
           return 'bg-slate-800 text-slate-200 border-slate-600';
         };
 
+        const getCocktailPixelSvg = (cocktail, size = 44) => {
+          if (!cocktail) return '';
+          const name = cocktail.name_zh || '';
+          const glass = cocktail.glass || '';
+          const spirit = cocktail.base_spirit || '';
+
+          // Determine Art Configuration
+          let type = 'highball';
+          let color = '#38bdf8';
+          let garnish = 'lime';
+          let straw = '#f43f5e';
+          let c1 = '', c2 = '', c3 = '';
+
+          // 1. Exact / Signature Drink Rules
+          if (name.includes('B-52')) {
+            type = 'layered_shot'; c1 = '#f97316'; c2 = '#fef08a'; c3 = '#451a03';
+          } else if (name.includes('B-53')) {
+            type = 'layered_shot'; c1 = '#38bdf8'; c2 = '#fef08a'; c3 = '#451a03';
+          } else if (name.includes('天使之吻')) {
+            type = 'layered_shot'; c1 = '#ffffff'; c2 = '#713f12'; c3 = '#451a03'; garnish = 'cherry';
+          } else if (name.includes('龍舌蘭日出')) {
+            type = 'highball_gradient'; c1 = '#fbbf24'; c2 = '#f97316'; c3 = '#e11d48'; garnish = 'orange'; straw = '#dc2626';
+          } else if (name.includes('莫希托') || name.includes('處女莫希托')) {
+            type = 'highball'; color = '#a7f3d0'; garnish = 'mint'; straw = '#10b981';
+          } else if (name.includes('藍色夏威夷') || name.includes('晴空藍海')) {
+            type = 'hurricane'; color = '#06b6d4'; garnish = 'pineapple';
+          } else if (name.includes('椰林風情') || name.includes('奇奇')) {
+            type = 'hurricane'; color = '#fef9c3'; garnish = 'pineapple';
+          } else if (name.includes('莫斯科騾子')) {
+            type = 'copper_mug'; color = '#b45309'; garnish = 'lime';
+          } else if (name.includes('薄荷朱利普')) {
+            type = 'silver_mug'; color = '#94a3b8'; garnish = 'mint';
+          } else if (name.includes('熱托迪')) {
+            type = 'warm_mug'; color = '#f59e0b'; garnish = 'steam';
+          } else if (name.includes('血腥瑪麗')) {
+            type = 'highball'; color = '#dc2626'; garnish = 'celery'; straw = '#ef4444';
+          } else if (name.includes('長島冰茶')) {
+            type = 'highball'; color = '#b45309'; garnish = 'lemon'; straw = '#f59e0b';
+          } else if (name.includes('自由古巴')) {
+            type = 'highball'; color = '#451a03'; garnish = 'lime'; straw = '#ef4444';
+          } else if (name.includes('綠色魔鬼')) {
+            type = 'martini'; color = '#10b981'; garnish = 'cream';
+          } else if (name.includes('柯夢波丹') || name.includes('紅粉佳人')) {
+            type = 'martini'; color = '#f43f5e'; garnish = 'citrus';
+          } else if (name.includes('咖啡馬丁尼')) {
+            type = 'martini'; color = '#3f1d0b'; garnish = 'coffee';
+          } else if (name.includes('曼哈頓') || name.includes('羅伯洛伊') || name.includes('馬克白') || name.includes('櫻桃')) {
+            type = 'martini'; color = '#991b1b'; garnish = 'cherry';
+          } else if (name.includes('馬丁尼')) {
+            type = 'martini'; color = '#ecfdf5'; garnish = 'olive';
+          } else if (name.includes('尼格羅尼') || name.includes('卡琵莉亞')) {
+            type = 'rock'; color = '#dc2626'; garnish = 'orange';
+          } else if (name.includes('古典雞尾酒') || name.includes('教父') || name.includes('教母') || name.includes('鏽釘') || name.includes('威士忌酸酒') || name.includes('杏仁酸酒')) {
+            type = 'rock'; color = '#d97706'; garnish = 'orange';
+          } else if (name.includes('白色俄羅斯') || name.includes('亞歷山大')) {
+            type = 'rock_layered'; c1 = '#ffffff'; c2 = '#3f1d0b'; garnish = 'none';
+          } else if (name.includes('黑色俄羅斯')) {
+            type = 'rock'; color = '#29180f'; garnish = 'none';
+          } else if (name.includes('阿佩羅氣泡') || name.includes('威尼斯人氣泡')) {
+            type = 'wine'; color = '#f97316'; garnish = 'orange';
+          } else if (name.includes('貝里尼')) {
+            type = 'flute'; color = '#fbcfe8'; garnish = 'bubbles';
+          } else if (name.includes('含羞草') || name.includes('法國香檳 75')) {
+            type = 'flute'; color = '#fde047'; garnish = 'bubbles';
+          } else if (name.includes('皇家基爾')) {
+            type = 'flute'; color = '#991b1b'; garnish = 'bubbles';
+          } else if (name.includes('基爾')) {
+            type = 'wine'; color = '#991b1b'; garnish = 'bubbles';
+          } else if (name.includes('瑪格麗特')) {
+            type = 'margarita'; color = '#bef264'; garnish = 'lime';
+          } else if (name.includes('性感海灘') || name.includes('灰姑娘')) {
+            type = 'highball_gradient'; c1 = '#fde047'; c2 = '#fb923c'; c3 = '#f43f5e'; garnish = 'orange'; straw = '#f43f5e';
+          } else if (name.includes('秀蘭鄧波兒')) {
+            type = 'highball_gradient'; c1 = '#fef08a'; c2 = '#f87171'; c3 = '#dc2626'; garnish = 'cherry'; straw = '#f43f5e';
+          } else if (name.includes('野格炸彈')) {
+            type = 'highball'; color = '#ca8a04'; garnish = 'shot'; straw = '#854d0e';
+          } else {
+            // General Glass / Spirit Fallback
+            if (glass.includes('瑪格麗特')) {
+              type = 'margarita'; color = '#bef264'; garnish = 'lime';
+            } else if (glass.includes('馬丁尼') || glass.includes('雞尾酒')) {
+              type = 'martini';
+              color = spirit.includes('琴') ? '#38bdf8' : (spirit.includes('威') || spirit.includes('白蘭')) ? '#fbbf24' : (name.includes('粉') || name.includes('紅')) ? '#f472b6' : '#a3e635';
+              garnish = name.includes('櫻') ? 'cherry' : 'citrus';
+            } else if (glass.includes('古典')) {
+              type = 'rock';
+              color = (spirit.includes('威') || spirit.includes('蘭姆')) ? '#d97706' : name.includes('紅') ? '#e11d48' : '#0284c7';
+              garnish = 'orange';
+            } else if (glass.includes('颶風')) {
+              type = 'hurricane';
+              color = name.includes('藍') ? '#38bdf8' : name.includes('綠') ? '#10b981' : '#fbbf24';
+              garnish = 'pineapple';
+            } else if (glass.includes('香檳') || glass.includes('笛形')) {
+              type = 'flute';
+              color = '#fef08a';
+              garnish = 'bubbles';
+            } else if (glass.includes('紅酒') || glass.includes('白酒')) {
+              type = 'wine';
+              color = name.includes('氣泡') ? '#f97316' : '#e11d48';
+              garnish = 'orange';
+            } else if (glass.includes('Shot') || glass.includes('利口')) {
+              type = 'shot';
+              color = '#f59e0b';
+              garnish = 'none';
+            } else {
+              type = 'highball';
+              color = spirit.includes('琴') ? '#38bdf8' : spirit.includes('威') ? '#f59e0b' : (name.includes('紅') || name.includes('櫻')) ? '#fb7185' : '#34d399';
+              garnish = 'lime';
+              straw = '#f43f5e';
+            }
+          }
+
+          // Build SVG by Type
+          const startSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${size}" height="${size}" class="pixel-art-icon flex-shrink-0" shape-rendering="crispEdges">`;
+          const endSvg = `</svg>`;
+
+          if (type === 'martini') {
+            let g = '';
+            if (garnish === 'olive') {
+              g = '<line x1="10" y1="2" x2="16" y2="10" stroke="#d97706" stroke-width="1"/><rect x="11" y="6" width="3" height="3" fill="#65a30d"/><rect x="12" y="7" width="1" height="1" fill="#dc2626"/>';
+            } else if (garnish === 'cherry') {
+              g = '<path d="M13 2h2v3h-2z" fill="#15803d"/><rect x="11" y="5" width="3" height="3" fill="#e11d48"/><rect x="12" y="5" width="1" height="1" fill="#f43f5e"/>';
+            } else if (garnish === 'coffee') {
+              g = '<rect x="9" y="6" width="2" height="1" fill="#1c1917"/><rect x="12" y="7" width="2" height="1" fill="#1c1917"/><rect x="14" y="6" width="2" height="1" fill="#1c1917"/>';
+            } else {
+              g = '<rect x="16" y="3" width="3" height="3" fill="#f59e0b"/><rect x="17" y="4" width="1" height="1" fill="#ffffff"/>';
+            }
+            return `${startSvg}
+              <path d="M5 6h14v1H5zm1 1h12v1H6zm1 1h10v1H7zm1 1h8v1H8zm1 1h6v1H9zm1 1h4v1h-4zm1 1h2v1h-2z" fill="${color}"/>
+              <path d="M4 5v1h1v1h1v1h1v1h1v1h1v1h1v1h2v-1h1v-1h1v-1h1v-1h1v-1h1V5h1V4H3v1h1z" fill="#cbd5e1" opacity="0.9"/>
+              <path d="M11 13h2v6h-2z" fill="#94a3b8"/>
+              <path d="M7 19h10v2H7z" fill="#cbd5e1"/>
+              <path d="M8 20h8v1H8z" fill="#64748b"/>
+              ${g}
+            ${endSvg}`;
+          }
+
+          if (type === 'rock' || type === 'rock_layered') {
+            let inner = '';
+            if (type === 'rock_layered') {
+              inner = `<rect x="6" y="10" width="12" height="4" fill="${c1}"/><rect x="6" y="14" width="12" height="4" fill="${c2}"/>`;
+            } else {
+              inner = `<rect x="6" y="10" width="12" height="8" fill="${color}"/>`;
+            }
+            let g = '';
+            if (garnish === 'orange') {
+              g = '<rect x="15" y="5" width="4" height="3" fill="#f97316"/><rect x="16" y="6" width="2" height="1" fill="#fef08a"/>';
+            } else if (garnish === 'cherry') {
+              g = '<path d="M14 4h2v3h-2z" fill="#15803d"/><rect x="13" y="6" width="3" height="3" fill="#e11d48"/>';
+            }
+            return `${startSvg}
+              <rect x="5" y="7" width="14" height="13" fill="#0f172a" opacity="0.4"/>
+              ${inner}
+              <rect x="7" y="11" width="4" height="4" fill="#ffffff" opacity="0.8"/>
+              <rect x="8" y="12" width="2" height="2" fill="#93c5fd" opacity="0.9"/>
+              <rect x="13" y="12" width="4" height="4" fill="#ffffff" opacity="0.8"/>
+              <rect x="14" y="13" width="2" height="2" fill="#93c5fd" opacity="0.9"/>
+              <path d="M5 7h14v1H5zm0 1v12h1V8H5zm13 0v12h1V8h-1zm-13 11h14v2H5z" fill="#cbd5e1"/>
+              ${g}
+            ${endSvg}`;
+          }
+
+          if (type === 'margarita') {
+            return `${startSvg}
+              <path d="M4 5h16v1H4z" fill="#ffffff"/>
+              <path d="M5 6h14v2H5zm3 2h8v3H8z" fill="${color}"/>
+              <path d="M4 5v1h1v2h3v3h1v1h2v-1h1v-3h3V6h1V5h1V4H3v1h1z" fill="#cbd5e1" opacity="0.85"/>
+              <path d="M11 12h2v7h-2z" fill="#94a3b8"/>
+              <path d="M7 19h10v2H7z" fill="#cbd5e1"/>
+              <rect x="3" y="3" width="3" height="4" fill="#84cc16"/>
+              <rect x="4" y="4" width="1" height="2" fill="#fef08a"/>
+            ${endSvg}`;
+          }
+
+          if (type === 'hurricane') {
+            return `${startSvg}
+              <path d="M7 4h10v1H7zm-1 1h12v1H6zm0 1h12v4H6zm1 4h10v3H7zm-1 3h12v4H6zm1 4h10v1H7z" fill="${color}"/>
+              <path d="M6 4h12v1H6zm-1 1v5h1V5h-1zm13 0v5h1V5h-1zm-12 5v4h1v-4H6zm11 0v4h1v-4h-1zm-11 4v4h1v-4H6zm11 0v4h1v-4h-1zm-10 4v1h10v-1H7zm3 1h4v2h-4zm-2 2h8v1H8z" fill="#cbd5e1"/>
+              <path d="M8 20h8v2H8z" fill="#94a3b8"/>
+              <path d="M14 1l4 2-4 2z" fill="#f43f5e"/>
+              <rect x="15" y="3" width="3" height="3" fill="#facc15"/>
+              <rect x="16" y="5" width="2" height="2" fill="#e11d48"/>
+            ${endSvg}`;
+          }
+
+          if (type === 'flute' || type === 'wine') {
+            let bowl = type === 'flute' 
+              ? `<path d="M8 3h8v1H8zm-1 1h10v10H7zm1 10h8v1H8zm2 1h4v1h-4z" fill="${color}"/>
+                 <path d="M8 3h8v1H8zm-1 1v10h1V4H7zm9 0v10h1V4h-1zm-8 10v1h8v-1H8zm2 1v1h4v-1h-4z" fill="#cbd5e1"/>
+                 <rect x="10" y="6" width="1" height="1" fill="#ffffff"/><rect x="13" y="8" width="1" height="1" fill="#ffffff"/><rect x="11" y="11" width="1" height="1" fill="#ffffff"/>
+                 <path d="M11 16h2v4h-2z" fill="#94a3b8"/>
+                 <path d="M8 20h8v2H8z" fill="#cbd5e1"/>`
+              : `<path d="M7 5h10v1H7zm-1 1h12v6H6zm1 6h10v2H7zm2 2h6v1H9z" fill="${color}"/>
+                 <path d="M7 5h10v1H7zm-1 1v6h1V6H6zm11 0v6h1V6h-1zm-10 6v2h1v-2H7zm9 0v2h1v-2h-1zm-7 2v1h6v-1H9z" fill="#cbd5e1"/>
+                 <rect x="15" y="3" width="4" height="3" fill="#f97316"/><rect x="16" y="4" width="2" height="1" fill="#fef08a"/>
+                 <path d="M11 16h2v4h-2z" fill="#94a3b8"/>
+                 <path d="M7 20h10v2H7z" fill="#cbd5e1"/>`;
+            return `${startSvg}${bowl}${endSvg}`;
+          }
+
+          if (type === 'layered_shot') {
+            return `${startSvg}
+              <path d="M7 7h10v1H7zm-1 1v12h1V8H6zm11 0v12h1V8h-1zm-11 12h12v2H6z" fill="#cbd5e1"/>
+              <rect x="7" y="8" width="10" height="4" fill="${c1}"/>
+              <rect x="7" y="12" width="10" height="4" fill="${c2}"/>
+              <rect x="7" y="16" width="10" height="4" fill="${c3}"/>
+              ${garnish === 'cherry' ? '<rect x="11" y="5" width="3" height="3" fill="#e11d48"/><path d="M12 3h2v2h-2z" fill="#15803d"/>' : ''}
+            ${endSvg}`;
+          }
+
+          if (type === 'shot') {
+            return `${startSvg}
+              <path d="M7 7h10v1H7zm-1 1v12h1V8H6zm11 0v12h1V8h-1zm-11 12h12v2H6z" fill="#cbd5e1"/>
+              <rect x="7" y="9" width="10" height="11" fill="${color}"/>
+            ${endSvg}`;
+          }
+
+          if (type === 'copper_mug' || type === 'silver_mug' || type === 'warm_mug') {
+            const bodyCol = type === 'copper_mug' ? '#b45309' : type === 'silver_mug' ? '#64748b' : '#334155';
+            const rimCol = type === 'copper_mug' ? '#d97706' : type === 'silver_mug' ? '#cbd5e1' : '#94a3b8';
+            let g = '';
+            if (garnish === 'lime') {
+              g = '<rect x="3" y="4" width="3" height="4" fill="#84cc16"/><rect x="4" y="5" width="1" height="2" fill="#fef08a"/>';
+            } else if (garnish === 'mint') {
+              g = '<rect x="8" y="4" width="4" height="3" fill="#22c55e"/><rect x="10" y="2" width="2" height="3" fill="#15803d"/>';
+            } else if (garnish === 'steam') {
+              g = '<path d="M8 2c0 2 2 2 2 4M13 1c0 2 2 2 2 4" stroke="#e2e8f0" stroke-width="1" fill="none"/>';
+            }
+            return `${startSvg}
+              <rect x="5" y="7" width="12" height="13" fill="${bodyCol}"/>
+              <path d="M17 9h3v7h-3v-2h2v-3h-2z" fill="${rimCol}"/>
+              <path d="M5 6h12v2H5zm0 13h12v2H5z" fill="${rimCol}"/>
+              <rect x="6" y="8" width="10" height="3" fill="#fef08a" opacity="0.85"/>
+              ${g}
+            ${endSvg}`;
+          }
+
+          // Highball / Highball Gradient
+          let innerFill = '';
+          if (type === 'highball_gradient') {
+            innerFill = `<rect x="7" y="7" width="10" height="4" fill="${c1}"/><rect x="7" y="11" width="10" height="5" fill="${c2}"/><rect x="7" y="16" width="10" height="4" fill="${c3}"/>`;
+          } else {
+            innerFill = `<rect x="7" y="7" width="10" height="13" fill="${color}"/>`;
+          }
+
+          let g = '';
+          if (garnish === 'lime') {
+            g = '<rect x="4" y="3" width="3" height="4" fill="#84cc16"/><rect x="5" y="4" width="1" height="2" fill="#fef08a"/>';
+          } else if (garnish === 'lemon') {
+            g = '<rect x="4" y="3" width="3" height="4" fill="#facc15"/><rect x="5" y="4" width="1" height="2" fill="#ffffff"/>';
+          } else if (garnish === 'orange') {
+            g = '<rect x="4" y="3" width="3" height="4" fill="#f97316"/><rect x="5" y="4" width="1" height="2" fill="#fef08a"/>';
+          } else if (garnish === 'celery') {
+            g = '<rect x="7" y="1" width="2" height="9" fill="#4ade80"/><rect x="8" y="0" width="2" height="3" fill="#22c55e"/>';
+          } else if (garnish === 'mint') {
+            g = '<rect x="5" y="3" width="3" height="3" fill="#10b981"/><rect x="7" y="2" width="2" height="2" fill="#059669"/>';
+          } else if (garnish === 'cherry') {
+            g = '<rect x="4" y="3" width="3" height="3" fill="#e11d48"/><path d="M5 1h2v2H5z" fill="#15803d"/>';
+          }
+
+          return `${startSvg}
+            <path d="M6 4h12v1H6zm0 1v16h1V5H6zm11 0v16h1V5h-1zm-11 15h12v2H6z" fill="#cbd5e1"/>
+            ${innerFill}
+            <rect x="13" y="1" width="2" height="18" fill="${straw}"/>
+            <rect x="14" y="1" width="1" height="18" fill="#ffffff" opacity="0.4"/>
+            <rect x="8" y="9" width="3" height="3" fill="#ffffff" opacity="0.75"/>
+            <rect x="10" y="13" width="3" height="3" fill="#ffffff" opacity="0.75"/>
+            <rect x="8" y="16" width="3" height="3" fill="#ffffff" opacity="0.75"/>
+            ${g}
+          ${endSvg}`;
+        };
+
         return {
           cocktails,
           myBar,
@@ -1502,6 +1786,7 @@
           openModalFromShaker,
           triggerShaker,
           getBaseSpiritBadgeStyle,
+          getCocktailPixelSvg,
           isAgeVerified,
           confirmAge,
           rejectAge
