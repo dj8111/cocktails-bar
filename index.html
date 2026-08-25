@@ -295,6 +295,21 @@
       -webkit-background-clip: text;
       animation: rainbowShimmerText 3s linear infinite;
     }
+
+    /* 3D Flip Card Styles for Exam Mode */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
   </style>
 </head>
 <body class="min-h-screen antialiased selection:bg-amber-500 selection:text-slate-950">
@@ -304,21 +319,23 @@
     <!-- Fixed Top Header: "經典調酒吧" -->
     <header class="sticky top-0 z-40 w-full bg-slate-950/95 backdrop-blur-md border-b-2 border-amber-500/40 shadow-xl">
       <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16 sm:h-24">
+        
+        <!-- Top Bar (Desktop: full row; Mobile: Row 1 Logo & Quick Buttons) -->
+        <div class="flex items-center justify-between h-14 sm:h-20 md:h-24">
           
           <!-- Title: 經典調酒吧 -->
           <div class="flex items-center space-x-2 sm:space-x-3 cursor-pointer min-w-0" @click="resetFilters">
             <!-- 8-Bit Pixel Avatar Icon -->
-            <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-amber-500 p-0.5 shadow-pixel-gold border-2 border-slate-950 flex items-center justify-center flex-shrink-0">
+            <div class="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-amber-500 p-0.5 shadow-pixel-gold border-2 border-slate-950 flex items-center justify-center flex-shrink-0">
               <div class="w-full h-full bg-slate-950 rounded-md sm:rounded-lg flex items-center justify-center relative overflow-hidden">
-                <svg class="w-5 h-5 sm:w-7 sm:h-7 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
+                <svg class="w-4 h-4 sm:w-6 sm:h-6 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M4 3h16v2l-7 8v6h4v2H7v-2h4v-6L4 5V3zm3.5 4h9l1.75-2H5.75l1.75 2z"/>
                 </svg>
               </div>
             </div>
             <div class="min-w-0">
               <div class="flex items-center space-x-1.5 sm:space-x-2">
-                <h1 class="text-lg sm:text-3xl font-black font-pixel-title tracking-wider text-amber-400 drop-shadow-[2px_2px_0px_rgba(0,0,0,0.8)] truncate">
+                <h1 class="text-base sm:text-2xl md:text-3xl font-black font-pixel-title tracking-wider text-amber-400 drop-shadow-[2px_2px_0px_rgba(0,0,0,0.8)] truncate">
                   經典調酒吧
                 </h1>
                 <span class="hidden md:inline-block px-2.5 py-0.5 text-xs font-bold font-pixel-title rounded bg-amber-500/20 text-amber-300 border border-amber-500/50">
@@ -329,40 +346,93 @@
             </div>
           </div>
 
-          <!-- Header Actions: Unit Switcher -> 我的吧台 -> 酒保推薦 -->
-          <div class="flex items-center space-x-1.5 sm:space-x-3 flex-shrink-0">
-            
-            <!-- 1. Unit Switcher Button -->
+          <!-- Desktop Header Actions (md:flex, hidden on mobile) -->
+          <div class="hidden md:flex items-center space-x-2.5 flex-shrink-0">
+            <!-- 1. Unit Switcher -->
             <button 
               @click="toggleUnit"
-              class="px-2 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-900 hover:bg-slate-800 text-slate-200 border-2 border-slate-700 shadow-pixel-sm transition flex items-center space-x-1 sm:space-x-1.5 whitespace-nowrap flex-shrink-0"
+              class="px-3 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-900 hover:bg-slate-800 text-slate-200 border-2 border-slate-700 shadow-pixel-sm transition flex items-center space-x-1.5 whitespace-nowrap cursor-pointer"
               title="切換單位 (ml / oz)">
-              <i data-lucide="scale" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 flex-shrink-0"></i>
-              <span class="whitespace-nowrap"><span class="hidden sm:inline">單位: </span><strong class="text-amber-400 font-pixel-title">{{ unit }}</strong></span>
+              <i data-lucide="scale" class="w-4 h-4 text-amber-400"></i>
+              <span>單位: <strong class="text-amber-400 font-pixel-title">{{ unit }}</strong></span>
             </button>
 
-            <!-- 2. 「我的吧台」Button -->
+            <!-- 2. 考照刷題 -->
+            <button 
+              @click="openExamModal"
+              class="relative px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold font-pixel-title bg-slate-900 hover:bg-slate-800 text-cyan-300 border-2 border-cyan-500/60 shadow-pixel-sm transition flex items-center space-x-1.5 whitespace-nowrap cursor-pointer"
+              title="乙級考照背誦閃卡與模擬測驗">
+              <i data-lucide="graduation-cap" class="w-4.5 h-4.5 text-cyan-400"></i>
+              <span>考照刷題</span>
+            </button>
+
+            <!-- 3. 我的吧台 -->
             <button 
               @click="isBarOpen = !isBarOpen"
-              class="relative px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold font-pixel-title bg-slate-900 hover:bg-slate-800 text-amber-400 border-2 border-amber-500/60 shadow-pixel-sm transition flex items-center space-x-1.5 sm:space-x-2 whitespace-nowrap flex-shrink-0">
-              <i data-lucide="martini" class="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 text-amber-400 flex-shrink-0"></i>
-              <span class="whitespace-nowrap">我的吧台</span>
-              <span class="bg-amber-500 text-slate-950 text-[10px] sm:text-xs font-black px-1.5 sm:px-2 py-0.5 rounded-md font-pixel-title ml-0.5 sm:ml-1 flex-shrink-0">
+              class="relative px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold font-pixel-title bg-slate-900 hover:bg-slate-800 text-amber-400 border-2 border-amber-500/60 shadow-pixel-sm transition flex items-center space-x-2 whitespace-nowrap cursor-pointer">
+              <i data-lucide="box" class="w-4.5 h-4.5 text-amber-400"></i>
+              <span>我的吧台</span>
+              <span class="bg-amber-500 text-slate-950 text-xs font-black px-2 py-0.5 rounded-md font-pixel-title ml-1">
                 {{ selectedIngredientsCount }}
               </span>
             </button>
 
-            <!-- 3. 「酒保推薦」Random Shaker Button -->
+            <!-- 4. 酒保推薦 -->
             <button 
               @click="triggerShaker"
-              class="relative px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold font-pixel-title bg-amber-500 hover:bg-amber-400 text-slate-950 border-2 border-slate-950 shadow-pixel-sm transition flex items-center space-x-1.5 sm:space-x-2 whitespace-nowrap flex-shrink-0 animate-pulse-glow"
+              class="relative px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold font-pixel-title bg-amber-500 hover:bg-amber-400 text-slate-950 border-2 border-slate-950 shadow-pixel-sm transition flex items-center space-x-2 whitespace-nowrap animate-pulse-glow cursor-pointer"
               title="隨機推薦調酒">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 text-slate-950 flex-shrink-0"></i>
-              <span class="whitespace-nowrap">酒保推薦</span>
+              <i data-lucide="martini" class="w-4.5 h-4.5 text-slate-950"></i>
+              <span>酒保推薦</span>
+            </button>
+          </div>
+
+          <!-- Mobile Right Quick Actions: Unit + 考照刷題 (md:hidden) -->
+          <div class="flex md:hidden items-center space-x-1.5 flex-shrink-0">
+            <!-- Unit Switcher Button -->
+            <button 
+              @click="toggleUnit"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-200 border border-slate-700 shadow-pixel-sm transition flex items-center space-x-1 cursor-pointer">
+              <i data-lucide="scale" class="w-3.5 h-3.5 text-amber-400"></i>
+              <strong class="text-amber-400 font-pixel-title">{{ unit }}</strong>
             </button>
 
+            <!-- 考照刷題 Button -->
+            <button 
+              @click="openExamModal"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-bold font-pixel-title bg-slate-900 text-cyan-300 border border-cyan-500/60 shadow-pixel-sm transition flex items-center space-x-1 cursor-pointer">
+              <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-cyan-400"></i>
+              <span>考照刷題</span>
+            </button>
           </div>
+
         </div>
+
+        <!-- Mobile Row 2: Two Big Nav Cards for 我的吧台 & 酒保推薦 (md:hidden) -->
+        <div class="grid md:hidden grid-cols-2 gap-2 pb-2.5 pt-0.5 border-t border-slate-800/80">
+          <!-- 1. 我的吧台 -->
+          <button 
+            @click="isBarOpen = !isBarOpen"
+            :class="[
+              'w-full py-2 px-2.5 rounded-xl text-xs font-bold font-pixel-title shadow-pixel-sm flex items-center justify-center space-x-1.5 transition cursor-pointer border-2',
+              isBarOpen ? 'bg-amber-500 text-slate-950 border-amber-400' : 'bg-slate-900/90 active:bg-slate-800 text-amber-400 border-amber-500/60'
+            ]">
+            <i data-lucide="box" :class="['w-4 h-4', isBarOpen ? 'text-slate-950' : 'text-amber-400']"></i>
+            <span>我的吧台</span>
+            <span :class="['text-[10px] font-black px-1.5 py-0.5 rounded-md font-pixel-title ml-0.5', isBarOpen ? 'bg-slate-950 text-amber-400' : 'bg-amber-500 text-slate-950']">
+              {{ selectedIngredientsCount }}
+            </span>
+          </button>
+
+          <!-- 2. 酒保推薦 -->
+          <button 
+            @click="triggerShaker"
+            class="w-full py-2 px-2.5 rounded-xl text-xs font-black font-pixel-title bg-amber-500 hover:bg-amber-400 text-slate-950 border-2 border-slate-950 shadow-pixel-sm flex items-center justify-center space-x-1.5 transition animate-pulse-glow cursor-pointer">
+            <i data-lucide="martini" class="w-4 h-4 text-slate-950"></i>
+            <span>酒保推薦</span>
+          </button>
+        </div>
+
       </div>
     </header>
 
@@ -378,69 +448,118 @@
             isBarOpen ? 'block' : 'hidden lg:block'
           ]">
           
-          <div class="pixel-card rounded-2xl p-5 sm:p-6 sticky top-28 border-2 border-slate-700 shadow-xl">
+          <div class="pixel-card rounded-2xl p-4 sm:p-5 sticky top-24 border-2 border-slate-700 shadow-xl max-h-[calc(100vh-110px)] flex flex-col">
             
-            <div class="flex items-center justify-between pb-4 border-b-2 border-slate-800 mb-5">
-              <div class="flex items-center space-x-2.5">
-                <div class="p-2 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/40">
-                  <i data-lucide="box" class="w-6 h-6"></i>
+            <!-- Header -->
+            <div class="flex items-center justify-between pb-3 border-b-2 border-slate-800 mb-3 flex-shrink-0">
+              <div class="flex items-center space-x-2">
+                <div class="p-1.5 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/40">
+                  <i data-lucide="box" class="w-5 h-5"></i>
                 </div>
                 <div>
-                  <h2 class="font-bold font-pixel-title text-slate-100 text-lg">我的吧台</h2>
-                  <p class="text-xs text-slate-400 font-medium">勾選家中材料即時匹配酒譜</p>
+                  <h2 class="font-bold font-pixel-title text-slate-100 text-base">我的吧台</h2>
+                  <p class="text-[11px] text-slate-400 font-medium">勾選材料即時匹配酒譜</p>
                 </div>
               </div>
               
               <div class="flex items-center space-x-2">
                 <button 
                   @click="toggleExpandAllCategories" 
-                  class="text-xs font-bold text-amber-400 hover:underline">
+                  class="text-xs font-bold text-amber-400 hover:underline cursor-pointer">
                   {{ allCategoriesExpanded ? '全部收合' : '全部展開' }}
                 </button>
                 <span class="text-slate-600">|</span>
                 <button 
                   @click="selectAllBar(false)" 
-                  class="text-xs font-bold text-slate-400 hover:text-amber-400 transition underline">
+                  class="text-xs font-bold text-slate-400 hover:text-amber-400 transition underline cursor-pointer">
                   清空
                 </button>
               </div>
             </div>
 
             <!-- Matching Status Indicator -->
-            <div class="grid grid-cols-2 gap-3 mb-5">
+            <div class="grid grid-cols-2 gap-2.5 mb-3 flex-shrink-0">
               <div 
                 @click="filterStatus = (filterStatus === 'ready' ? 'all' : 'ready')"
                 :class="[
-                  'p-3 rounded-xl border-2 cursor-pointer transition text-center shadow-pixel-sm',
+                  'p-2.5 rounded-xl border-2 cursor-pointer transition text-center shadow-pixel-sm',
                   filterStatus === 'ready' ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300' : 'bg-slate-900 border-slate-800 hover:border-slate-700 text-slate-300'
                 ]">
-                <div class="text-xs text-slate-400 font-bold">100% 即可調製</div>
-                <div class="text-2xl font-black font-pixel-title text-emerald-400 mt-1">{{ readyCocktailsCount }} 款</div>
+                <div class="text-[11px] text-slate-400 font-bold">100% 即可調製</div>
+                <div class="text-xl font-black font-pixel-title text-emerald-400 mt-0.5">{{ readyCocktailsCount }} 款</div>
               </div>
 
               <div 
                 @click="filterStatus = (filterStatus === 'missing1' ? 'all' : 'missing1')"
                 :class="[
-                  'p-3 rounded-xl border-2 cursor-pointer transition text-center shadow-pixel-sm',
+                  'p-2.5 rounded-xl border-2 cursor-pointer transition text-center shadow-pixel-sm',
                   filterStatus === 'missing1' ? 'bg-amber-500/20 border-amber-500 text-amber-300' : 'bg-slate-900 border-slate-800 hover:border-slate-700 text-slate-300'
                 ]">
-                <div class="text-xs text-slate-400 font-bold">缺 1 種材料</div>
-                <div class="text-2xl font-black font-pixel-title text-amber-400 mt-1">{{ missing1CocktailsCount }} 款</div>
+                <div class="text-[11px] text-slate-400 font-bold">缺 1 種材料</div>
+                <div class="text-xl font-black font-pixel-title text-amber-400 mt-0.5">{{ missing1CocktailsCount }} 款</div>
               </div>
             </div>
 
-            <!-- Collapsible Accordion Categories -->
-            <div class="space-y-3 max-h-[calc(100vh-320px)] overflow-y-auto pr-1.5">
+            <!-- Smart Shopping Assistant (再買這瓶解鎖最多酒 - 預設折疊) -->
+            <div v-if="topUnlockRecommendations && topUnlockRecommendations.length > 0" class="mb-3 rounded-xl bg-gradient-to-b from-cyan-950/40 via-slate-900 to-slate-900/90 border-2 border-cyan-500/50 shadow-pixel-sm overflow-hidden flex-shrink-0">
+              <div 
+                @click="isShoppingOpen = !isShoppingOpen"
+                class="flex items-center justify-between p-2.5 cursor-pointer select-none hover:bg-slate-800/60 transition">
+                <div class="flex items-center space-x-1.5 text-xs font-bold font-pixel-title text-cyan-300 min-w-0 pr-1">
+                  <i :data-lucide="isShoppingOpen ? 'chevron-down' : 'chevron-right'" class="w-3.5 h-3.5 text-cyan-400 flex-shrink-0"></i>
+                  <span class="truncate">再買這瓶解鎖最多酒</span>
+                  <span v-if="!isShoppingOpen && topUnlockRecommendations[0]" class="text-[10px] text-amber-400 font-medium hidden sm:inline truncate">
+                    (推薦: {{ topUnlockRecommendations[0].name }} +{{ topUnlockRecommendations[0].unlockReadyCount }}款)
+                  </span>
+                </div>
+                <div class="flex items-center space-x-2 flex-shrink-0" @click.stop>
+                  <button 
+                    @click="copyShoppingList" 
+                    class="text-[11px] font-bold text-amber-400 hover:text-amber-300 transition flex items-center space-x-1 underline cursor-pointer"
+                    title="複製推薦清單至剪貼簿">
+                    <i data-lucide="copy" class="w-3 h-3"></i>
+                    <span>複製清單</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Top High-Impact Ingredients (Collapsible Body) -->
+              <div v-show="isShoppingOpen" class="px-2.5 pb-2.5 pt-0.5 space-y-1.5 border-t border-slate-800/80">
+                <div 
+                  v-for="(rec, rIdx) in topUnlockRecommendations.slice(0, 3)" 
+                  :key="rec.name"
+                  class="flex items-center justify-between p-1.5 rounded-lg bg-slate-950/80 border border-slate-800 hover:border-cyan-500/50 transition text-xs">
+                  <div class="flex items-center space-x-1.5 min-w-0 pr-1">
+                    <span class="text-xs flex-shrink-0">{{ rIdx === 0 ? '🥇' : rIdx === 1 ? '🥈' : '🥉' }}</span>
+                    <span class="font-bold text-slate-200 truncate text-[11px] sm:text-xs">{{ rec.name }}</span>
+                  </div>
+                  <div class="flex items-center space-x-1.5 flex-shrink-0">
+                    <span class="text-[10px] font-pixel-title font-black text-cyan-300 whitespace-nowrap">
+                      +{{ rec.unlockReadyCount }}款可調
+                    </span>
+                    <button 
+                      @click="toggleBarIngredient(rec.name)"
+                      class="px-1.5 py-0.5 rounded bg-cyan-500/20 hover:bg-cyan-500 text-cyan-300 hover:text-slate-950 text-[10px] font-bold transition border border-cyan-500/40 cursor-pointer"
+                      title="直接加入吧台">
+                      +加入
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Collapsible Accordion Categories (Scrolls freely taking all remaining vertical height) -->
+            <div class="space-y-2.5 overflow-y-auto overscroll-contain flex-grow min-h-0 pr-1">
               
               <div 
                 v-for="(categoryGroup, catName) in ingredientCategories" 
                 :key="catName" 
-                class="border-2 border-slate-800 rounded-xl overflow-hidden bg-slate-900/60">
+                class="border-2 border-slate-800 rounded-xl overflow-hidden bg-slate-900/60 flex-shrink-0">
                 
                 <!-- Category Collapsible Header -->
                 <button 
                   @click="categoryOpenState[catName] = !categoryOpenState[catName]"
-                  class="w-full flex items-center justify-between p-3 text-xs font-bold text-amber-400 font-pixel-title hover:bg-slate-800/80 transition select-none">
+                  class="w-full flex items-center justify-between p-2.5 text-xs font-bold text-amber-400 font-pixel-title hover:bg-slate-800/80 transition select-none cursor-pointer">
                   <div class="flex items-center space-x-2">
                     <i 
                       :data-lucide="categoryOpenState[catName] ? 'chevron-down' : 'chevron-right'" 
@@ -826,7 +945,7 @@
             <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5"></i>
             <div>
               <strong class="font-bold block mb-1 font-pixel-title">吧台缺少材料：{{ selectedCocktail.missingList.join('、') }}</strong>
-              <p class="text-slate-300 text-xs">可參考下方「居家替代建議 (Home Hack)」進行等效替代！</p>
+              <p class="text-slate-300 text-xs">可參考下方「Tips」進行等效替代！</p>
             </div>
           </div>
 
@@ -916,7 +1035,7 @@
             </ol>
           </div>
 
-          <!-- Grade B Exam Spec & Home Hack Cards -->
+          <!-- Grade B Exam Spec & Tips Cards -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
             
             <!-- Exam Spec -->
@@ -930,11 +1049,11 @@
               </p>
             </div>
 
-            <!-- Home Hack -->
+            <!-- Tips -->
             <div class="p-4 rounded-xl bg-amber-500/15 border-2 border-amber-500/40 space-y-1.5">
               <div class="text-xs font-black font-pixel-title text-amber-300 flex items-center space-x-2">
                 <i data-lucide="lightbulb" class="w-4 h-4"></i>
-                <span>居家替代建議 (Home Hack)</span>
+                <span>Tips</span>
               </div>
               <p class="text-sm text-slate-200 font-medium leading-relaxed">
                 {{ selectedCocktail.home_hack }}
@@ -1198,6 +1317,261 @@
 
     </div>
 
+    <!-- Exam Flashcard & Quiz Modal (乙級考照刷題 / 背誦閃卡) -->
+    <div 
+      v-if="isExamModalOpen" 
+      class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md overflow-y-auto animate-fade-in"
+      @click.self="isExamModalOpen = false">
+      
+      <div class="pixel-card rounded-2xl sm:rounded-3xl max-w-xl w-full border-2 border-cyan-500/70 shadow-[0_0_40px_rgba(6,182,212,0.25)] overflow-hidden relative my-auto max-h-[92vh] flex flex-col bg-slate-950">
+        
+        <!-- Header -->
+        <div class="p-4 sm:p-5 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-b-2 border-slate-800 relative flex-shrink-0 flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <div class="p-2 rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/40">
+              <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-black font-pixel-title text-cyan-300">乙級考照刷題系統</h3>
+              <p class="text-[11px] text-slate-400 font-medium">90 款經典調酒配方、手法與規範閃卡測驗</p>
+            </div>
+          </div>
+
+          <button 
+            @click="isExamModalOpen = false"
+            class="p-2 rounded-xl bg-slate-900 border-2 border-slate-700 text-slate-400 hover:text-slate-100 min-w-[38px] min-h-[38px] flex items-center justify-center transition"
+            title="關閉">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Mode Switcher Tabs (閃卡背誦 vs 模擬測驗) -->
+        <div class="px-4 pt-3 pb-2 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between gap-2 flex-shrink-0">
+          <div class="flex items-center space-x-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800">
+            <button 
+              @click="switchExamTab('flashcard')"
+              :class="['px-3 py-1.5 rounded-lg text-xs font-bold font-pixel-title transition flex items-center space-x-1 cursor-pointer', examTab === 'flashcard' ? 'bg-cyan-500 text-slate-950 shadow-pixel-sm' : 'text-slate-400 hover:text-cyan-300']">
+              <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+              <span>背誦閃卡</span>
+            </button>
+            <button 
+              @click="switchExamTab('quiz')"
+              :class="['px-3 py-1.5 rounded-lg text-xs font-bold font-pixel-title transition flex items-center space-x-1 cursor-pointer', examTab === 'quiz' ? 'bg-cyan-500 text-slate-950 shadow-pixel-sm' : 'text-slate-400 hover:text-cyan-300']">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+              <span>模擬測驗</span>
+            </button>
+          </div>
+
+          <!-- Quick Stats badge in Quiz Mode -->
+          <div v-if="examTab === 'quiz'" class="text-xs font-pixel-title text-slate-300 flex items-center space-x-2">
+            <span class="text-emerald-400 font-black">得分：{{ quizScore }} / {{ quizTotal }}</span>
+            <span v-if="quizCombo > 1" class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] font-black animate-pulse">
+              🔥 {{ quizCombo }} 連擊
+            </span>
+          </div>
+          <!-- Progress indicator in Flashcard Mode -->
+          <div v-else class="text-xs font-pixel-title text-slate-400">
+            第 <strong class="text-cyan-400">{{ (currentFlashcardIndex % (cocktails.length || 90)) + 1 }}</strong> / {{ cocktails.length || 90 }} 款
+          </div>
+        </div>
+
+        <!-- Body Content -->
+        <div class="p-4 sm:p-6 overflow-y-auto overscroll-contain flex-grow flex flex-col justify-center">
+          
+          <!-- TAB 1: 3D Flashcard -->
+          <div v-if="examTab === 'flashcard' && flashcardCocktail" class="flex flex-col items-center space-y-4">
+            
+            <!-- 3D Perspective Card Container -->
+            <div 
+              @click="flipCard"
+              class="perspective-1000 w-full cursor-pointer select-none group min-h-[340px] sm:min-h-[380px] relative">
+              
+              <div 
+                :class="['w-full h-full transform-style-3d transition-all duration-500 relative rounded-2xl sm:rounded-3xl border-2 border-cyan-500/50 shadow-2xl p-5 sm:p-6', isCardFlipped ? 'rotate-y-180 bg-slate-900/95' : 'bg-slate-900/90 hover:border-cyan-400']">
+                
+                <!-- FRONT FACE -->
+                <div v-show="!isCardFlipped" class="flex flex-col items-center justify-between h-full text-center space-y-3 py-2">
+                  <div class="flex items-center space-x-2">
+                    <span class="px-2.5 py-0.5 rounded-lg text-xs font-bold font-pixel-title bg-cyan-500/20 text-cyan-300 border border-cyan-500/50">
+                      {{ flashcardCocktail.category }}
+                    </span>
+                    <span class="px-2.5 py-0.5 rounded-lg text-xs font-bold font-pixel-title bg-slate-800 text-slate-300 border border-slate-700">
+                      基酒：{{ flashcardCocktail.base_spirit }}
+                    </span>
+                  </div>
+
+                  <!-- Center Pixel Drink -->
+                  <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-slate-950 border-2 border-cyan-500/60 shadow-pixel-sm flex items-center justify-center p-3 my-2">
+                    <span v-html="getCocktailPixelSvg(flashcardCocktail, 70)"></span>
+                  </div>
+
+                  <div>
+                    <h3 class="text-2xl sm:text-3xl font-black font-pixel-title text-slate-100 mb-1">
+                      {{ flashcardCocktail.name_zh }}
+                    </h3>
+                    <p class="text-xs sm:text-sm font-bold font-pixel-title text-amber-400">
+                      {{ flashcardCocktail.name_en }}
+                    </p>
+                  </div>
+
+                  <div class="text-[11px] font-bold font-pixel-title text-cyan-400 animate-pixel-blink pt-2 flex items-center space-x-1">
+                    <i data-lucide="rotate-3d" class="w-3.5 h-3.5"></i>
+                    <span>👆 點擊卡片翻面看解答與考照規範</span>
+                  </div>
+                </div>
+
+                <!-- BACK FACE -->
+                <div v-show="isCardFlipped" class="rotate-y-180 flex flex-col justify-between h-full text-left space-y-3 text-xs sm:text-sm">
+                  
+                  <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                    <div>
+                      <span class="font-black text-amber-300 font-pixel-title text-base sm:text-lg">{{ flashcardCocktail.name_zh }}</span>
+                      <span class="text-xs text-slate-400 ml-1.5">({{ flashcardCocktail.name_en }})</span>
+                    </div>
+                    <span class="text-[11px] font-bold text-cyan-400 border border-cyan-500/40 px-2 py-0.5 rounded bg-cyan-950/60 font-pixel-title">背面解答</span>
+                  </div>
+
+                  <!-- 4 Spec items -->
+                  <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="p-2 rounded-lg bg-slate-950/80 border border-slate-800">
+                      <div class="text-slate-400 text-[10px] font-bold">調製手法</div>
+                      <div class="text-cyan-300 font-bold font-pixel-title mt-0.5">{{ flashcardCocktail.technique }}</div>
+                    </div>
+                    <div class="p-2 rounded-lg bg-slate-950/80 border border-slate-800">
+                      <div class="text-slate-400 text-[10px] font-bold">指定專用杯型</div>
+                      <div class="text-slate-200 font-bold mt-0.5 truncate">{{ flashcardCocktail.glass }}</div>
+                    </div>
+                  </div>
+
+                  <!-- Exam Garnish Spec -->
+                  <div class="p-2.5 rounded-lg bg-amber-500/15 border border-amber-500/40 text-xs">
+                    <div class="text-amber-400 font-black font-pixel-title flex items-center space-x-1 mb-1">
+                      <i data-lucide="award" class="w-3.5 h-3.5"></i>
+                      <span>乙級考照裝飾物規範</span>
+                    </div>
+                    <p class="text-slate-200 font-medium leading-relaxed">
+                      {{ flashcardCocktail.garnish_exam }}
+                    </p>
+                  </div>
+
+                  <!-- Ingredients -->
+                  <div class="p-2 rounded-lg bg-slate-950/80 border border-slate-800 text-[11px] space-y-1">
+                    <div class="text-slate-400 font-bold">標準配方比例：</div>
+                    <div class="text-slate-300 line-clamp-2 leading-relaxed">
+                      {{ flashcardCocktail.ingredients.map(i => i.name + ' ' + (unit === 'ml' ? (i.amount_ml ? i.amount_ml + 'ml' : '') : (i.amount_oz ? i.amount_oz + 'oz' : ''))).join('、') }}
+                    </div>
+                  </div>
+
+                  <div class="text-center text-[10px] text-slate-500 font-medium">
+                    (再次點擊卡片可翻回正面)
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Flashcard Nav Controls -->
+            <div class="flex items-center justify-between w-full gap-2 pt-1">
+              <button 
+                @click="prevFlashcard"
+                class="flex-1 py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-bold font-pixel-title border border-slate-700 transition flex items-center justify-center space-x-1 cursor-pointer">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                <span>上一款</span>
+              </button>
+
+              <button 
+                @click="randomFlashcard"
+                class="flex-1 py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-cyan-300 text-xs font-bold font-pixel-title border border-cyan-500/50 transition flex items-center justify-center space-x-1 cursor-pointer">
+                <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
+                <span>隨機抽題</span>
+              </button>
+
+              <button 
+                @click="nextFlashcard"
+                class="flex-1 py-2.5 px-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-black font-pixel-title border border-slate-950 shadow-pixel-sm transition flex items-center justify-center space-x-1 cursor-pointer">
+                <span>下一款</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-slate-950"></i>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- TAB 2: Quiz Mode -->
+          <div v-else-if="examTab === 'quiz' && currentQuestion" class="space-y-4">
+            
+            <!-- Question Box -->
+            <div class="p-4 sm:p-5 rounded-2xl bg-slate-900 border-2 border-cyan-500/50 space-y-3">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center flex-shrink-0 p-1">
+                  <span v-html="getCocktailPixelSvg(currentQuestion.cocktail, 38)"></span>
+                </div>
+                <div>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold font-pixel-title bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+                    第 {{ quizTotal + 1 }} 題
+                  </span>
+                  <h4 class="text-sm sm:text-base font-bold text-slate-100 mt-1 leading-relaxed">
+                    {{ currentQuestion.text }}
+                  </h4>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4 Options Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <button 
+                v-for="(opt, oIdx) in currentQuestion.options" 
+                :key="oIdx"
+                @click="selectQuizOption(opt)"
+                :disabled="isAnswerChecked"
+                :class="[
+                  'p-3.5 rounded-xl border-2 font-bold text-left transition flex items-center justify-between text-xs sm:text-sm cursor-pointer',
+                  !isAnswerChecked && 'bg-slate-900/90 border-slate-800 hover:border-cyan-400 hover:bg-slate-800 text-slate-200',
+                  isAnswerChecked && opt === currentQuestion.correctAnswer && 'bg-emerald-500/20 border-emerald-500 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.3)]',
+                  isAnswerChecked && selectedQuizOption === opt && opt !== currentQuestion.correctAnswer && 'bg-rose-500/20 border-rose-500 text-rose-300',
+                  isAnswerChecked && selectedQuizOption !== opt && opt !== currentQuestion.correctAnswer && 'opacity-40 bg-slate-950 border-slate-800 text-slate-400'
+                ]">
+                <span>{{ ['A', 'B', 'C', 'D'][oIdx] }}. {{ opt }}</span>
+                <i v-if="isAnswerChecked && opt === currentQuestion.correctAnswer" data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                <i v-else-if="isAnswerChecked && selectedQuizOption === opt && opt !== currentQuestion.correctAnswer" data-lucide="x-circle" class="w-4 h-4 text-rose-400"></i>
+              </button>
+            </div>
+
+            <!-- Result Feedback & Next Question -->
+            <div v-if="isAnswerChecked" class="p-3.5 rounded-xl bg-slate-900 border-2 border-slate-800 flex items-center justify-between animate-fade-in">
+              <div class="text-xs">
+                <span v-if="selectedQuizOption === currentQuestion.correctAnswer" class="text-emerald-400 font-bold font-pixel-title flex items-center space-x-1">
+                  <span>🎉 答對了！太厲害了！</span>
+                </span>
+                <span v-else class="text-rose-400 font-bold font-pixel-title">
+                  ❌ 答錯囉！正確答案是：<strong class="text-amber-400">{{ currentQuestion.correctAnswer }}</strong>
+                </span>
+              </div>
+
+              <button 
+                @click="generateQuizQuestion"
+                class="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs font-pixel-title border-2 border-slate-950 shadow-pixel-sm transition flex items-center space-x-1 cursor-pointer">
+                <span>下一題</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-slate-950"></i>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Toast Notification -->
+    <div 
+      v-if="toastMessage" 
+      class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[110] px-4 py-2.5 rounded-xl bg-cyan-950 border-2 border-cyan-400 text-cyan-200 font-bold font-pixel-title text-xs sm:text-sm shadow-2xl flex items-center space-x-2 animate-fade-in pointer-events-none">
+      <i data-lucide="check-circle" class="w-4 h-4 text-cyan-400"></i>
+      <span>{{ toastMessage }}</span>
+    </div>
+
     <!-- Age Verification & Health Warning Modal -->
     <div 
       v-if="!isAgeVerified"
@@ -1259,242 +1633,4483 @@
   <script>
     // Embedded Fallback Cocktail Dataset (Ensures 100% offline & file:// compatibility)
     const EMBEDDED_COCKTAILS = [
+  {
+    "id": 1,
+    "name_zh": "馬丁尼",
+    "name_en": "Martini",
+    "base_spirit": "琴酒",
+    "category": "難忘經典",
+    "technique": "Stir",
+    "glass": "馬丁尼杯",
+    "abv": 30,
+    "rating": 5,
+    "calories": 160,
+    "flavors": [
+      "辛辣",
+      "草本",
+      "強烈"
+    ],
+    "garnish_exam": "綠橄欖 1 顆穿串於竹籤",
+    "home_hack": "若無不甜苦艾酒，可用不甜白葡萄酒替代，橄欖可用酸黃瓜薄片代替。",
+    "description": "調酒之王，琴酒與不甜苦艾酒的和諧交響，口感乾冽清爽，草本香氣濃郁。",
+    "ingredients": [
       {
-        "id": 1,
-        "name_zh": "馬丁尼",
-        "name_en": "Martini",
-        "base_spirit": "琴酒",
-        "category": "難忘經典",
-        "technique": "Stir",
-        "glass": "馬丁尼杯",
-        "abv": 30,
-        "rating": 5,
-        "calories": 160,
-        "flavors": ["辛辣", "草本", "強烈"],
-        "garnish_exam": "綠橄欖 1 顆穿串於竹籤",
-        "home_hack": "若無不甜苦艾酒，可用不甜白葡萄酒替代，橄欖可用酸黃瓜薄片代替。",
-        "description": "調酒之王，琴酒與不甜苦艾酒的和諧交響，口感乾冽清爽，草本香氣濃郁。",
-        "ingredients": [
-          { "name": "琴酒", "amount_ml": 60, "amount_oz": "2", "category": "base" },
-          { "name": "不甜苦艾酒", "amount_ml": 10, "amount_oz": "1/3", "category": "liqueur" },
-          { "name": "綠橄欖", "amount_ml": 1, "amount_oz": "1顆", "category": "garnish" }
-        ],
-        "steps": ["於攪拌杯中加入冰塊。", "倒入琴酒與不甜苦艾酒。", "使用吧匙攪拌約 20-30 秒至充分冷卻。", "濾入預冷的馬丁尼杯中。", "以綠橄欖裝飾。"]
+        "name": "琴酒",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "base"
       },
       {
-        "id": 2,
-        "name_zh": "曼哈頓",
-        "name_en": "Manhattan",
-        "base_spirit": "威士忌",
-        "category": "難忘經典",
-        "technique": "Stir",
-        "glass": "馬丁尼杯",
-        "abv": 32,
-        "rating": 5,
-        "calories": 175,
-        "flavors": ["香醇", "甜美", "強烈"],
-        "garnish_exam": "酒漬紅櫻桃 1 顆沉底或竹籤穿串",
-        "home_hack": "黑櫻桃罐頭汁加少許威士忌可作為急救櫻桃替代。",
-        "description": "調酒女王，威士忌與甜苦艾酒的完美結合，深紅誘人，香氣層次豐富。",
-        "ingredients": [
-          { "name": "威士忌", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-          { "name": "甜苦艾酒", "amount_ml": 20, "amount_oz": "0.75", "category": "liqueur" },
-          { "name": "安哥斯安哥斯苦精", "amount_ml": 2, "amount_oz": "2滴", "category": "mixer" },
-          { "name": "酒漬櫻桃", "amount_ml": 1, "amount_oz": "1顆", "category": "garnish" }
-        ],
-        "steps": ["攪拌杯裝滿冰塊。", "加入威士忌、甜苦艾酒及苦精。", "順暢攪拌冷卻。", "過濾倒入冷藏馬丁尼杯。", "加入酒漬櫻桃裝飾。"]
+        "name": "不甜苦艾酒",
+        "amount_ml": 10,
+        "amount_oz": "1/3",
+        "category": "liqueur"
       },
       {
-        "id": 3,
-        "name_zh": "尼格羅尼",
-        "name_en": "Negroni",
-        "base_spirit": "琴酒",
-        "category": "難忘經典",
-        "technique": "Build",
-        "glass": "古典杯",
-        "abv": 24,
-        "rating": 4,
-        "calories": 200,
-        "flavors": ["苦甜", "草本", "柑橘"],
-        "garnish_exam": "柳橙皮捲或柳橙片",
-        "home_hack": "如無金巴利(Campari)，可用阿佩羅(Aperol)替代，苦味較輕微。",
-        "description": "經典義大利苦甜調酒，等比例的琴酒、金巴利與甜苦艾酒，開胃首選。",
-        "ingredients": [
-          { "name": "琴酒", "amount_ml": 30, "amount_oz": "1", "category": "base" },
-          { "name": "金巴利利口酒", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" },
-          { "name": "甜苦艾酒", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" },
-          { "name": "新鮮柳橙", "amount_ml": 1, "amount_oz": "1片", "category": "garnish" }
-        ],
-        "steps": ["古典杯放入大冰塊。", "直接倒入琴酒、金巴利及甜苦艾酒。", "輕柔攪拌數下。", "扭轉柳橙皮釋放香氣後放入杯中裝飾。"]
-      },
-      {
-        "id": 4,
-        "name_zh": "黛綺莉",
-        "name_en": "Daiquiri",
-        "base_spirit": "蘭姆酒",
-        "category": "難忘經典",
-        "technique": "Shake",
-        "glass": "雞尾酒杯",
-        "abv": 22,
-        "rating": 3,
-        "calories": 150,
-        "flavors": ["酸甜", "清爽", "果香"],
-        "garnish_exam": "萊姆片或切角",
-        "home_hack": "可以使用白糖與等量熱水混合自製簡易糖漿(1:1)。",
-        "description": "海明威的最愛，白蘭姆酒、新鮮萊姆汁與糖漿的黃金酸甜比例。",
-        "ingredients": [
-          { "name": "白蘭姆酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-          { "name": "新鮮檸檬/萊姆汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" },
-          { "name": "糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-          { "name": "新鮮檸檬/萊姆", "amount_ml": 1, "amount_oz": "1片", "category": "garnish" }
-        ],
-        "steps": ["雪克杯加入大半杯冰塊。", "倒入白蘭姆酒、萊姆汁及糖漿。", "用力搖盪 12-15 秒至杯身結霜。", "雙重過濾倒入冰鎮雞尾酒杯。", "杯緣飾以萊姆片。"]
-      },
-      {
-        "id": 5,
-        "name_zh": "古典雞尾酒",
-        "name_en": "Old Fashioned",
-        "base_spirit": "威士忌",
-        "category": "難忘經典",
-        "technique": "Build",
-        "glass": "古典杯",
-        "abv": 34,
-        "rating": 4,
-        "calories": 160,
-        "flavors": ["醇厚", "木質", "柑橘"],
-        "garnish_exam": "柳橙皮與酒漬櫻桃",
-        "home_hack": "方糖可用 1/2 茶匙細砂紙或糖漿代替。",
-        "description": "調酒始祖，以方糖、苦精與威士忌極簡堆疊，展現烈酒最原始優雅的風味。",
-        "ingredients": [
-          { "name": "威士忌", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-          { "name": "安哥斯安哥斯苦精", "amount_ml": 2, "amount_oz": "2滴", "category": "mixer" },
-          { "name": "糖漿", "amount_ml": 5, "amount_oz": "1顆方糖", "category": "mixer" },
-          { "name": "新鮮柳橙", "amount_ml": 1, "amount_oz": "1皮", "category": "garnish" }
-        ],
-        "steps": ["在古典杯中放入方糖與苦精及少量水，壓碎溶解。", "放入大冰塊，倒入半量威士忌攪拌。", "再放入冰塊與剩餘威士忌攪拌。", "擠壓柳橙皮精油於杯口並入杯。"]
-      },
-      {
-        "id": 8,
-        "name_zh": "柯夢波丹",
-        "name_en": "Cosmopolitan",
-        "base_spirit": "伏特加",
-        "category": "當代經典",
-        "technique": "Shake",
-        "glass": "馬丁尼杯",
-        "abv": 18,
-        "rating": 3,
-        "calories": 165,
-        "flavors": ["水果酸甜", "粉紅時尚", "清爽"],
-        "garnish_exam": "橙皮扭轉或切片",
-        "home_hack": "若無蔓越莓汁可用紅葡萄汁加少許檸檬汁代替色彩。",
-        "description": "慾望城市女主角的最愛，粉紅迷人色彩，檸檬伏特加與蔓越莓的完美結合。",
-        "ingredients": [
-          { "name": "伏特加", "amount_ml": 40, "amount_oz": "1.33", "category": "base" },
-          { "name": "橙酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-          { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-          { "name": "蔓越莓汁", "amount_ml": 30, "amount_oz": "1", "category": "mixer" }
-        ],
-        "steps": ["雪克杯加入冰塊。", "加入伏特加、橙酒、萊姆汁與蔓越莓汁。", "均勻搖盪至極致冰涼。", "濾入馬丁尼杯中。", "以柳橙皮裝飾。"]
-      },
-      {
-        "id": 9,
-        "name_zh": "莫希托",
-        "name_en": "Mojito",
-        "base_spirit": "蘭姆酒",
-        "category": "當代經典",
-        "technique": "Build",
-        "glass": "可林杯",
-        "abv": 12,
-        "rating": 2,
-        "calories": 180,
-        "flavors": ["薄荷清爽", "柑橘", "氣泡"],
-        "garnish_exam": "新鮮薄荷枝葉與萊姆角",
-        "home_hack": "薄荷葉輕拍即可釋放香氣，切勿過度搗碎以免生苦味。",
-        "description": "古巴夏日清涼象徵，搗碎薄荷、萊姆與蔗糖，搭配白蘭姆酒與氣泡水。",
-        "ingredients": [
-          { "name": "白蘭姆酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-          { "name": "新鮮檸檬/萊姆汁", "amount_ml": 20, "amount_oz": "0.75", "category": "mixer" },
-          { "name": "糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-          { "name": "氣泡水", "amount_ml": 60, "amount_oz": "2", "category": "mixer" },
-          { "name": "新鮮薄荷葉", "amount_ml": 1, "amount_oz": "6-8葉", "category": "garnish" }
-        ],
-        "steps": ["杯中放入薄荷葉、萊姆汁與糖漿，輕壓釋放香氣。", "加入碎冰至半滿，倒入白蘭姆酒。", "攪拌混合後補滿碎冰。", "頂層倒滿氣泡水。", "插上薄荷枝飾。"]
-      },
-      {
-        "id": 11,
-        "name_zh": "瑪格麗特",
-        "name_en": "Margarita",
-        "base_spirit": "龍舌蘭",
-        "category": "難忘經典",
-        "technique": "Shake",
-        "glass": "瑪格麗特杯",
-        "abv": 26,
-        "rating": 4,
-        "calories": 190,
-        "flavors": ["鹹酸", "龍舌蘭香", "清爽"],
-        "garnish_exam": "鹽口杯 (Salt Rim) 與萊姆片",
-        "home_hack": "食用鹽粒切角擦拭杯口即可快速做鹽口杯。",
-        "description": "墨西哥烈酒傳奇，龍舌蘭、橙酒與萊姆汁搭配杯口鹽圈，鹹酸帶勁。",
-        "ingredients": [
-          { "name": "龍舌蘭酒", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-          { "name": "橙酒", "amount_ml": 20, "amount_oz": "0.75", "category": "liqueur" },
-          { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-          { "name": "鹽/砂糖", "amount_ml": 1, "amount_oz": "適量", "category": "garnish" }
-        ],
-        "steps": ["製作瑪格麗特杯鹽口。", "雪克杯加冰塊，倒入龍舌蘭、橙酒及萊姆汁。", "強力搖盪冷卻。", "濾入鹽口杯中。", "飾以萊姆輪片。"]
-      },
-      {
-        "id": 18,
-        "name_zh": "長島冰茶",
-        "name_en": "Long Island Iced Tea",
-        "base_spirit": "基酒大集合",
-        "category": "當代經典",
-        "technique": "Shake",
-        "glass": "可林杯",
-        "abv": 22,
-        "rating": 5,
-        "calories": 280,
-        "flavors": ["檸檬紅茶味", "勁道十足", "易口易醉"],
-        "garnish_exam": "檸檬片 1 片於杯緣",
-        "home_hack": "雖然完全不含茶葉，但五烈酒加可樂混色極像凍檸茶！",
-        "description": "著名烈酒大集合！琴酒、伏特加、蘭姆酒、龍舌蘭、橙酒五白烈酒加上檸檬汁與可樂。",
-        "ingredients": [
-          { "name": "琴酒", "amount_ml": 15, "amount_oz": "0.5", "category": "base" },
-          { "name": "伏特加", "amount_ml": 15, "amount_oz": "0.5", "category": "base" },
-          { "name": "白蘭姆酒", "amount_ml": 15, "amount_oz": "0.5", "category": "base" },
-          { "name": "龍舌蘭酒", "amount_ml": 15, "amount_oz": "0.5", "category": "base" },
-          { "name": "橙酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-          { "name": "新鮮檸檬/萊姆汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" },
-          { "name": "糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-          { "name": "可樂", "amount_ml": 30, "amount_oz": "1", "category": "mixer" }
-        ],
-        "steps": ["雪克杯加入冰塊與所有烈酒、橙酒、檸檬汁及糖漿。", "快速搖盪。", "倒入加滿冰塊的可林杯中。", "上方淋上少許可樂上色。", "飾以檸檬片。"]
-      },
-      {
-        "id": 88,
-        "name_zh": "灰姑娘",
-        "name_en": "Cinderella",
-        "base_spirit": "無酒精",
-        "category": "無酒精特調",
-        "technique": "Shake",
-        "glass": "高球杯/颶風杯",
-        "abv": 0,
-        "rating": 1,
-        "calories": 130,
-        "flavors": ["三果酸甜", "清爽歡樂", "無酒精"],
-        "garnish_exam": "鳳梨片與櫻桃",
-        "home_hack": "三種等比例果汁：柳橙汁 + 鳳梨汁 + 檸檬汁加少許糖漿搖勻。",
-        "description": "乙級檢定無酒精經典代表，三大柑橘熱帶果汁平衡混和，清爽無負擔。",
-        "ingredients": [
-          { "name": "柳橙汁", "amount_ml": 40, "amount_oz": "1.33", "category": "mixer" },
-          { "name": "鳳梨汁", "amount_ml": 40, "amount_oz": "1.33", "category": "mixer" },
-          { "name": "新鮮檸檬/萊姆汁", "amount_ml": 20, "amount_oz": "0.66", "category": "mixer" },
-          { "name": "糖漿", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" },
-          { "name": "氣泡水", "amount_ml": 30, "amount_oz": "1", "category": "mixer" }
-        ],
-        "steps": ["雪克杯加滿冰塊與果汁及糖漿。", "用力搖勻。", "濾入加冰高球杯中。", "補少許氣泡水，飾以鳳梨與櫻桃。"]
+        "name": "綠橄欖",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
       }
-    ];
+    ],
+    "steps": [
+      "於攪拌杯中加入冰塊。",
+      "倒入琴酒與不甜苦艾酒。",
+      "使用吧匙攪拌約 20-30 秒至充分冷卻。",
+      "濾入預冷的馬丁尼杯中。",
+      "以綠橄欖裝飾。"
+    ]
+  },
+  {
+    "id": 2,
+    "name_zh": "曼哈頓",
+    "name_en": "Manhattan",
+    "base_spirit": "威士忌",
+    "category": "難忘經典",
+    "technique": "Stir",
+    "glass": "馬丁尼杯",
+    "abv": 32,
+    "rating": 5,
+    "calories": 175,
+    "flavors": [
+      "香醇",
+      "甜美",
+      "強烈"
+    ],
+    "garnish_exam": "酒漬紅櫻桃 1 顆沉底或竹籤穿串",
+    "home_hack": "黑櫻桃罐頭汁加少許威士忌可作為急救櫻桃替代。",
+    "description": "調酒女王，威士忌與甜苦艾酒的完美結合，深紅誘人，香氣層次豐富。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "甜苦艾酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "安哥斯安哥斯苦精",
+        "amount_ml": 2,
+        "amount_oz": "2滴",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "攪拌杯裝滿冰塊。",
+      "加入威士忌、甜苦艾酒及苦精。",
+      "順暢攪拌冷卻。",
+      "過濾倒入冷藏馬丁尼杯。",
+      "加入酒漬櫻桃裝飾。"
+    ]
+  },
+  {
+    "id": 3,
+    "name_zh": "尼格羅尼",
+    "name_en": "Negroni",
+    "base_spirit": "琴酒",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "古典杯",
+    "abv": 24,
+    "rating": 4,
+    "calories": 200,
+    "flavors": [
+      "苦甜",
+      "草本",
+      "柑橘"
+    ],
+    "garnish_exam": "柳橙皮捲或柳橙片",
+    "home_hack": "如無金巴利(Campari)，可用阿佩羅(Aperol)替代，苦味較輕微。",
+    "description": "經典義大利苦甜調酒，等比例的琴酒、金巴利與甜苦艾酒，開胃首選。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "金巴利利口酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "甜苦艾酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮柳橙",
+        "amount_ml": 1,
+        "amount_oz": "1片",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "古典杯放入大冰塊。",
+      "直接倒入琴酒、金巴利及甜苦艾酒。",
+      "輕柔攪拌數下。",
+      "扭轉柳橙皮釋放香氣後放入杯中裝飾。"
+    ]
+  },
+  {
+    "id": 4,
+    "name_zh": "黛綺莉",
+    "name_en": "Daiquiri",
+    "base_spirit": "蘭姆酒",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 22,
+    "rating": 3,
+    "calories": 150,
+    "flavors": [
+      "酸甜",
+      "清爽",
+      "果香"
+    ],
+    "garnish_exam": "萊姆片或切角",
+    "home_hack": "可以使用白糖與等量熱水混合自製簡易糖漿(1:1)。",
+    "description": "海明威的最愛，白蘭姆酒、新鮮萊姆汁與糖漿的黃金酸甜比例。",
+    "ingredients": [
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1片",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "雪克杯加入大半杯冰塊。",
+      "倒入白蘭姆酒、萊姆汁及糖漿。",
+      "用力搖盪 12-15 秒至杯身結霜。",
+      "雙重過濾倒入冰鎮雞尾酒杯。",
+      "杯緣飾以萊姆片。"
+    ]
+  },
+  {
+    "id": 5,
+    "name_zh": "古典雞尾酒",
+    "name_en": "Old Fashioned",
+    "base_spirit": "威士忌",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "古典杯",
+    "abv": 34,
+    "rating": 4,
+    "calories": 160,
+    "flavors": [
+      "醇厚",
+      "木質",
+      "柑橘"
+    ],
+    "garnish_exam": "柳橙皮與酒漬櫻桃",
+    "home_hack": "方糖可用 1/2 茶匙細砂紙或糖漿代替。",
+    "description": "調酒始祖，以方糖、苦精與威士忌極簡堆疊，展現烈酒最原始優雅的風味。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "安哥斯安哥斯苦精",
+        "amount_ml": 2,
+        "amount_oz": "2滴",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 5,
+        "amount_oz": "1顆方糖",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮柳橙",
+        "amount_ml": 1,
+        "amount_oz": "1皮",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "在古典杯中放入方糖與苦精及少量水，壓碎溶解。",
+      "放入大冰塊，倒入半量威士忌攪拌。",
+      "再放入冰塊與剩餘威士忌攪拌。",
+      "擠壓柳橙皮精油於杯口並入杯。"
+    ]
+  },
+  {
+    "id": 6,
+    "name_zh": "亞歷山大",
+    "name_en": "Alexander",
+    "base_spirit": "白蘭地",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 18,
+    "rating": 2,
+    "calories": 240,
+    "flavors": [
+      "奶油",
+      "濃郁",
+      "巧克醇香"
+    ],
+    "garnish_exam": "現磨肉豆蔻粉少量撒於表面",
+    "home_hack": "現磨肉豆蔻可用市售肉桂粉或可可粉替代裝飾。",
+    "description": "宛如液體甜點，干邑白蘭地結合棕色可可酒與鮮奶油，口感綿密滑順。",
+    "ingredients": [
+      {
+        "name": "白蘭地",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "可可香甜酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "鮮奶油/牛奶",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "肉豆蔻/肉桂粉",
+        "amount_ml": 1,
+        "amount_oz": "適量",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "雪克杯裝入冰塊。",
+      "加入白蘭地、可可利口酒及鮮奶油。",
+      "快速強烈搖盪至充分乳化。",
+      "過濾倒入雞尾酒杯。",
+      "表面輕撒肉豆蔻粉。"
+    ]
+  },
+  {
+    "id": 7,
+    "name_zh": "邊車",
+    "name_en": "Sidecar",
+    "base_spirit": "白蘭地",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 28,
+    "rating": 4,
+    "calories": 170,
+    "flavors": [
+      "酸甜",
+      "果香",
+      "高雅"
+    ],
+    "garnish_exam": "糖口杯 (Sugar Rim) 與檸檬皮",
+    "home_hack": "用切開檸檬擦拭杯口後沾細砂紙即可做出標準糖口杯。",
+    "description": "經典酸酒家族代表，白蘭地、橙酒與檸檬汁三位一體，搭配糖口甜酸交織。",
+    "ingredients": [
+      {
+        "name": "白蘭地",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "鹽/砂糖",
+        "amount_ml": 1,
+        "amount_oz": "適量",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "預先製作雞尾酒杯糖口。",
+      "雪克杯加冰塊，倒入白蘭地、橙酒及檸檬汁。",
+      "搖盪冷卻。",
+      "細網過濾入糖口杯。",
+      "掛檸檬皮裝飾。"
+    ]
+  },
+  {
+    "id": 8,
+    "name_zh": "柯夢波丹",
+    "name_en": "Cosmopolitan",
+    "base_spirit": "伏特加",
+    "category": "當代經典",
+    "technique": "Shake",
+    "glass": "馬丁尼杯",
+    "abv": 18,
+    "rating": 3,
+    "calories": 165,
+    "flavors": [
+      "水果酸甜",
+      "粉紅時尚",
+      "清爽"
+    ],
+    "garnish_exam": "橙皮扭轉或切片",
+    "home_hack": "若無蔓越莓汁可用紅葡萄汁加少許檸檬汁代替色彩。",
+    "description": "慾望城市女主角的最愛，粉紅迷人色彩，檸檬伏特加與蔓越莓的完美結合。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "蔓越莓汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加入冰塊。",
+      "加入伏特加、橙酒、萊姆汁與蔓越莓汁。",
+      "均勻搖盪至極致冰涼。",
+      "濾入馬丁尼杯中。",
+      "以柳橙皮裝飾。"
+    ]
+  },
+  {
+    "id": 9,
+    "name_zh": "莫希托",
+    "name_en": "Mojito",
+    "base_spirit": "蘭姆酒",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "可林杯",
+    "abv": 12,
+    "rating": 2,
+    "calories": 180,
+    "flavors": [
+      "薄荷清爽",
+      "柑橘",
+      "氣泡"
+    ],
+    "garnish_exam": "新鮮薄荷枝葉與萊姆角",
+    "home_hack": "薄荷葉輕拍即可釋放香氣，切勿過度搗碎以免生苦味。",
+    "description": "古巴夏日清涼象徵，搗碎薄荷、萊姆與蔗糖，搭配白蘭姆酒與氣泡水。",
+    "ingredients": [
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮薄荷葉",
+        "amount_ml": 1,
+        "amount_oz": "6-8葉",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "杯中放入薄荷葉、萊姆汁與糖漿，輕壓釋放香氣。",
+      "加入碎冰至半滿，倒入白蘭姆酒。",
+      "攪拌混合後補滿碎冰。",
+      "頂層倒滿氣泡水。",
+      "插上薄荷枝飾。"
+    ]
+  },
+  {
+    "id": 10,
+    "name_zh": "血腥瑪麗",
+    "name_en": "Bloody Mary",
+    "base_spirit": "伏特加",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 10,
+    "rating": 2,
+    "calories": 140,
+    "flavors": [
+      "咸辣",
+      "番茄濃郁",
+      "獨特鹹香"
+    ],
+    "garnish_exam": "芹菜棒 1 根與檸檬角",
+    "home_hack": "可用市售番茄汁，加入少許黑胡椒與Tabasco辣醬模擬鹹辣風味。",
+    "description": "早午餐早安酒，伏特加搭配濃郁番茄汁、辣醬與香料，口感豐富鹹辣。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "番茄汁",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮芹菜",
+        "amount_ml": 1,
+        "amount_oz": "1根",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入伏特加、檸檬汁與番茄汁。",
+      "加入少許辣醬、梅林辣醬與鹽胡椒。",
+      "用吧匙溫和攪拌。",
+      "插入芹菜棒與檸檬片。"
+    ]
+  },
+  {
+    "id": 11,
+    "name_zh": "瑪格麗特",
+    "name_en": "Margarita",
+    "base_spirit": "龍舌蘭",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "瑪格麗特杯",
+    "abv": 26,
+    "rating": 4,
+    "calories": 190,
+    "flavors": [
+      "鹹酸",
+      "龍舌蘭香",
+      "清爽"
+    ],
+    "garnish_exam": "鹽口杯 (Salt Rim) 與萊姆片",
+    "home_hack": "食用鹽粒切角擦拭杯口即可快速做鹽口杯。",
+    "description": "墨西哥烈酒傳奇，龍舌蘭、橙酒與萊姆汁搭配杯口鹽圈，鹹酸帶勁。",
+    "ingredients": [
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "鹽/砂糖",
+        "amount_ml": 1,
+        "amount_oz": "適量",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "製作瑪格麗特杯鹽口。",
+      "雪克杯加冰塊，倒入龍舌蘭、橙酒及萊姆汁。",
+      "強力搖盪冷卻。",
+      "濾入鹽口杯中。",
+      "飾以萊姆輪片。"
+    ]
+  },
+  {
+    "id": 12,
+    "name_zh": "金湯力",
+    "name_en": "Gin & Tonic",
+    "base_spirit": "琴酒",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 12,
+    "rating": 1,
+    "calories": 140,
+    "flavors": [
+      "奎寧苦甜",
+      "草本清爽",
+      "氣泡"
+    ],
+    "garnish_exam": "萊姆角或切片",
+    "home_hack": "若無通寧水(Tonic Water)，可用氣泡水加少許檸檬汁代替。",
+    "description": "最普及的經典 Highball，琴酒的松針草本與通寧水的微苦氣泡完美交融。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "通寧水",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1角",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入琴酒。",
+      "沿冰塊緩緩注入通寧水。",
+      "提拉吧匙一次保持氣泡。",
+      "放入萊姆角。"
+    ]
+  },
+  {
+    "id": 13,
+    "name_zh": "琴費士",
+    "name_en": "Gin Fizz",
+    "base_spirit": "琴酒",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "高球杯",
+    "abv": 14,
+    "rating": 2,
+    "calories": 160,
+    "flavors": [
+      "酸甜",
+      "綿密氣泡",
+      "解渴"
+    ],
+    "garnish_exam": "檸檬片",
+    "home_hack": "使用雪碧可代替氣泡水加糖漿。",
+    "description": "琴酒、檸檬汁與糖漿搖勻後加入氣泡水，產生持久細緻的酸甜氣泡綿密感。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 80,
+        "amount_oz": "2.5",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯放入琴酒、檸檬汁、糖漿與冰塊。",
+      "用力搖盪 15 秒。",
+      "濾入加有冰塊的高球杯。",
+      "補滿氣泡水至頂端泡沫上升。",
+      "放置檸檬片裝飾。"
+    ]
+  },
+  {
+    "id": 14,
+    "name_zh": "自由古巴",
+    "name_en": "Cuba Libre",
+    "base_spirit": "蘭姆酒",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 11,
+    "rating": 1,
+    "calories": 155,
+    "flavors": [
+      "可樂焦糖",
+      "柑橘酸甜",
+      "輕鬆"
+    ],
+    "garnish_exam": "萊姆角 1-2 個",
+    "home_hack": "擠入新鮮萊姆汁是自由古巴與普通蘭姆可樂的分水嶺！",
+    "description": "歡慶古巴獨立的派對必備款，白蘭姆酒、可樂與現擠萊姆汁。",
+    "ingredients": [
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "可樂",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "高球杯填滿冰塊。",
+      "倒入白蘭姆酒與擠入萊姆汁。",
+      "倒滿可樂。",
+      "輕微攪拌混合。",
+      "放入萊姆角裝飾。"
+    ]
+  },
+  {
+    "id": 15,
+    "name_zh": "龍舌蘭日出",
+    "name_en": "Tequila Sunrise",
+    "base_spirit": "龍舌蘭",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 12,
+    "rating": 2,
+    "calories": 190,
+    "flavors": [
+      "果香甘甜",
+      "漸層美麗",
+      "陽光"
+    ],
+    "garnish_exam": "柳橙片與酒漬櫻桃",
+    "home_hack": "紅石榴糖漿沿杯壁緩緩沉底即可創造出日出漸層層次。",
+    "description": "如滾滾朝陽般熱情繽紛，龍舌蘭、柳橙汁與沉底紅石榴糖漿形成的漸層奇觀。",
+    "ingredients": [
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "高球杯裝滿冰塊。",
+      "倒入龍舌蘭酒與柳橙汁攪拌。",
+      "沿杯內壁緩緩注入紅石榴糖漿沉底。",
+      "不可攪拌以維持漸層。",
+      "飾以柳橙片與櫻桃。"
+    ]
+  },
+  {
+    "id": 16,
+    "name_zh": "綠色魔鬼",
+    "name_en": "Grasshopper",
+    "base_spirit": "香甜酒",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 15,
+    "rating": 1,
+    "calories": 210,
+    "flavors": [
+      "薄荷巧克",
+      "甜美奶香",
+      "滑順"
+    ],
+    "garnish_exam": "薄荷葉",
+    "home_hack": "綠薄荷利口酒與白可可利口酒等比例混合濃醇鮮奶油。",
+    "description": "經典綠色薄荷巧克力甜點調酒，濃郁薄荷香與可可甜味搭配鮮奶油。",
+    "ingredients": [
+      {
+        "name": "薄荷香甜酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "可可香甜酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "鮮奶油/牛奶",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加入冰塊。",
+      "倒入綠薄荷酒、白可可酒與鮮奶油。",
+      "用力搖盪至乳化結霜。",
+      "過濾倒入雞尾酒杯。",
+      "以薄荷葉裝飾。"
+    ]
+  },
+  {
+    "id": 17,
+    "name_zh": "性感海灘",
+    "name_en": "Sex on the Beach",
+    "base_spirit": "伏特加",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 13,
+    "rating": 2,
+    "calories": 185,
+    "flavors": [
+      "蜜桃甜美",
+      "熱帶水果",
+      "果香"
+    ],
+    "garnish_exam": "柳橙片",
+    "home_hack": "水蜜桃酒可以水蜜桃糖漿加伏特加替代。",
+    "description": "充滿度假風情，伏特加、水蜜桃香甜酒、柳橙汁與蔓越莓汁交織。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "水蜜桃香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "mixer"
+      },
+      {
+        "name": "蔓越莓汁",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "高球杯加入冰塊。",
+      "倒入伏特加與水蜜桃利口酒。",
+      "加入柳橙汁與蔓越莓汁。",
+      "攪拌均勻。",
+      "飾以柳橙切片。"
+    ]
+  },
+  {
+    "id": 18,
+    "name_zh": "長島冰茶",
+    "name_en": "Long Island Iced Tea",
+    "base_spirit": "基酒大集合",
+    "category": "當代經典",
+    "technique": "Shake",
+    "glass": "可林杯",
+    "abv": 22,
+    "rating": 5,
+    "calories": 280,
+    "flavors": [
+      "檸檬紅茶味",
+      "勁道十足",
+      "易口易醉"
+    ],
+    "garnish_exam": "檸檬片 1 片於杯緣",
+    "home_hack": "雖然完全不含茶葉，但五烈酒加可樂混色極像凍檸茶！",
+    "description": "著名烈酒大集合！琴酒、伏特加、蘭姆酒、龍舌蘭、橙酒五白烈酒加上檸檬汁與可樂。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "base"
+      },
+      {
+        "name": "伏特加",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "base"
+      },
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "base"
+      },
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "可樂",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加入冰塊與所有烈酒、橙酒、檸檬汁及糖漿。",
+      "快速搖盪。",
+      "倒入加滿冰塊的可林杯中。",
+      "上方淋上少許可樂上色。",
+      "飾以檸檬片。"
+    ]
+  },
+  {
+    "id": 19,
+    "name_zh": "藍色夏威夷",
+    "name_en": "Blue Hawaii",
+    "base_spirit": "蘭姆酒",
+    "category": "新時代飲品",
+    "technique": "Shake",
+    "glass": "颶風杯",
+    "abv": 14,
+    "rating": 2,
+    "calories": 210,
+    "flavors": [
+      "藍海熱帶",
+      "鳳梨甜美",
+      "椰香"
+    ],
+    "garnish_exam": "鳳梨角與酒漬櫻桃",
+    "home_hack": "藍柑橘酒(Blue Curacao)給予其夢幻海洋藍色彩。",
+    "description": "太平洋夏威夷群島風采，白蘭姆酒、藍柑橘酒、鳳梨汁與椰子膏/鮮奶油。",
+    "ingredients": [
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "藍柑橘香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      },
+      {
+        "name": "椰子香甜酒/椰奶",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      }
+    ],
+    "steps": [
+      "雪克杯加滿碎冰。",
+      "加入蘭姆酒、藍柑橘酒、鳳梨汁及椰奶。",
+      "用力搖勻。",
+      "倒入颶風杯中。",
+      "以鳳梨角與紅櫻桃裝飾。"
+    ]
+  },
+  {
+    "id": 20,
+    "name_zh": "椰林風情",
+    "name_en": "Piña Colada",
+    "base_spirit": "蘭姆酒",
+    "category": "當代經典",
+    "technique": "Blend",
+    "glass": "颶風杯",
+    "abv": 13,
+    "rating": 2,
+    "calories": 260,
+    "flavors": [
+      "濃醇椰香",
+      "鳳梨酸甜",
+      "冰沙感"
+    ],
+    "garnish_exam": "鳳梨切片與櫻桃",
+    "home_hack": "可用椰奶罐頭加砂糖替代濃縮椰子膏。",
+    "description": "波多黎各國酒，蘭姆酒與鳳梨汁、椰奶打成綿密冰沙，充滿熱帶海灘氣息。",
+    "ingredients": [
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      },
+      {
+        "name": "椰子香甜酒/椰奶",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "果汁機放入冰塊、白蘭姆酒、鳳梨汁、椰奶與萊姆汁。",
+      "高速打成綿密冰沙。",
+      "倒入颶風杯中。",
+      "插入小雨傘、鳳梨片與櫻桃裝飾。"
+    ]
+  },
+  {
+    "id": 21,
+    "name_zh": "黑色俄羅斯",
+    "name_en": "Black Russian",
+    "base_spirit": "伏特加",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "古典杯",
+    "abv": 28,
+    "rating": 4,
+    "calories": 190,
+    "flavors": [
+      "咖啡苦甜",
+      "醇厚",
+      "烈酒強勁"
+    ],
+    "garnish_exam": "無或酒漬櫻桃",
+    "home_hack": "卡魯哇(Kahlúa)咖啡酒搭配純伏特加。",
+    "description": "極簡冷冽，伏特加與卡魯哇咖啡香甜酒的直接碰撞，深沉濃郁。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "咖啡香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      }
+    ],
+    "steps": [
+      "古典杯加滿冰塊。",
+      "倒入伏特加與咖啡香甜酒。",
+      "吧匙溫柔攪拌至冷卻。"
+    ]
+  },
+  {
+    "id": 22,
+    "name_zh": "白色俄羅斯",
+    "name_en": "White Russian",
+    "base_spirit": "伏特加",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "古典杯",
+    "abv": 20,
+    "rating": 3,
+    "calories": 230,
+    "flavors": [
+      "咖啡拿鐵",
+      "奶香順口",
+      "滑順"
+    ],
+    "garnish_exam": "無",
+    "home_hack": "鮮奶油可用全脂牛奶或植物奶(燕麥奶)替代。",
+    "description": "黑色俄羅斯的變體，頂層淋上濃郁鮮奶油，宛如冰拿鐵般絲滑。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "咖啡香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "鮮奶油/牛奶",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "古典杯加滿冰塊。",
+      "倒入伏特加與咖啡酒攪拌。",
+      "緩緩在頂層倒上鮮奶油形成分層或輕微混勻。"
+    ]
+  },
+  {
+    "id": 23,
+    "name_zh": "美式苦味",
+    "name_en": "Americano",
+    "base_spirit": "香甜酒",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 8,
+    "rating": 1,
+    "calories": 130,
+    "flavors": [
+      "苦甜開胃",
+      "草本",
+      "氣泡"
+    ],
+    "garnish_exam": "柳橙片與檸檬皮",
+    "home_hack": "尼格羅尼去琴酒補氣泡水即為美式苦味！",
+    "description": "義大利經典開胃酒，金巴利與甜苦艾酒加氣泡水，清爽低酒精。",
+    "ingredients": [
+      {
+        "name": "金巴利利口酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "甜苦艾酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮柳橙",
+        "amount_ml": 1,
+        "amount_oz": "1片",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入金巴利與甜苦艾酒。",
+      "補上氣泡水。",
+      "輕攪一下，飾以柳橙片。"
+    ]
+  },
+  {
+    "id": 24,
+    "name_zh": "阿佩羅氣泡",
+    "name_en": "Aperol Spritz",
+    "base_spirit": "香甜酒",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "紅酒杯",
+    "abv": 11,
+    "rating": 1,
+    "calories": 150,
+    "flavors": [
+      "甜橙微苦",
+      "歡樂氣泡",
+      "開胃"
+    ],
+    "garnish_exam": "柳橙切片",
+    "home_hack": "普羅賽克(Prosecco)不甜氣泡白酒搭配阿佩羅(Aperol)與氣泡水。",
+    "description": "歐洲陽光露天酒吧的最愛，亮橙色澤，苦甜阿佩羅搭配氣泡酒。",
+    "ingredients": [
+      {
+        "name": "阿佩羅/金巴利利口酒",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡白葡萄酒/香檳",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮柳橙",
+        "amount_ml": 1,
+        "amount_oz": "1片",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "大號紅酒杯填滿冰塊。",
+      "倒入氣泡白酒與阿佩羅。",
+      "淋上氣泡水。",
+      "放入柳橙片裝飾。"
+    ]
+  },
+  {
+    "id": 25,
+    "name_zh": "貝里尼",
+    "name_en": "Bellini",
+    "base_spirit": "香甜酒",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "笛形香檳杯",
+    "abv": 9,
+    "rating": 1,
+    "calories": 120,
+    "flavors": [
+      "蜜桃甜香",
+      "氣泡細緻",
+      "優雅"
+    ],
+    "garnish_exam": "桃子片或無",
+    "home_hack": "水蜜桃泥加少許水蜜桃香甜酒，再注入冰鎮氣泡酒。",
+    "description": "威尼斯哈利酒吧發明，新鮮白桃泥與普羅賽克氣泡酒的優純組合。",
+    "ingredients": [
+      {
+        "name": "水蜜桃香甜酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡白葡萄酒/香檳",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "liqueur"
+      }
+    ],
+    "steps": [
+      "笛形香檳杯中加入冰鎮蜜桃果泥/蜜桃酒。",
+      "緩緩注入冰鎮氣泡白酒。",
+      "用吧匙輕提一次混合。"
+    ]
+  },
+  {
+    "id": 26,
+    "name_zh": "皇家基爾",
+    "name_en": "Kir Royale",
+    "base_spirit": "香甜酒",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "笛形香檳杯",
+    "abv": 12,
+    "rating": 2,
+    "calories": 135,
+    "flavors": [
+      "黑加侖果香",
+      "香檳高貴",
+      "慶典"
+    ],
+    "garnish_exam": "黑加侖或黑莓",
+    "home_hack": "黑加侖香甜酒(Cassis)搭配任何冰鎮氣泡酒。",
+    "description": "法國高貴開胃酒，黑莓/黑加侖利口酒底倒入高雅香檳氣泡酒。",
+    "ingredients": [
+      {
+        "name": "黑加侖香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡白葡萄酒/香檳",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "liqueur"
+      }
+    ],
+    "steps": [
+      "香檳杯底倒入黑加侖香甜酒。",
+      "注入冰鎮香檳或氣泡酒至八分滿。"
+    ]
+  },
+  {
+    "id": 27,
+    "name_zh": "基爾",
+    "name_en": "Kir",
+    "base_spirit": "香甜酒",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "白酒杯",
+    "abv": 11,
+    "rating": 1,
+    "calories": 125,
+    "flavors": [
+      "果酸清爽",
+      "白酒優雅"
+    ],
+    "garnish_exam": "無",
+    "home_hack": "黑加侖酒搭配一般干白葡萄酒。",
+    "description": "勃艮第經典開胃酒，黑加侖利口酒與乾白葡萄酒的完美融合。",
+    "ingredients": [
+      {
+        "name": "黑加侖香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡白葡萄酒/香檳",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "liqueur"
+      }
+    ],
+    "steps": [
+      "白酒杯倒入黑加侖利口酒。",
+      "加入冰鎮勃艮第乾白葡萄酒。"
+    ]
+  },
+  {
+    "id": 28,
+    "name_zh": "含羞草",
+    "name_en": "Mimosa",
+    "base_spirit": "香甜酒",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "笛形香檳杯",
+    "abv": 8,
+    "rating": 1,
+    "calories": 110,
+    "flavors": [
+      "鮮橙果香",
+      "歡樂氣泡",
+      "輕盈"
+    ],
+    "garnish_exam": "柳橙皮",
+    "home_hack": "等比例現榨柳橙汁與香檳氣泡酒。",
+    "description": "早午餐歡慶之酒，鮮榨柳橙汁與香檳各半，色澤宛如含羞草黃花。",
+    "ingredients": [
+      {
+        "name": "柳橙汁",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡白葡萄酒/香檳",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "liqueur"
+      }
+    ],
+    "steps": [
+      "香檳杯倒入冰鎮柳橙汁。",
+      "緩緩補入冰鎮香檳。"
+    ]
+  },
+  {
+    "id": 29,
+    "name_zh": "咖啡馬丁尼",
+    "name_en": "Espresso Martini",
+    "base_spirit": "伏特加",
+    "category": "新時代飲品",
+    "technique": "Shake",
+    "glass": "馬丁尼杯",
+    "abv": 20,
+    "rating": 3,
+    "calories": 180,
+    "flavors": [
+      "濃縮咖啡",
+      "微甜醇厚",
+      "提神"
+    ],
+    "garnish_exam": "咖啡豆 3 顆浮於油脂泡沫上",
+    "home_hack": "現打 Espresso 或冷萃濃縮咖啡搭配伏特加與卡魯哇。",
+    "description": "提神醒腦的當代名酒，伏特加、濃縮咖啡與咖啡利口酒搖出綿密咖啡油脂泡沫。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "咖啡香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "濃縮咖啡/黑咖啡",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯裝滿大冰塊。",
+      "倒入伏特加、咖啡酒、現萃濃縮咖啡與糖漿。",
+      "強烈極速搖盪 15 秒。",
+      "雙重過濾倒入馬丁尼杯。",
+      "表面擺上 3 顆咖啡豆。"
+    ]
+  },
+  {
+    "id": 30,
+    "name_zh": "威士忌酸酒",
+    "name_en": "Whisky Sour",
+    "base_spirit": "威士忌",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "古典杯",
+    "abv": 20,
+    "rating": 3,
+    "calories": 175,
+    "flavors": [
+      "酸甜平衡",
+      "威士忌香",
+      "蛋白綿密"
+    ],
+    "garnish_exam": "檸檬片與櫻桃",
+    "home_hack": "加入 15ml 蛋白做 Dry Shake 可產生精緻滑順蛋白泡沫層。",
+    "description": "波本威士忌酸酒代表，威士忌、新鮮檸檬汁與糖漿，可選加蛋白添增滑順度。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "mixer"
+      },
+      {
+        "name": "蛋白",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "雪克杯加入所有原料（無冰）先進行乾搖(Dry Shake)。",
+      "加入冰塊強烈搖盪冷卻。",
+      "濾倒入加冰古典杯。",
+      "滴上苦精或裝飾檸檬櫻桃。"
+    ]
+  },
+  {
+    "id": 31,
+    "name_zh": "紐約",
+    "name_en": "New York",
+    "base_spirit": "威士忌",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 25,
+    "rating": 4,
+    "calories": 170,
+    "flavors": [
+      "威士忌香",
+      "紅石榴果酸",
+      "層次"
+    ],
+    "garnish_exam": "柳橙皮扭轉",
+    "home_hack": "威士忌加檸檬汁與紅石榴糖漿(Grenadine)。",
+    "description": "美式大都會代表，威士忌基底加入酸檸檬與紅石榴糖漿帶來誘人酒紅光澤。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加冰塊，倒入威士忌、檸檬汁、糖漿與紅石榴糖漿。",
+      "搖勻至冷卻。",
+      "過濾倒入雞尾酒杯。",
+      "以扭轉柳橙皮飾之。"
+    ]
+  },
+  {
+    "id": 32,
+    "name_zh": "薄荷朱利普",
+    "name_en": "Mint Julep",
+    "base_spirit": "威士忌",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "金屬銀杯/高球杯",
+    "abv": 28,
+    "rating": 4,
+    "calories": 190,
+    "flavors": [
+      "薄荷清涼",
+      "美式波本香",
+      "極致冰涼"
+    ],
+    "garnish_exam": "大量薄荷葉山與糖粉",
+    "home_hack": "金屬銀杯外部會結滿極致冰霜，沒有銀杯可用高球杯配滿滿碎冰。",
+    "description": "肯塔基德比馬術大賽指定飲品，波本威士忌搭配新鮮薄荷與滿滿碎冰。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "base"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮薄荷葉",
+        "amount_ml": 1,
+        "amount_oz": "8-10葉",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "杯中放入薄荷葉與糖漿輕搗。",
+      "填入半滿碎冰，倒入 30ml 威士忌攪拌。",
+      "補滿碎冰，倒入剩餘威士忌。",
+      "插入一大束薄荷枝，撒少許糖粉。"
+    ]
+  },
+  {
+    "id": 33,
+    "name_zh": "羅伯洛伊",
+    "name_en": "Rob Roy",
+    "base_spirit": "威士忌",
+    "category": "難忘經典",
+    "technique": "Stir",
+    "glass": "馬丁尼杯",
+    "abv": 32,
+    "rating": 5,
+    "calories": 175,
+    "flavors": [
+      "蘇格蘭泥煤",
+      "甜美深沉",
+      "烈酒"
+    ],
+    "garnish_exam": "酒漬櫻桃",
+    "home_hack": "蘇格蘭威士忌版本的曼哈頓。",
+    "description": "蘇格蘭羅賓漢傳奇，以蘇格蘭威士忌取代波本，結合甜苦艾酒與安哥斯苦精。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "甜苦艾酒",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "安哥斯安哥斯苦精",
+        "amount_ml": 2,
+        "amount_oz": "2滴",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "攪拌杯加滿冰塊。",
+      "加入蘇格蘭威士忌、甜苦艾酒與苦精。",
+      "攪拌降溫。",
+      "濾入馬丁尼杯。",
+      "以酒漬櫻桃裝飾。"
+    ]
+  },
+  {
+    "id": 34,
+    "name_zh": "熱托迪",
+    "name_en": "Hot Toddy",
+    "base_spirit": "威士忌",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "耐熱玻璃杯",
+    "abv": 15,
+    "rating": 2,
+    "calories": 150,
+    "flavors": [
+      "溫暖蜂蜜",
+      "檸檬辛香",
+      "舒緩"
+    ],
+    "garnish_exam": "檸檬片插丁香與肉桂棒",
+    "home_hack": "感冒冬日首選溫熱調酒，熱水加蜂蜜與威士忌。",
+    "description": "英倫暖心禦寒必備，熱水沖泡威士忌、蜂蜜、檸檬與肉桂辛香料。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 20,
+        "amount_oz": "1大匙蜂蜜",
+        "category": "mixer"
+      },
+      {
+        "name": "熱水",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "肉豆蔻/肉桂粉",
+        "amount_ml": 1,
+        "amount_oz": "1棒",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "耐熱杯中加入蜂蜜與檸檬汁。",
+      "倒入熱水攪拌溶解。",
+      "加入威士忌。",
+      "放入肉桂棒與插有丁香的檸檬片。"
+    ]
+  },
+  {
+    "id": 35,
+    "name_zh": "教父",
+    "name_en": "Godfather",
+    "base_spirit": "威士忌",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "古典杯",
+    "abv": 32,
+    "rating": 4,
+    "calories": 185,
+    "flavors": [
+      "杏仁甜香",
+      "威士忌醇厚",
+      "極簡"
+    ],
+    "garnish_exam": "無",
+    "home_hack": "杏仁香甜酒(Amaretto)搭配威士忌。",
+    "description": "向同名電影致敬，威士忌與義大利杏仁香甜酒，口感甜中帶烈，沉穩有型。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "杏仁香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      }
+    ],
+    "steps": [
+      "古典杯放入大冰塊。",
+      "倒入威士忌與杏仁香甜酒。",
+      "攪拌冷卻。"
+    ]
+  },
+  {
+    "id": 36,
+    "name_zh": "教母",
+    "name_en": "Godmother",
+    "base_spirit": "伏特加",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "古典杯",
+    "abv": 30,
+    "rating": 3,
+    "calories": 180,
+    "flavors": [
+      "杏仁甜香",
+      "純淨順口"
+    ],
+    "garnish_exam": "無",
+    "home_hack": "伏特加代替威士忌與杏仁酒調合。",
+    "description": "教父的溫柔姊妹款，以純淨伏特加突顯杏仁香甜酒的濃郁堅果香感。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "杏仁香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      }
+    ],
+    "steps": [
+      "古典杯加滿冰塊。",
+      "倒入伏特加與杏仁利口酒。",
+      "輕柔攪拌。"
+    ]
+  },
+  {
+    "id": 37,
+    "name_zh": "鏽釘",
+    "name_en": "Rusty Nail",
+    "base_spirit": "威士忌",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "古典杯",
+    "abv": 33,
+    "rating": 5,
+    "calories": 190,
+    "flavors": [
+      "蜂蜜石楠花",
+      "草本辛香",
+      "濃烈"
+    ],
+    "garnish_exam": "柳橙皮扭轉",
+    "home_hack": "吉姆賓或吉寶吉(Drambuie)威士忌利口酒搭配蘇格蘭威士忌。",
+    "description": "老派威士忌迷的最愛，蘇格蘭威士忌與蜂蜜草本吉寶吉利口酒，色如金鏽。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "吉寶吉/草本香甜酒",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      }
+    ],
+    "steps": [
+      "古典杯加冰塊。",
+      "倒入蘇格蘭威士忌與 Drambuie。",
+      "慢速攪拌降溫。",
+      "附上擰轉柳橙皮。"
+    ]
+  },
+  {
+    "id": 38,
+    "name_zh": "法國香檳 75",
+    "name_en": "French 75",
+    "base_spirit": "琴酒",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "笛形香檳杯",
+    "abv": 18,
+    "rating": 3,
+    "calories": 145,
+    "flavors": [
+      "清涼柑橘",
+      "氣泡震撼",
+      "華麗"
+    ],
+    "garnish_exam": "檸檬皮捲",
+    "home_hack": "琴酒檸檬酸酒為底注入香檳，威力如同一戰法國 75 毫米野戰砲！",
+    "description": "優雅中帶著猛烈後勁，琴酒、檸檬汁與糖漿搖勻後注入氣泡香檳。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡白葡萄酒/香檳",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "liqueur"
+      }
+    ],
+    "steps": [
+      "雪克杯加冰塊，倒入琴酒、檸檬汁與糖漿搖勻。",
+      "濾入香檳杯中。",
+      "補注入冰鎮香檳。",
+      "飾以長檸檬皮捲。"
+    ]
+  },
+  {
+    "id": 39,
+    "name_zh": "湯姆柯林斯",
+    "name_en": "Tom Collins",
+    "base_spirit": "琴酒",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "柯林杯",
+    "abv": 12,
+    "rating": 2,
+    "calories": 160,
+    "flavors": [
+      "檸檬汽水",
+      "清爽解渴",
+      "草本"
+    ],
+    "garnish_exam": "檸檬片與酒漬櫻桃",
+    "home_hack": "經典 Highball 氣泡長飲，琴酒加上新鮮檸檬汁與氣泡水。",
+    "description": "經典夏日解渴大眾最愛，琴酒、檸檬汁、糖漿與氣泡水於柯林杯直接堆疊。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "柯林杯填滿冰塊。",
+      "加入琴酒、檸檬汁及糖漿。",
+      "注入氣泡水並攪拌。",
+      "以檸檬片與櫻桃裝飾。"
+    ]
+  },
+  {
+    "id": 40,
+    "name_zh": "新加坡司令",
+    "name_en": "Singapore Sling",
+    "base_spirit": "琴酒",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "颶風杯",
+    "abv": 16,
+    "rating": 3,
+    "calories": 220,
+    "flavors": [
+      "熱帶果香",
+      "櫻桃甜美",
+      "香料微苦"
+    ],
+    "garnish_exam": "鳳梨片與酒漬櫻桃",
+    "home_hack": "萊佛士酒店傳奇，琴酒、櫻桃白蘭地、廊酒與鳳梨汁組合。",
+    "description": "東方熱帶雞尾酒傳奇，琴酒搭配櫻桃白蘭地、草本利口酒、鳳梨汁與紅石榴糖漿。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "櫻桃香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 7.5,
+        "amount_oz": "0.25",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加入大滿冰塊與所有材料。",
+      "用力搖盪產生豐富泡沫。",
+      "濾入加有冰塊的颶風杯。",
+      "飾以鳳梨角與酒漬櫻桃。"
+    ]
+  },
+  {
+    "id": 41,
+    "name_zh": "琴蕾",
+    "name_en": "Gimlet",
+    "base_spirit": "琴酒",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 26,
+    "rating": 4,
+    "calories": 150,
+    "flavors": [
+      "強烈萊姆酸",
+      "松針草本",
+      "乾脆"
+    ],
+    "garnish_exam": "萊姆輪片",
+    "home_hack": "雷蒙德·錢德勒小說名言：『真正的 Gimlet 是一半琴酒一半 Rose's 萊姆汁』",
+    "description": "海軍預防壞血病傳奇酒譜，琴酒與萊姆汁的極簡辛辣酸甜碰撞。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加滿冰塊。",
+      "加入琴酒、萊姆汁與糖漿。",
+      "冰鎮搖盪 15 秒。",
+      "過濾倒入雞尾酒杯。",
+      "附上萊姆圓片。"
+    ]
+  },
+  {
+    "id": 42,
+    "name_zh": "飛行",
+    "name_en": "Aviation",
+    "base_spirit": "琴酒",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 25,
+    "rating": 4,
+    "calories": 160,
+    "flavors": [
+      "紫羅蘭花香",
+      "櫻桃甜美",
+      "天空藍紫"
+    ],
+    "garnish_exam": "酒漬櫻桃 1 顆沉底",
+    "home_hack": "紫羅蘭利口酒(Crème de Violette)賦予其絕美航太天藍色彩。",
+    "description": "航空飛行黃金年代致敬，琴酒、黑櫻桃利口酒、檸檬汁與紫羅蘭酒。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "櫻桃香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "雪克杯加冰塊。",
+      "倒入琴酒、黑櫻桃酒與檸檬汁。",
+      "搖勻降溫。",
+      "濾入馬丁尼杯。",
+      "沉底放入黑櫻桃。"
+    ]
+  },
+  {
+    "id": 43,
+    "name_zh": "綠蜂",
+    "name_en": "Bee's Knees",
+    "base_spirit": "琴酒",
+    "category": "新時代飲品",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 22,
+    "rating": 3,
+    "calories": 160,
+    "flavors": [
+      "溫潤蜂蜜",
+      "檸檬鮮亮",
+      "草本"
+    ],
+    "garnish_exam": "檸檬皮扭轉",
+    "home_hack": "禁酒令時期經典，蜂蜜水與琴酒、檸檬汁調合掩蓋劣質酒味。",
+    "description": "頂級絕妙之意！琴酒、新鮮檸檬汁與純天然蜂蜜糖漿（蜂蜜:水 = 3:1）。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 20,
+        "amount_oz": "1大匙蜂蜜",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加入琴酒、檸檬汁及蜂蜜糖漿。",
+      "加冰塊強力搖盪溶解蜂蜜。",
+      "細濾倒入預冷雞尾酒杯。",
+      "扭轉檸檬皮裝飾。"
+    ]
+  },
+  {
+    "id": 44,
+    "name_zh": "荊棘",
+    "name_en": "Bramble",
+    "base_spirit": "琴酒",
+    "category": "新時代飲品",
+    "technique": "Build",
+    "glass": "古典杯",
+    "abv": 18,
+    "rating": 3,
+    "calories": 175,
+    "flavors": [
+      "黑莓酸甜",
+      "杜鬆子香",
+      "碎冰清涼"
+    ],
+    "garnish_exam": "黑莓與檸檬切角",
+    "home_hack": "琴酒 Sour 為底，頂層淋上黑莓利口酒(Chambord)如同瀑布降落。",
+    "description": "80 年代倫敦現代經典，琴酒、檸檬酸酒淋上滿滿碎冰與深紫黑莓香甜酒。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 12.5,
+        "amount_oz": "0.4",
+        "category": "mixer"
+      },
+      {
+        "name": "黑加侖香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      }
+    ],
+    "steps": [
+      "雪克杯搖盪琴酒、檸檬汁與糖漿。",
+      "濾入裝滿碎冰的古典杯。",
+      "頂層淋上黑莓/黑加侖香甜酒。",
+      "飾以黑莓與檸檬角。"
+    ]
+  },
+  {
+    "id": 45,
+    "name_zh": "乾馬丁尼",
+    "name_en": "Dry Martini",
+    "base_spirit": "琴酒",
+    "category": "難忘經典",
+    "technique": "Stir",
+    "glass": "馬丁尼杯",
+    "abv": 33,
+    "rating": 5,
+    "calories": 155,
+    "flavors": [
+      "極乾草本",
+      "強烈辛辣",
+      "純粹"
+    ],
+    "garnish_exam": "檸檬皮或綠橄欖",
+    "home_hack": "苦艾酒僅涮杯即倒掉(In & Out Martini)，追求極致純粹琴酒感。",
+    "description": "極致乾冽的馬丁尼變體，極低比例的不甜苦艾酒，凸顯高品質琴酒松針風味。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "base"
+      },
+      {
+        "name": "不甜苦艾酒",
+        "amount_ml": 5,
+        "amount_oz": "1/6",
+        "category": "liqueur"
+      },
+      {
+        "name": "綠橄欖",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "攪拌杯加滿大冰塊。",
+      "加入琴酒與微量不甜苦艾酒。",
+      "靜速攪拌 30 秒。",
+      "過濾入冰鎮馬丁尼杯。",
+      "放入綠橄欖。"
+    ]
+  },
+  {
+    "id": 46,
+    "name_zh": "髒馬丁尼",
+    "name_en": "Dirty Martini",
+    "base_spirit": "琴酒",
+    "category": "當代經典",
+    "technique": "Stir",
+    "glass": "馬丁尼杯",
+    "abv": 30,
+    "rating": 4,
+    "calories": 165,
+    "flavors": [
+      "鹹香橄欖",
+      "美味鹹辛",
+      "醇厚"
+    ],
+    "garnish_exam": "綠橄欖 3 顆串籤",
+    "home_hack": "加入 10-15ml 綠橄欖罐頭裡面的橄欖鹹鹽水(Olive Brine)。",
+    "description": "橄欖愛好者至高饗宴，琴酒、不甜苦艾酒加入鹹香橄欖鹽汁，色澤呈微渾濁。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "base"
+      },
+      {
+        "name": "不甜苦艾酒",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "liqueur"
+      },
+      {
+        "name": "綠橄欖",
+        "amount_ml": 1,
+        "amount_oz": "3顆+鹽水",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "攪拌杯加冰塊。",
+      "倒入琴酒、苦艾酒與橄欖汁。",
+      "順暢攪拌冷卻。",
+      "濾入馬丁尼杯。",
+      "串上 3 顆綠橄欖裝飾。"
+    ]
+  },
+  {
+    "id": 47,
+    "name_zh": "伏特加馬丁尼",
+    "name_en": "Vodka Martini",
+    "base_spirit": "伏特加",
+    "category": "難忘經典",
+    "technique": "Stir",
+    "glass": "馬丁尼杯",
+    "abv": 31,
+    "rating": 4,
+    "calories": 155,
+    "flavors": [
+      "純淨冰冷",
+      "清爽烈酒"
+    ],
+    "garnish_exam": "檸檬皮扭轉或橄欖",
+    "home_hack": "詹姆士·龐德 007 的『Shaken, not stirred』即為搖盪版的 Vodka Martini！",
+    "description": "純淨無瑕，伏特加取代琴酒，口感極度順暢冷俐。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "base"
+      },
+      {
+        "name": "不甜苦艾酒",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1皮",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "攪拌杯加滿冰塊。",
+      "加入伏特加與不甜苦艾酒。",
+      "充分攪拌冰鎮。",
+      "濾入馬丁尼杯。",
+      "噴擠檸檬皮精油裝飾。"
+    ]
+  },
+  {
+    "id": 48,
+    "name_zh": "伏特加湯力",
+    "name_en": "Vodka Tonic",
+    "base_spirit": "伏特加",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 12,
+    "rating": 1,
+    "calories": 135,
+    "flavors": [
+      "奎寧苦甜",
+      "純淨氣泡",
+      "清爽"
+    ],
+    "garnish_exam": "萊姆角",
+    "home_hack": "伏特加無色無味，能完美放大通寧水的柑橘草本氣泡。",
+    "description": "簡潔純粹的高球長飲，伏特加加通寧水與檸檬角。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "通寧水",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1角",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "高球杯填滿冰塊。",
+      "倒入伏特加。",
+      "注入冰鎮通寧水。",
+      "輕攪放入萊姆角。"
+    ]
+  },
+  {
+    "id": 49,
+    "name_zh": "莫斯科騾子",
+    "name_en": "Moscow Mule",
+    "base_spirit": "伏特加",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "紅銅杯/高球杯",
+    "abv": 12,
+    "rating": 2,
+    "calories": 160,
+    "flavors": [
+      "薑辣清香",
+      "柑橘酸甜",
+      "極致冰爽"
+    ],
+    "garnish_exam": "萊姆角與薄荷枝",
+    "home_hack": "紅銅杯能傳導極致冰涼感，使用薑汁啤酒(Ginger Beer)帶有真實辛辣薑味！",
+    "description": "銅杯傳奇，伏特加、新鮮萊姆汁與辛辣薑汁啤酒，如踢腿騾子般帶勁。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "薑汁汽水/薑汁啤酒",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1角",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "銅杯或高球杯裝滿冰塊。",
+      "倒入伏特加與現擠萊姆汁。",
+      "補滿薑汁啤酒。",
+      "提拉攪拌後飾以萊姆角。"
+    ]
+  },
+  {
+    "id": 50,
+    "name_zh": "螺絲起子",
+    "name_en": "Screwdriver",
+    "base_spirit": "伏特加",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 11,
+    "rating": 1,
+    "calories": 150,
+    "flavors": [
+      "柳橙鮮甜",
+      "順口易飲"
+    ],
+    "garnish_exam": "柳橙片",
+    "home_hack": "傳說石油工人用螺絲起子攪拌伏特加與柳橙汁因而得名。",
+    "description": "入門調酒基石，伏特加與鮮榨柳橙汁的完美比例。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮柳橙",
+        "amount_ml": 1,
+        "amount_oz": "1片",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "高球杯加冰塊。",
+      "倒入伏特加。",
+      "注滿新鮮柳橙汁。",
+      "攪拌均勻，附柳橙片。"
+    ]
+  },
+  {
+    "id": 51,
+    "name_zh": "鹹狗",
+    "name_en": "Salty Dog",
+    "base_spirit": "伏特加",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 12,
+    "rating": 2,
+    "calories": 145,
+    "flavors": [
+      "葡萄柚酸甜",
+      "鹹口層次",
+      "清涼"
+    ],
+    "garnish_exam": "鹽口杯與葡萄柚片",
+    "home_hack": "杯口抹上粗鹽粒，葡萄柚汁的果酸與鹽粒交織引出清甜。",
+    "description": "英國水手最愛，伏特加與葡萄柚汁配合杯口粗鹽圈，鹹甜提味。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "葡萄柚汁/汽水",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "mixer"
+      },
+      {
+        "name": "鹽/砂糖",
+        "amount_ml": 1,
+        "amount_oz": "適量鹽口",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "高球杯製作半圈或全圈鹽口。",
+      "加入冰塊。",
+      "倒入伏特加與葡萄柚汁。",
+      "輕輕攪拌。"
+    ]
+  },
+  {
+    "id": 52,
+    "name_zh": "獵犬",
+    "name_en": "Greyhound",
+    "base_spirit": "伏特加",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 12,
+    "rating": 1,
+    "calories": 140,
+    "flavors": [
+      "葡萄柚酸甜",
+      "清爽微苦"
+    ],
+    "garnish_exam": "檸檬片",
+    "home_hack": "鹹狗去鹽口杯即為 Greyhound 獵犬調酒。",
+    "description": "灰狗巴士站酒吧招牌，伏特加與葡萄柚汁無鹽口極簡版。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "葡萄柚汁/汽水",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "高球杯加冰塊。",
+      "倒入伏特加與葡萄柚汁。",
+      "攪拌均勻。"
+    ]
+  },
+  {
+    "id": 53,
+    "name_zh": "海風",
+    "name_en": "Sea Breeze",
+    "base_spirit": "伏特加",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 11,
+    "rating": 1,
+    "calories": 150,
+    "flavors": [
+      "葡萄柚蔓越莓",
+      "海洋果酸",
+      "解熱"
+    ],
+    "garnish_exam": "萊姆輪片",
+    "home_hack": "伏特加、蔓越莓汁與葡萄柚汁 1:2:1 比例。",
+    "description": "海岸派對涼爽之風，伏特加混和酸甜蔓越莓汁與清爽葡萄柚汁。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "蔓越莓汁",
+        "amount_ml": 75,
+        "amount_oz": "2.5",
+        "category": "mixer"
+      },
+      {
+        "name": "葡萄柚汁/汽水",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "高球杯加滿冰塊。",
+      "依次倒入伏特加、蔓越莓汁與葡萄柚汁。",
+      "攪拌並加上萊姆片。"
+    ]
+  },
+  {
+    "id": 54,
+    "name_zh": "灣風",
+    "name_en": "Bay Breeze",
+    "base_spirit": "伏特加",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 11,
+    "rating": 1,
+    "calories": 160,
+    "flavors": [
+      "鳳梨熱帶",
+      "蔓越莓酸甜"
+    ],
+    "garnish_exam": "萊姆片",
+    "home_hack": "海風把葡萄柚汁替換成鳳梨汁即為灣風(Hawaiian Sea Breeze)。",
+    "description": "熱帶微風吹拂，伏特加、蔓越莓汁與甘甜鳳梨汁。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "蔓越莓汁",
+        "amount_ml": 75,
+        "amount_oz": "2.5",
+        "category": "mixer"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入伏特加、蔓越莓汁與鳳梨汁。",
+      "攪拌服下。"
+    ]
+  },
+  {
+    "id": 55,
+    "name_zh": "晴空藍海",
+    "name_en": "Blue Lagoon",
+    "base_spirit": "伏特加",
+    "category": "當代經典",
+    "technique": "Shake",
+    "glass": "颶風杯",
+    "abv": 14,
+    "rating": 2,
+    "calories": 170,
+    "flavors": [
+      "藍色海洋",
+      "檸檬柑橘",
+      "夢幻"
+    ],
+    "garnish_exam": "檸檬片與櫻桃",
+    "home_hack": "伏特加、藍柑橘酒加檸檬汽水(雪碧)。",
+    "description": "蔚藍瀉湖夢幻視覺，伏特加、藍柑橘香甜酒與檸檬汁汽水。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "藍柑橘香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加入伏特加、藍柑橘酒與檸檬汁加冰搖勻。",
+      "濾入加冰颶風杯中。",
+      "補滿氣泡水或檸檬汽水。"
+    ]
+  },
+  {
+    "id": 56,
+    "name_zh": "卡琵莉亞",
+    "name_en": "Caipirinha",
+    "base_spirit": "蘭姆酒",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "古典杯",
+    "abv": 25,
+    "rating": 3,
+    "calories": 180,
+    "flavors": [
+      "甘蔗烈香",
+      "濃郁萊姆酸",
+      "原甜"
+    ],
+    "garnish_exam": "切塊萊姆與粗糖",
+    "home_hack": "使用巴西甘蔗酒(Cachaça)或白蘭姆酒，壓碎整顆切塊萊姆與兩茶匙紅砂糖。",
+    "description": "巴西國家國酒，新鮮萊姆切塊與蔗糖強烈搗碎，結合甘蔗烈酒與大量碎冰。",
+    "ingredients": [
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1顆切塊",
+        "category": "garnish"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "2茶匙砂糖",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "古典杯中放入切塊萊姆與砂糖，用力搗壓出果汁。",
+      "加入滿滿碎冰。",
+      "倒入甘蔗酒/白蘭姆酒。",
+      "充分攪拌上桌。"
+    ]
+  },
+  {
+    "id": 57,
+    "name_zh": "邁泰",
+    "name_en": "Mai Tai",
+    "base_spirit": "蘭姆酒",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雙重古典杯",
+    "abv": 26,
+    "rating": 4,
+    "calories": 230,
+    "flavors": [
+      "堅果杏仁",
+      "雙蘭姆醇厚",
+      "熱帶風情"
+    ],
+    "garnish_exam": "薄荷枝、萊姆皮殼與鳳梨角",
+    "home_hack": "大溪地語意為『至高無上！』，雙色蘭姆酒、橙酒與法式杏仁糖漿(Orgeat)。",
+    "description": "Tiki 熱帶調酒之王，深淺蘭姆酒結合橙酒、杏仁糖漿與萊姆汁。",
+    "ingredients": [
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "黑蘭姆酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "杏仁香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加入白蘭姆、橙酒、杏仁糖漿與萊姆汁加冰搖勻。",
+      "濾入加滿碎冰的古典杯。",
+      "頂層淋上黑蘭姆酒(Float)。",
+      "裝飾薄荷枝與萊姆殼。"
+    ]
+  },
+  {
+    "id": 58,
+    "name_zh": "殭屍",
+    "name_en": "Zombie",
+    "base_spirit": "蘭姆酒",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "高球杯",
+    "abv": 30,
+    "rating": 5,
+    "calories": 290,
+    "flavors": [
+      "多重烈酒",
+      "熱帶百香果",
+      "後勁極強"
+    ],
+    "garnish_exam": "薄荷枝與櫻桃",
+    "home_hack": "傳說喝三杯就會變成殭屍！三種蘭姆酒加百香果與紅石榴糖漿。",
+    "description": "Tiki 文化終極烈酒，白蘭姆、金蘭姆與高濃度過熱蘭姆酒，搭配熱帶果汁與苦精。",
+    "ingredients": [
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "黑蘭姆酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "mixer"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "葡萄柚汁/汽水",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加入所有蘭姆酒、果汁與糖漿及冰塊。",
+      "極力搖勻。",
+      "濾入裝滿碎冰的高球杯。",
+      "飾以薄荷枝與水果串。"
+    ]
+  },
+  {
+    "id": 59,
+    "name_zh": "颶風",
+    "name_en": "Hurricane",
+    "base_spirit": "蘭姆酒",
+    "category": "當代經典",
+    "technique": "Shake",
+    "glass": "颶風杯",
+    "abv": 22,
+    "rating": 3,
+    "calories": 240,
+    "flavors": [
+      "百香果甘甜",
+      "雙蘭姆濃郁",
+      "熱帶狂歡"
+    ],
+    "garnish_exam": "柳橙片與酒漬櫻桃",
+    "home_hack": "紐奧良派對招牌，高腳颶風燈籠杯裝載繽紛果香。",
+    "description": "美國紐奧良狂歡節經典，深淺雙蘭姆酒搭配百香果汁、柳橙汁與紅石榴糖漿。",
+    "ingredients": [
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "黑蘭姆酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加入冰塊與所有材料。",
+      "均勻搖盪至發霜。",
+      "濾入填滿碎冰的颶風杯。",
+      "飾以柳橙與櫻桃。"
+    ]
+  },
+  {
+    "id": 60,
+    "name_zh": "闇黑風高",
+    "name_en": "Dark 'N' Stormy",
+    "base_spirit": "蘭姆酒",
+    "category": "新時代飲品",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 15,
+    "rating": 3,
+    "calories": 170,
+    "flavors": [
+      "黑焦糖濃郁",
+      "辛辣薑味",
+      "風暴漸層"
+    ],
+    "garnish_exam": "萊姆角",
+    "home_hack": "百慕達國酒，辛辣薑汁啤酒上層浮著黑蘭姆酒(Gosling's Black Seal)。",
+    "description": "百慕達三角洲風暴意象，辛辣薑汁啤酒上飄浮著濃郁焦糖黑蘭姆酒層。",
+    "ingredients": [
+      {
+        "name": "黑蘭姆酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "薑汁汽水/薑汁啤酒",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1角",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入薑汁啤酒與萊姆汁。",
+      "沿吧匙緩緩倒入黑蘭姆酒於頂層形成烏雲分層。",
+      "附上萊姆角。"
+    ]
+  },
+  {
+    "id": 61,
+    "name_zh": "熱帶水果蘭姆 punch",
+    "name_en": "Planter's Punch",
+    "base_spirit": "蘭姆酒",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "高球杯",
+    "abv": 16,
+    "rating": 2,
+    "calories": 200,
+    "flavors": [
+      "牙買加果香",
+      "香料微苦",
+      "消暑"
+    ],
+    "garnish_exam": "柳橙片與薄荷枝",
+    "home_hack": "古老黃金口訣：『1酸 2甜 3強烈 4稀釋』(1 Sour, 2 Sweet, 3 Strong, 4 Weak)。",
+    "description": "牙買加莊園古老特調，黑蘭姆酒加柳橙汁、檸檬汁、糖漿與安哥斯苦精。",
+    "ingredients": [
+      {
+        "name": "黑蘭姆酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "安哥斯安哥斯苦精",
+        "amount_ml": 2,
+        "amount_oz": "2滴",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加入黑蘭姆、檸檬汁、柳橙汁與糖漿搖勻。",
+      "濾入加冰高球杯。",
+      "頂層滴入安哥斯苦精。",
+      "飾以柳橙與薄荷。"
+    ]
+  },
+  {
+    "id": 62,
+    "name_zh": "伯明罕蘭姆",
+    "name_en": "Bermuda Swizzle",
+    "base_spirit": "蘭姆酒",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 18,
+    "rating": 3,
+    "calories": 190,
+    "flavors": [
+      "草本木香",
+      "鳳梨果甘",
+      "冰沙感"
+    ],
+    "garnish_exam": "鳳梨葉與薄荷枝",
+    "home_hack": "使用 Swizzle 攪拌棒在滿滿碎冰中快速旋轉產生表面厚密冰霜。",
+    "description": "百慕達特產，雙色蘭姆酒、鳳梨汁、柳橙汁、杏仁糖漿與苦精旋轉攪勻。",
+    "ingredients": [
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "黑蘭姆酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "mixer"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "高球杯填滿碎冰與所有材料。",
+      "用吧匙雙手快速旋轉(Swizzle)至杯壁凝結濃霜。",
+      "插上鳳梨葉裝飾。"
+    ]
+  },
+  {
+    "id": 63,
+    "name_zh": "帕洛瑪",
+    "name_en": "Paloma",
+    "base_spirit": "龍舌蘭",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 12,
+    "rating": 1,
+    "calories": 140,
+    "flavors": [
+      "葡萄柚清甜",
+      "龍舌蘭香",
+      "鹽味氣泡"
+    ],
+    "garnish_exam": "鹽口杯與葡萄柚角",
+    "home_hack": "墨西哥在地消費量超越瑪格麗特的平民之王！龍舌蘭加葡萄柚汽水。",
+    "description": "墨西哥最受歡迎龍舌蘭長飲，龍舌蘭酒、葡萄柚汽水與現擠萊姆汁配鹽邊。",
+    "ingredients": [
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "葡萄柚汁/汽水",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "鹽/砂糖",
+        "amount_ml": 1,
+        "amount_oz": "鹽口",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "高球杯沾少許鹽邊。",
+      "加入滿滿冰塊、龍舌蘭酒與萊姆汁。",
+      "補滿葡萄柚汽水輕攪。",
+      "附上葡萄柚切角。"
+    ]
+  },
+  {
+    "id": 64,
+    "name_zh": "鬥牛士",
+    "name_en": "Matador",
+    "base_spirit": "龍舌蘭",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 18,
+    "rating": 3,
+    "calories": 160,
+    "flavors": [
+      "鳳梨酸甜",
+      "龍舌蘭辛香",
+      "滑順"
+    ],
+    "garnish_exam": "萊姆片",
+    "home_hack": "龍舌蘭、鳳梨汁與萊姆汁搖勻，簡單而絕妙的熱帶風味。",
+    "description": "勇敢無畏的勇士，龍舌蘭醇香結合濃郁鳳梨汁與清酸萊姆汁。",
+    "ingredients": [
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯裝滿冰塊。",
+      "加入龍舌蘭、鳳梨汁與萊姆汁。",
+      "用力搖勻發霜。",
+      "過濾倒入雞尾酒杯。"
+    ]
+  },
+  {
+    "id": 65,
+    "name_zh": "龍舌蘭炸彈",
+    "name_en": "Tequila Boom Boom",
+    "base_spirit": "龍舌蘭",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "Shot杯",
+    "abv": 20,
+    "rating": 4,
+    "calories": 100,
+    "flavors": [
+      "強勁氣泡",
+      "直衝腦門",
+      "歡樂派對"
+    ],
+    "garnish_exam": "無",
+    "home_hack": "Shot 杯裝龍舌蘭與七喜/雪碧，蓋住杯口在桌上重敲(Boom!)隨即一飲而盡！",
+    "description": "派對熱鬧必備，龍舌蘭酒搭配檸檬汽水，桌上重擊激起爆發性氣泡後一口飲盡。",
+    "ingredients": [
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "Shot 杯中倒入龍舌蘭與雪碧。",
+      "用手掌或杯墊緊蓋杯口。",
+      "在桌面上重敲一次發出 Boom 聲引起強烈泡沫。",
+      "迅速乾杯！"
+    ]
+  },
+  {
+    "id": 66,
+    "name_zh": "鳳梨瑪格麗特",
+    "name_en": "Pineapple Margarita",
+    "base_spirit": "龍舌蘭",
+    "category": "當代經典",
+    "technique": "Shake",
+    "glass": "瑪格麗特杯",
+    "abv": 22,
+    "rating": 3,
+    "calories": 195,
+    "flavors": [
+      "鳳梨果甘",
+      "鹹酸精緻",
+      "果香濃郁"
+    ],
+    "garnish_exam": "鹽口與鳳梨片",
+    "home_hack": "經典瑪格麗特加入 30ml 鮮鳳梨汁增添優涼熱帶果甘。",
+    "description": "瑪格麗特的夏日果香昇華版，龍舌蘭、橙酒、萊姆汁與鮮榨鳳梨汁。",
+    "ingredients": [
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "鹽/砂糖",
+        "amount_ml": 1,
+        "amount_oz": "鹽口",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "杯邊沾鹽口。",
+      "雪克杯加冰塊，倒入龍舌蘭、橙酒、鳳梨汁及萊姆汁。",
+      "搖勻濾入杯中。",
+      "飾以鳳梨切片。"
+    ]
+  },
+  {
+    "id": 67,
+    "name_zh": "冰凍黛綺莉",
+    "name_en": "Frozen Daiquiri",
+    "base_spirit": "蘭姆酒",
+    "category": "當代經典",
+    "technique": "Blend",
+    "glass": "雞尾酒杯/香檳杯",
+    "abv": 18,
+    "rating": 2,
+    "calories": 170,
+    "flavors": [
+      "冰沙細致",
+      "極致清酸",
+      "解暑"
+    ],
+    "garnish_exam": "萊姆輪片",
+    "home_hack": "白蘭姆酒加萊姆汁與冰塊直接打成綿密白雪冰沙。",
+    "description": "哈瓦那佛羅里達酒吧經典，白蘭姆酒、萊姆汁、糖漿與冰塊攪打成絕美綿密冰沙。",
+    "ingredients": [
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "果汁機放入白蘭姆酒、萊姆汁、糖漿與滿滿冰塊。",
+      "高速攪打成綿密冰沙。",
+      "倒入預冷雞尾酒杯。",
+      "飾以萊姆片。"
+    ]
+  },
+  {
+    "id": 68,
+    "name_zh": "B-52 轟炸機",
+    "name_en": "B-52 Layered Shot",
+    "base_spirit": "香甜酒",
+    "category": "當代經典",
+    "technique": "Layer",
+    "glass": "Shot杯",
+    "abv": 26,
+    "rating": 4,
+    "calories": 140,
+    "flavors": [
+      "咖啡奶香",
+      "橙酒甜辣",
+      "三層視覺"
+    ],
+    "garnish_exam": "無（可點燃頂層）",
+    "home_hack": "利用密度差異沿吧匙背面依序注入：咖啡酒(底) -> 貝禮詩奶酒(中) -> 橙酒(頂)。",
+    "description": "視覺系分層 Shot 經典，咖啡酒、貝禮詩奶酒與金曼怡/橙酒完美三分層。",
+    "ingredients": [
+      {
+        "name": "咖啡香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "奶酒/奶精利口酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      }
+    ],
+    "steps": [
+      "Shot 杯最底層倒入咖啡香甜酒。",
+      "沿吧匙背面極慢倒第二層奶酒。",
+      "再沿吧匙倒第三層橙酒。",
+      "維持清晰三分層上桌。"
+    ]
+  },
+  {
+    "id": 69,
+    "name_zh": "B-53 轟炸機",
+    "name_en": "B-53",
+    "base_spirit": "伏特加",
+    "category": "當代經典",
+    "technique": "Layer",
+    "glass": "Shot杯",
+    "abv": 30,
+    "rating": 4,
+    "calories": 145,
+    "flavors": [
+      "伏特加烈香",
+      "咖啡奶甜",
+      "三層視覺"
+    ],
+    "garnish_exam": "無",
+    "home_hack": "將 B-52 頂層的橙酒替換為伏特加，酒勁更為強烈！",
+    "description": "B-52 的烈酒升級版，咖啡酒、貝禮詩奶酒與頂層純伏特加分層。",
+    "ingredients": [
+      {
+        "name": "咖啡香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "奶酒/奶精利口酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "伏特加",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "base"
+      }
+    ],
+    "steps": [
+      "Shot 杯底倒入咖啡酒。",
+      "中間分層注入奶酒。",
+      "頂層分層注入伏特加。"
+    ]
+  },
+  {
+    "id": 70,
+    "name_zh": "白玫瑰",
+    "name_en": "White Rose",
+    "base_spirit": "琴酒",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 22,
+    "rating": 3,
+    "calories": 160,
+    "flavors": [
+      "純白甜美",
+      "柑橘香氣",
+      "蛋白綿密"
+    ],
+    "garnish_exam": "玫瑰花瓣或檸檬皮",
+    "home_hack": "琴酒、橙酒、檸檬汁、柳橙汁與蛋白搖出純白如玫瑰般泡沫。",
+    "description": "高雅純白象徵，琴酒、柑橘利口酒與蛋白搖盪出絲滑純白奶泡層。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "蛋白",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "所有原料無冰乾搖(Dry Shake)。",
+      "加入冰塊強搖冷卻。",
+      "雙重過濾倒入雞尾酒杯。"
+    ]
+  },
+  {
+    "id": 71,
+    "name_zh": "白金",
+    "name_en": "White Lady",
+    "base_spirit": "琴酒",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 26,
+    "rating": 4,
+    "calories": 165,
+    "flavors": [
+      "琴酒草本",
+      "酸甜高雅",
+      "潔白"
+    ],
+    "garnish_exam": "檸檬皮扭轉",
+    "home_hack": "邊車(Sidecar)的琴酒版本！琴酒、君度橙酒與新鮮檸檬汁。",
+    "description": "薩伏伊酒店傳奇調酒師發明，琴酒、君度橙酒與檸檬汁黃金三角。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加入大半杯冰塊。",
+      "倒入琴酒、君度橙酒及檸檬汁。",
+      "極速冰鎮搖盪。",
+      "過濾倒入雞尾酒杯。",
+      "扭轉檸檬皮裝飾。"
+    ]
+  },
+  {
+    "id": 72,
+    "name_zh": "皇家血與沙",
+    "name_en": "Blood and Sand",
+    "base_spirit": "威士忌",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 20,
+    "rating": 3,
+    "calories": 175,
+    "flavors": [
+      "櫻桃香醇",
+      "蘇格蘭煙燻",
+      "橙汁甘甜"
+    ],
+    "garnish_exam": "柳橙皮",
+    "home_hack": "同名鬥牛鬥士電影致敬，四種等比例材料：威士忌、黑櫻桃酒、甜苦艾酒與鮮柳橙汁。",
+    "description": "罕見的威士忌水果調酒，蘇格蘭威士忌、黑櫻桃利口酒、甜苦艾酒與鮮柳橙汁。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "base"
+      },
+      {
+        "name": "甜苦艾酒",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "櫻桃香甜酒",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯裝滿冰塊與等比例四種材料。",
+      "用力搖勻。",
+      "濾入預冷雞尾酒杯。",
+      "飾以柳橙皮。"
+    ]
+  },
+  {
+    "id": 73,
+    "name_zh": "馬克白",
+    "name_en": "Macbeth",
+    "base_spirit": "威士忌",
+    "category": "難忘經典",
+    "technique": "Stir",
+    "glass": "馬丁尼杯",
+    "abv": 30,
+    "rating": 4,
+    "calories": 170,
+    "flavors": [
+      "蘇格蘭煙燻",
+      "黑加侖甘甜",
+      "悲劇美感"
+    ],
+    "garnish_exam": "酒漬櫻桃",
+    "home_hack": "莎士比亞名劇主題，蘇格蘭威士忌加黑加侖利口酒與安哥斯苦精。",
+    "description": "莎翁經典悲劇意象，蘇格蘭威士忌的泥煤煙燻與黑加侖果香微苦交織。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "黑加侖香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "安哥斯安哥斯苦精",
+        "amount_ml": 2,
+        "amount_oz": "2滴",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "攪拌杯加冰塊。",
+      "加入威士忌、黑加侖酒與苦精。",
+      "攪拌冰鎮。",
+      "濾入馬丁尼杯。",
+      "放酒漬櫻桃裝飾。"
+    ]
+  },
+  {
+    "id": 74,
+    "name_zh": "大都會",
+    "name_en": "Metropolis",
+    "base_spirit": "白蘭地",
+    "category": "當代經典",
+    "technique": "Stir",
+    "glass": "馬丁尼杯",
+    "abv": 28,
+    "rating": 4,
+    "calories": 175,
+    "flavors": [
+      "白蘭地醇香",
+      "甜苦艾微甘",
+      "都會風采"
+    ],
+    "garnish_exam": "柳橙皮",
+    "home_hack": "曼哈頓的白蘭地版本，口感更為圓潤葡萄果香。",
+    "description": "白蘭地愛好者的曼哈頓變體，干邑白蘭地搭配甜苦艾酒與安哥斯苦精。",
+    "ingredients": [
+      {
+        "name": "白蘭地",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "甜苦艾酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "安哥斯安哥斯苦精",
+        "amount_ml": 2,
+        "amount_oz": "2滴",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "攪拌杯加滿冰塊。",
+      "倒入白蘭地、甜苦艾酒與苦精。",
+      "慢速攪拌冷卻。",
+      "濾入馬丁尼杯。",
+      "飾以柳橙皮。"
+    ]
+  },
+  {
+    "id": 75,
+    "name_zh": "約翰柯林斯",
+    "name_en": "John Collins",
+    "base_spirit": "威士忌",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "柯林杯",
+    "abv": 13,
+    "rating": 2,
+    "calories": 165,
+    "flavors": [
+      "波本酸甜",
+      "檸檬氣泡",
+      "清爽"
+    ],
+    "garnish_exam": "檸檬片與櫻桃",
+    "home_hack": "湯姆柯林斯改用美式威士忌即為約翰柯林斯！",
+    "description": "柯林斯家族威士忌代表，美式威士忌、檸檬汁、糖漿與氣泡水。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "柯林杯填滿冰塊。",
+      "倒入威士忌、檸檬汁及糖漿。",
+      "倒滿氣泡水輕攪。",
+      "飾以檸檬與櫻桃。"
+    ]
+  },
+  {
+    "id": 76,
+    "name_zh": "伏特加柯林斯",
+    "name_en": "Vodka Collins",
+    "base_spirit": "伏特加",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "柯林杯",
+    "abv": 12,
+    "rating": 1,
+    "calories": 150,
+    "flavors": [
+      "純淨酸甜",
+      "氣泡爽口"
+    ],
+    "garnish_exam": "檸檬片",
+    "home_hack": "伏特加加新鮮檸檬汁與氣泡水。",
+    "description": "最純粹無瑕的清爽氣泡特調，伏特加、檸檬汁與糖漿氣泡水。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "柯林杯加冰塊。",
+      "加入伏特加、檸檬汁與糖漿。",
+      "注入氣泡水。",
+      "飾檸檬片。"
+    ]
+  },
+  {
+    "id": 77,
+    "name_zh": "威士忌高球",
+    "name_en": "Whisky Highball",
+    "base_spirit": "威士忌",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 9,
+    "rating": 1,
+    "calories": 110,
+    "flavors": [
+      "麥芽氣泡",
+      "極爽佐餐",
+      "解膩"
+    ],
+    "garnish_exam": "檸檬皮角",
+    "home_hack": "日式居酒屋神器！威士忌 1 : 4 強氣泡水，杯子與水皆極致冰鎮。",
+    "description": "風靡亞洲居酒屋餐酒首選，威士忌與冰涼強氣泡水，極致順口解膩。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 160,
+        "amount_oz": "5.33",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1皮",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "高球杯裝滿滿冰塊。",
+      "倒入威士忌攪拌冷卻杯壁。",
+      "沿冰塊緩緩注入冰氣泡水。",
+      "垂直提拉吧匙一次保持氣泡。",
+      "擰檸檬皮香氣於頂層。"
+    ]
+  },
+  {
+    "id": 78,
+    "name_zh": "鳳梨高球",
+    "name_en": "Pineapple Highball",
+    "base_spirit": "威士忌",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 10,
+    "rating": 1,
+    "calories": 140,
+    "flavors": [
+      "果香麥芽",
+      "氣泡甜美"
+    ],
+    "garnish_exam": "鳳梨切片",
+    "home_hack": "威士忌加鳳梨汁與氣泡水。",
+    "description": "威士忌高球的熱帶果香版，微甜鳳梨汁與威士忌麥芽香氣氣泡混合。",
+    "ingredients": [
+      {
+        "name": "威士忌",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "高球杯加冰塊。",
+      "倒入威士忌與鳳梨汁攪拌。",
+      "補滿氣泡水。",
+      "飾鳳梨片。"
+    ]
+  },
+  {
+    "id": 79,
+    "name_zh": "櫻桃烈酒",
+    "name_en": "Cherry Blossom",
+    "base_spirit": "白蘭地",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 24,
+    "rating": 3,
+    "calories": 165,
+    "flavors": [
+      "黑櫻桃濃郁",
+      "白蘭地果香",
+      "高雅"
+    ],
+    "garnish_exam": "酒漬櫻桃",
+    "home_hack": "白蘭地、櫻桃利口酒、橙酒與檸檬汁。",
+    "description": "日本橫濱新港飯店發明，如櫻花盛開般絢爛浪漫，白蘭地與黑櫻桃香甜酒。",
+    "ingredients": [
+      {
+        "name": "白蘭地",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "櫻桃香甜酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "雪克杯加滿冰塊。",
+      "倒入白蘭地、櫻桃酒、橙酒與檸檬汁。",
+      "冰鎮搖勻。",
+      "濾入雞尾酒杯。",
+      "放入酒漬櫻桃。"
+    ]
+  },
+  {
+    "id": 80,
+    "name_zh": "杏仁酸酒",
+    "name_en": "Amaretto Sour",
+    "base_spirit": "香甜酒",
+    "category": "當代經典",
+    "technique": "Shake",
+    "glass": "古典杯",
+    "abv": 14,
+    "rating": 2,
+    "calories": 195,
+    "flavors": [
+      "杏仁甜香",
+      "檸檬清酸",
+      "蛋白滑順"
+    ],
+    "garnish_exam": "檸檬片與櫻桃",
+    "home_hack": "義大利杏仁利口酒(Disaronno)加上檸檬汁與少量波本威士忌提味！",
+    "description": "最受女性與甜酒愛好者歡迎，杏仁酒濃郁糖香與新鮮檸檬酸度完美對比。",
+    "ingredients": [
+      {
+        "name": "杏仁香甜酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "威士忌",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "蛋白",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "所有材料進行 Dry Shake。",
+      "加冰塊強搖發霜。",
+      "濾入加冰古典杯中。",
+      "飾以檸檬與櫻桃。"
+    ]
+  },
+  {
+    "id": 81,
+    "name_zh": "黑加侖苦艾",
+    "name_en": "Vermouth Cassis",
+    "base_spirit": "香甜酒",
+    "category": "難忘經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 10,
+    "rating": 1,
+    "calories": 130,
+    "flavors": [
+      "黑加侖甘甜",
+      "草本苦甘",
+      "氣泡"
+    ],
+    "garnish_exam": "檸檬皮扭轉",
+    "home_hack": "不甜苦艾酒加黑加侖利口酒與氣泡水。",
+    "description": "法式優雅低酒精開胃酒，不甜苦艾酒草本香與黑加侖果香交織。",
+    "ingredients": [
+      {
+        "name": "不甜苦艾酒",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "liqueur"
+      },
+      {
+        "name": "黑加侖香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入苦艾酒與黑加侖酒。",
+      "注滿氣泡水輕攪。",
+      "飾以檸檬皮。"
+    ]
+  },
+  {
+    "id": 82,
+    "name_zh": "野格炸彈",
+    "name_en": "Jägerbomb",
+    "base_spirit": "香甜酒",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯/Shot杯",
+    "abv": 15,
+    "rating": 3,
+    "calories": 160,
+    "flavors": [
+      "草本藥草",
+      "提神能量",
+      "派對沸騰"
+    ],
+    "garnish_exam": "無",
+    "home_hack": "將裝滿野格(Jägermeister)草本利口酒的 Shot 杯直接丟入半杯紅牛能量飲料中一飲而盡！",
+    "description": "夜店派對必備，德國野格草本利口酒丟入能量飲料，氣泡爆發提神酒感。",
+    "ingredients": [
+      {
+        "name": "草本香甜酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "大高球杯中倒入半罐紅牛能量飲料/氣泡飲料。",
+      "Shot 杯倒滿野格酒。",
+      "將 Shot 杯直接投擲入大杯中立即乾杯。"
+    ]
+  },
+  {
+    "id": 83,
+    "name_zh": "惡魔之血",
+    "name_en": "El Diablo",
+    "base_spirit": "龍舌蘭",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 14,
+    "rating": 2,
+    "calories": 170,
+    "flavors": [
+      "龍舌蘭辛香",
+      "黑加侖甜酸",
+      "薑汁氣泡"
+    ],
+    "garnish_exam": "萊姆角與黑莓",
+    "home_hack": "龍舌蘭、黑加侖酒、萊姆汁加薑汁汽水。",
+    "description": "魅惑惡魔紅光，龍舌蘭酒、黑加侖香甜酒、萊姆汁與辛辣薑汁汽水。",
+    "ingredients": [
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "黑加侖香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "薑汁汽水/薑汁啤酒",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入龍舌蘭、黑加侖酒與萊姆汁。",
+      "倒滿薑汁汽水輕攪。",
+      "飾以萊姆角。"
+    ]
+  },
+  {
+    "id": 84,
+    "name_zh": "威尼斯人氣泡",
+    "name_en": "Venetian Spritz",
+    "base_spirit": "香甜酒",
+    "category": "當代經典",
+    "technique": "Build",
+    "glass": "紅酒杯",
+    "abv": 10,
+    "rating": 1,
+    "calories": 140,
+    "flavors": [
+      "微苦草本",
+      "氣泡甘甜",
+      "水都意象"
+    ],
+    "garnish_exam": "綠橄欖與柳橙片",
+    "home_hack": "金巴利或 Select 利口酒加普羅賽克氣泡酒與氣泡水。",
+    "description": "水都威尼斯運河邊經典，微苦利口酒搭配氣泡白酒與一顆鹹綠橄欖。",
+    "ingredients": [
+      {
+        "name": "金巴利利口酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡白葡萄酒/香檳",
+        "amount_ml": 75,
+        "amount_oz": "2.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "綠橄欖",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "紅酒杯加冰塊。",
+      "倒入金巴利與氣泡酒。",
+      "淋上氣泡水。",
+      "放入綠橄欖與柳橙片。"
+    ]
+  },
+  {
+    "id": 85,
+    "name_zh": "天使之吻",
+    "name_en": "Angel's Kiss",
+    "base_spirit": "香甜酒",
+    "category": "難忘經典",
+    "technique": "Layer",
+    "glass": "利口酒杯/Shot杯",
+    "abv": 18,
+    "rating": 2,
+    "calories": 150,
+    "flavors": [
+      "可可濃甜",
+      "鮮奶油綿密",
+      "浪漫"
+    ],
+    "garnish_exam": "紅櫻桃插於竹籤橫跨杯口",
+    "home_hack": "棕可可酒底層，頂層輕浮鮮奶油與櫻桃。",
+    "description": "浪漫告白調酒，深色可可香甜酒上分層浮著純白鮮奶油，如天使親吻。",
+    "ingredients": [
+      {
+        "name": "可可香甜酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "鮮奶油/牛奶",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "小利口杯中倒入可可香甜酒。",
+      "沿吧匙背面注入鮮奶油浮於頂層。",
+      "橫跨竹籤穿櫻桃於杯口。"
+    ]
+  },
+  {
+    "id": 86,
+    "name_zh": "奇奇",
+    "name_en": "Chi-Chi",
+    "base_spirit": "伏特加",
+    "category": "當代經典",
+    "technique": "Blend",
+    "glass": "颶風杯",
+    "abv": 13,
+    "rating": 2,
+    "calories": 250,
+    "flavors": [
+      "伏特加濃純",
+      "鳳梨椰香",
+      "冰沙感"
+    ],
+    "garnish_exam": "鳳梨片與櫻桃",
+    "home_hack": "椰林風情(Piña Colada)將蘭姆酒替換為伏特加即為 Chi-Chi！",
+    "description": "夏威夷渡假熱帶冰沙，伏特加取代蘭姆酒，融合鳳梨汁與濃醇椰奶。",
+    "ingredients": [
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      },
+      {
+        "name": "椰子香甜酒/椰奶",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      }
+    ],
+    "steps": [
+      "果汁機中加入冰塊、伏特加、鳳梨汁與椰奶。",
+      "高速打成綿密冰沙。",
+      "倒入颶風杯中。",
+      "飾鳳梨切片與紅櫻桃。"
+    ]
+  },
+  {
+    "id": 87,
+    "name_zh": "紅粉佳人",
+    "name_en": "Pink Lady",
+    "base_spirit": "琴酒",
+    "category": "難忘經典",
+    "technique": "Shake",
+    "glass": "雞尾酒杯",
+    "abv": 20,
+    "rating": 3,
+    "calories": 170,
+    "flavors": [
+      "紅石榴粉紅",
+      "琴酒香氣",
+      "蛋白綿密"
+    ],
+    "garnish_exam": "酒漬櫻桃",
+    "home_hack": "琴酒、蘋果白蘭地/橙酒、檸檬汁、紅石榴糖漿與蛋白搖出柔美粉紅泡沫。",
+    "description": "百老匯名劇同名慶功酒，極致柔美粉紅色澤，蛋白賦予綿密細緻奶泡感。",
+    "ingredients": [
+      {
+        "name": "琴酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "蛋白",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "雪克杯加入琴酒、檸檬汁、紅石榴糖漿與蛋白無冰乾搖。",
+      "加入冰塊強搖冰鎮。",
+      "雙重過濾倒入雞尾酒杯。",
+      "放酒漬櫻桃。"
+    ]
+  },
+  {
+    "id": 88,
+    "name_zh": "灰姑娘",
+    "name_en": "Cinderella",
+    "base_spirit": "無酒精",
+    "category": "無酒精特調",
+    "technique": "Shake",
+    "glass": "高球杯/颶風杯",
+    "abv": 0,
+    "rating": 1,
+    "calories": 130,
+    "flavors": [
+      "三果酸甜",
+      "清爽歡樂",
+      "無酒精"
+    ],
+    "garnish_exam": "鳳梨片與櫻桃",
+    "home_hack": "三種等比例果汁：柳橙汁 + 鳳梨汁 + 檸檬汁加少許糖漿搖勻。",
+    "description": "乙級檢定無酒精經典代表，三大柑橘熱帶果汁平衡混和，清爽無負擔。",
+    "ingredients": [
+      {
+        "name": "柳橙汁",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "mixer"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
+    ],
+    "steps": [
+      "雪克杯加滿冰塊與果汁及糖漿。",
+      "用力搖勻。",
+      "濾入加冰高球杯中。",
+      "補少許氣泡水，飾以鳳梨與櫻桃。"
+    ]
+  },
+  {
+    "id": 89,
+    "name_zh": "秀蘭鄧波兒",
+    "name_en": "Shirley Temple",
+    "base_spirit": "無酒精",
+    "category": "無酒精特調",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 0,
+    "rating": 1,
+    "calories": 120,
+    "flavors": [
+      "紅石榴甜香",
+      "薑汁氣泡",
+      "好玩童趣"
+    ],
+    "garnish_exam": "酒漬櫻桃 2 顆",
+    "home_hack": "荷里活童星命名，薑汁汽水(Ginger Ale)淋上紅石榴糖漿沉底。",
+    "description": "全球無酒精特調始祖，薑汁汽水或雪碧加上紅石榴糖漿與兩顆紅櫻桃。",
+    "ingredients": [
+      {
+        "name": "薑汁汽水/薑汁啤酒",
+        "amount_ml": 150,
+        "amount_oz": "5",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "2顆",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入薑汁汽水/雪碧。",
+      "緩緩注入紅石榴糖漿形成紅底漸層。",
+      "飾以兩顆黑櫻桃。"
+    ]
+  },
+  {
+    "id": 90,
+    "name_zh": "處女莫希托",
+    "name_en": "Virgin Mojito",
+    "base_spirit": "無酒精",
+    "category": "無酒精特調",
+    "technique": "Build",
+    "glass": "高球杯",
+    "abv": 0,
+    "rating": 1,
+    "calories": 90,
+    "flavors": [
+      "薄荷極致清爽",
+      "清酸氣泡"
+    ],
+    "garnish_exam": "薄荷枝與萊姆片",
+    "home_hack": "莫希托去蘭姆酒，以滿滿氣泡水、現壓薄荷葉與新鮮萊姆汁做成超爽夏日無酒精飲料。",
+    "description": "無酒精版的莫希托，新鮮薄荷葉與萊姆汁清爽拍碎，滿滿碎冰與強氣泡水。",
+    "ingredients": [
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮薄荷葉",
+        "amount_ml": 1,
+        "amount_oz": "8-10葉",
+        "category": "garnish"
+      }
+    ],
+    "steps": [
+      "杯中放入薄荷葉、萊姆汁與糖漿輕搗。",
+      "加入滿滿碎冰。",
+      "倒滿氣泡水充分攪拌。",
+      "插入新鮮薄荷枝。"
+    ]
+  }
+];
 
     const { createApp, ref, computed, onMounted, watch, nextTick } = Vue;
 
@@ -1516,11 +6131,12 @@
           window.location.href = 'https://www.google.com';
         };
 
-        const cocktails = ref([]);
+        const cocktails = ref(typeof EMBEDDED_COCKTAILS !== 'undefined' ? EMBEDDED_COCKTAILS : []);
         const myBar = ref(JSON.parse(localStorage.getItem('my_bar_inventory') || '["琴酒", "伏特加", "新鮮檸檬/萊姆汁", "糖漿", "氣泡水"]'));
         const favorites = ref(JSON.parse(localStorage.getItem('my_favorite_cocktails') || '[]'));
         
         const isBarOpen = ref(false);
+        const isShoppingOpen = ref(false);
         const searchQuery = ref('');
         const filterStatus = ref('all'); // all, ready, missing1, favorites
         const selectedBaseSpirit = ref('all');
@@ -1568,6 +6184,33 @@
           localStorage.setItem('my_favorite_cocktails', JSON.stringify(newVal));
         }, { deep: true });
 
+        
+        // Shared AudioContext Singleton (Prevents browser limit exhaustion on mobile)
+        let globalAudioCtx = null;
+        const getAudioContext = () => {
+          try {
+            if (!globalAudioCtx) {
+              const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+              if (AudioContextClass) globalAudioCtx = new AudioContextClass();
+            }
+            if (globalAudioCtx && globalAudioCtx.state === 'suspended') {
+              globalAudioCtx.resume();
+            }
+            return globalAudioCtx;
+          } catch (e) {
+            return null;
+          }
+        };
+
+        // Debounced Lucide Icons Refresher
+        let lucideDebounce = null;
+        const refreshLucideIcons = () => {
+          if (lucideDebounce) cancelAnimationFrame(lucideDebounce);
+          lucideDebounce = requestAnimationFrame(() => {
+            if (window.lucide) window.lucide.createIcons();
+          });
+        };
+
         // Load Cocktails with Fallback for file:// CORS
         onMounted(async () => {
           try {
@@ -1591,7 +6234,7 @@
         });
 
         // Re-render icons on modal open or state change
-        watch([selectedCocktail, shakerPickedCocktail, isBarOpen, filterStatus, categoryOpenState], () => {
+        watch([selectedCocktail, shakerPickedCocktail, isBarOpen, filterStatus, categoryOpenState, isShoppingOpen], () => {
           nextTick(() => {
             if (window.lucide) {
               window.lucide.createIcons();
@@ -1655,6 +6298,100 @@
           if (tabId === 'missing1') return missing1CocktailsCount.value;
           if (tabId === 'favorites') return favorites.value.length;
           return 0;
+        };
+
+        const toggleBarIngredient = (ingName) => {
+          const idx = myBar.value.indexOf(ingName);
+          if (idx > -1) {
+            myBar.value.splice(idx, 1);
+          } else {
+            myBar.value.push(ingName);
+          }
+          triggerHaptic(15);
+        };
+
+        // Smart Shopping Assistant: Top ingredients to unlock maximum recipes
+        const topUnlockRecommendations = computed(() => {
+          const allIngredients = [];
+          Object.values(ingredientCategories).forEach(list => {
+            list.forEach(item => {
+              if (!allIngredients.includes(item)) {
+                allIngredients.push(item);
+              }
+            });
+          });
+
+          const unowned = allIngredients.filter(item => !myBar.value.includes(item));
+          const currentReady = readyCocktailsCount.value;
+          const currentMissing1 = missing1CocktailsCount.value;
+          const pool = cocktails.value.length > 0 ? cocktails.value : EMBEDDED_COCKTAILS;
+
+          const results = [];
+
+          unowned.forEach(candidate => {
+            const simulatedBar = [...myBar.value, candidate];
+            let simReady = 0;
+            let simMissing1 = 0;
+
+            pool.forEach(item => {
+              const requiredItems = item.ingredients.filter(ing => ing.category !== 'garnish').map(ing => ing.name);
+              const missingList = requiredItems.filter(reqName => {
+                return !simulatedBar.some(barItem => barItem.includes(reqName) || reqName.includes(barItem));
+              });
+              if (missingList.length === 0) simReady++;
+              else if (missingList.length === 1) simMissing1++;
+            });
+
+            const unlockReadyCount = simReady - currentReady;
+            const unlockMissing1Count = simMissing1 - currentMissing1;
+
+            if (unlockReadyCount > 0 || unlockMissing1Count > 0) {
+              results.push({
+                name: candidate,
+                unlockReadyCount,
+                unlockMissing1Count,
+                score: unlockReadyCount * 3 + unlockMissing1Count
+              });
+            }
+          });
+
+          results.sort((a, b) => b.score - a.score);
+          return results.slice(0, 5);
+        });
+
+        // Toast Notification System
+        const toastMessage = ref('');
+        let toastTimer = null;
+
+        const showToast = (msg) => {
+          toastMessage.value = msg;
+          if (toastTimer) clearTimeout(toastTimer);
+          toastTimer = setTimeout(() => {
+            toastMessage.value = '';
+          }, 2600);
+          refreshLucideIcons();
+        };
+
+        const copyShoppingList = () => {
+          if (!topUnlockRecommendations.value || topUnlockRecommendations.value.length === 0) {
+            showToast('吧台材料已非常齊全！');
+            return;
+          }
+          const lines = [
+            '🛒【經典調酒吧】智能補貨推薦清單：',
+            ...topUnlockRecommendations.value.slice(0, 5).map((rec, i) => `${i + 1}. ${rec.name} (再買可解鎖 +${rec.unlockReadyCount} 款直接可調)`)
+          ];
+          const text = lines.join('\n');
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => {
+              showToast('已複製推薦採購清單至剪貼簿！');
+              triggerHaptic(20);
+            }).catch(() => {
+              showToast('已產生推薦採購清單！');
+            });
+          } else {
+            showToast('已產生推薦採購清單！');
+          }
         };
 
         // Multi-dimensional Filtered Cocktails List
@@ -2275,6 +7012,177 @@
           ${endSvg}`;
         };
 
+        // Exam Quiz & Flashcard Mode State & Methods
+        const isExamModalOpen = ref(false);
+        const examTab = ref('flashcard'); // 'flashcard' | 'quiz'
+
+        // Flashcard State
+        const currentFlashcardIndex = ref(0);
+        const isCardFlipped = ref(false);
+
+        const flashcardCocktail = computed(() => {
+          const pool = cocktails.value.length > 0 ? cocktails.value : EMBEDDED_COCKTAILS;
+          if (pool.length === 0) return null;
+          return pool[currentFlashcardIndex.value % pool.length];
+        });
+
+        const flipCard = () => {
+          isCardFlipped.value = !isCardFlipped.value;
+          triggerHaptic(20);
+        };
+
+        const nextFlashcard = () => {
+          isCardFlipped.value = false;
+          const pool = cocktails.value.length > 0 ? cocktails.value : EMBEDDED_COCKTAILS;
+          currentFlashcardIndex.value = (currentFlashcardIndex.value + 1) % pool.length;
+          triggerHaptic(15);
+          refreshLucideIcons();
+        };
+
+        const prevFlashcard = () => {
+          isCardFlipped.value = false;
+          const pool = cocktails.value.length > 0 ? cocktails.value : EMBEDDED_COCKTAILS;
+          currentFlashcardIndex.value = (currentFlashcardIndex.value - 1 + pool.length) % pool.length;
+          triggerHaptic(15);
+          refreshLucideIcons();
+        };
+
+        const randomFlashcard = () => {
+          isCardFlipped.value = false;
+          const pool = cocktails.value.length > 0 ? cocktails.value : EMBEDDED_COCKTAILS;
+          currentFlashcardIndex.value = Math.floor(Math.random() * pool.length);
+          triggerHaptic(25);
+          refreshLucideIcons();
+        };
+
+        // Quiz Mode State
+        const quizScore = ref(0);
+        const quizTotal = ref(0);
+        const quizCombo = ref(0);
+        const currentQuestion = ref(null);
+        const selectedQuizOption = ref(null);
+        const isAnswerChecked = ref(false);
+
+        // Retro 8-Bit Audio synthesizers for Quiz
+        const playQuizSuccessAudio = () => {
+          try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            if (ctx.state === 'suspended') ctx.resume();
+            const now = ctx.currentTime;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(987.77, now); // B5
+            osc.frequency.setValueAtTime(1318.51, now + 0.08); // E6
+            gain.gain.setValueAtTime(0.12, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.36);
+          } catch (e) {}
+        };
+
+        const playQuizFailAudio = () => {
+          try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            if (ctx.state === 'suspended') ctx.resume();
+            const now = ctx.currentTime;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(196.00, now); // G3
+            osc.frequency.setValueAtTime(130.81, now + 0.12); // C3
+            gain.gain.setValueAtTime(0.15, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.4);
+          } catch (e) {}
+        };
+
+        const generateQuizQuestion = () => {
+          const pool = cocktails.value.length > 0 ? cocktails.value : EMBEDDED_COCKTAILS;
+          if (pool.length === 0) return;
+          const target = pool[Math.floor(Math.random() * pool.length)];
+          
+          const qTypes = ['technique', 'glass', 'base_spirit', 'garnish'];
+          const qType = qTypes[Math.floor(Math.random() * qTypes.length)];
+          
+          let questionText = '';
+          let correctAnswer = '';
+          let allPossible = [];
+
+          if (qType === 'technique') {
+            questionText = `請問「${target.name_zh} (${target.name_en})」的【調製手法】是下列何者？`;
+            correctAnswer = target.technique;
+            allPossible = ['Shake', 'Stir', 'Build', 'Blend', 'Layer'];
+          } else if (qType === 'glass') {
+            questionText = `請問「${target.name_zh} (${target.name_en})」的【指定杯型】是下列何者？`;
+            correctAnswer = target.glass;
+            allPossible = [...new Set(pool.map(c => c.glass))];
+          } else if (qType === 'base_spirit') {
+            questionText = `請問「${target.name_zh} (${target.name_en})」的【主要基酒】是下列何者？`;
+            correctAnswer = target.base_spirit;
+            allPossible = ['琴酒', '伏特加', '威士忌', '蘭姆酒', '龍舌蘭', '白蘭地', '香甜酒', '無酒精'];
+          } else if (qType === 'garnish') {
+            questionText = `請問「${target.name_zh} (${target.name_en})」的【乙級檢定規範裝飾物】為何？`;
+            correctAnswer = target.garnish_exam;
+            allPossible = [...new Set(pool.map(c => c.garnish_exam))];
+          }
+
+          // Create 3 distractors
+          const distractors = allPossible.filter(opt => opt !== correctAnswer).sort(() => 0.5 - Math.random()).slice(0, 3);
+          const options = [correctAnswer, ...distractors].sort(() => 0.5 - Math.random());
+
+          currentQuestion.value = {
+            cocktail: target,
+            type: qType,
+            text: questionText,
+            correctAnswer,
+            options
+          };
+
+          selectedQuizOption.value = null;
+          isAnswerChecked.value = false;
+          refreshLucideIcons();
+        };
+
+        const selectQuizOption = (opt) => {
+          if (isAnswerChecked.value) return;
+          selectedQuizOption.value = opt;
+          isAnswerChecked.value = true;
+          quizTotal.value++;
+
+          if (opt === currentQuestion.value.correctAnswer) {
+            quizScore.value++;
+            quizCombo.value++;
+            playQuizSuccessAudio();
+            triggerHaptic([30, 40, 60]);
+          } else {
+            quizCombo.value = 0;
+            playQuizFailAudio();
+            triggerHaptic([80, 60, 90]);
+          }
+        };
+
+        const switchExamTab = (tab) => {
+          examTab.value = tab;
+          if (tab === 'quiz' && !currentQuestion.value) {
+            generateQuizQuestion();
+          }
+          refreshLucideIcons();
+        };
+
+        const openExamModal = () => {
+          isExamModalOpen.value = true;
+          if (!currentQuestion.value) {
+            generateQuizQuestion();
+          }
+          refreshLucideIcons();
+        };
+
         return {
           cocktails,
           myBar,
@@ -2317,7 +7225,31 @@
           rejectAge,
           servingMultiplier,
           formatScaledAmount,
-          estimatedTotalVolume
+          estimatedTotalVolume,
+          toggleBarIngredient,
+          isShoppingOpen,
+          topUnlockRecommendations,
+          toastMessage,
+          copyShoppingList,
+          isExamModalOpen,
+          examTab,
+          switchExamTab,
+          currentFlashcardIndex,
+          isCardFlipped,
+          flashcardCocktail,
+          flipCard,
+          nextFlashcard,
+          prevFlashcard,
+          randomFlashcard,
+          quizScore,
+          quizTotal,
+          quizCombo,
+          currentQuestion,
+          selectedQuizOption,
+          isAnswerChecked,
+          generateQuizQuestion,
+          selectQuizOption,
+          openExamModal
         };
       }
     }).mount('#app');
