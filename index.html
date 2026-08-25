@@ -135,6 +135,166 @@
     .shaker-anim {
       animation: shake 0.12s infinite alternate ease-in-out;
     }
+
+    /* Mario Bartender Shaking Animations */
+    @keyframes marioShakerRapid {
+      0% { transform: translate(0px, 0px) rotate(0deg); }
+      25% { transform: translate(-4px, -7px) rotate(-10deg); }
+      50% { transform: translate(4px, -3px) rotate(8deg); }
+      75% { transform: translate(-4px, -9px) rotate(-12deg); }
+      100% { transform: translate(0px, -2px) rotate(-2deg); }
+    }
+
+    @keyframes marioBodyStep {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-3px); }
+    }
+
+    @keyframes marioSweatDrop {
+      0%, 100% { opacity: 0; transform: translateY(-3px) scale(0.6); }
+      50% { opacity: 1; transform: translateY(2px) scale(1.1); }
+    }
+
+    @keyframes pixelIceSpray1 {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.4) rotate(0deg); }
+      40% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-36px, -30px) scale(1.1) rotate(-60deg); }
+    }
+
+    @keyframes pixelIceSpray2 {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.4) rotate(0deg); }
+      40% { opacity: 1; }
+      100% { opacity: 0; transform: translate(38px, -32px) scale(1.1) rotate(60deg); }
+    }
+
+    @keyframes pixelStarSpray1 {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.3); }
+      50% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-28px, 24px) scale(1.1) rotate(120deg); }
+    }
+
+    @keyframes pixelStarSpray2 {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.3); }
+      50% { opacity: 1; }
+      100% { opacity: 0; transform: translate(30px, 22px) scale(1.1) rotate(-120deg); }
+    }
+
+    @keyframes speedLineBlink {
+      0%, 100% { opacity: 0.15; transform: scaleX(0.7); }
+      50% { opacity: 0.85; transform: scaleX(1.15); }
+    }
+
+    .mario-shaker-active {
+      animation: marioShakerRapid 0.36s infinite alternate ease-in-out;
+      transform-origin: 24px 28px;
+    }
+
+    .mario-body-active {
+      animation: marioBodyStep 0.36s infinite alternate ease-in-out;
+    }
+
+    .mario-sweat-active {
+      animation: marioSweatDrop 0.6s infinite ease-in-out;
+    }
+
+    .ice-particle-1 {
+      animation: pixelIceSpray1 0.7s infinite cubic-bezier(0.2, 0.8, 0.3, 1);
+    }
+    .ice-particle-2 {
+      animation: pixelIceSpray2 0.75s infinite 0.18s cubic-bezier(0.2, 0.8, 0.3, 1);
+    }
+    .star-particle-1 {
+      animation: pixelStarSpray1 0.7s infinite 0.12s ease-out;
+    }
+    .star-particle-2 {
+      animation: pixelStarSpray2 0.8s infinite 0.25s ease-out;
+    }
+    .speed-lines {
+      animation: speedLineBlink 0.16s infinite alternate;
+    }
+
+    /* Doraemon Secret Gadget Reveal Animations */
+    @keyframes sunburstSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes doraemonGadgetPop {
+      0% {
+        opacity: 0;
+        transform: translateY(70px) scale(0.25) rotate(-8deg);
+      }
+      55% {
+        opacity: 1;
+        transform: translateY(-16px) scale(1.08) rotate(3deg);
+      }
+      75% {
+        transform: translateY(5px) scale(0.97) rotate(-1deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0px) scale(1) rotate(0deg);
+      }
+    }
+
+    @keyframes gadgetFloatLevitate {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes gadgetHaloPulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+        box-shadow: 0 0 35px rgba(251, 191, 36, 0.6), 0 0 60px rgba(56, 189, 248, 0.4);
+      }
+      50% {
+        transform: scale(1.12);
+        opacity: 1;
+        box-shadow: 0 0 65px rgba(251, 191, 36, 0.95), 0 0 95px rgba(56, 189, 248, 0.75);
+      }
+    }
+
+    @keyframes gadgetSparkleTwinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.6) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.3) rotate(90deg); }
+    }
+
+    @keyframes rainbowShimmerText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .doraemon-sunburst-bg {
+      background: repeating-conic-gradient(
+        from 0deg,
+        rgba(251, 191, 36, 0.32) 0deg 15deg,
+        rgba(14, 165, 233, 0.12) 15deg 30deg
+      );
+      animation: sunburstSpin 16s linear infinite;
+    }
+
+    .doraemon-gadget-card {
+      animation: doraemonGadgetPop 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    .gadget-halo {
+      animation: gadgetHaloPulse 2s infinite ease-in-out;
+    }
+
+    .gadget-sparkle-1 { animation: gadgetSparkleTwinkle 1.2s infinite ease-in-out; }
+    .gadget-sparkle-2 { animation: gadgetSparkleTwinkle 1.4s infinite 0.4s ease-in-out; }
+    .gadget-sparkle-3 { animation: gadgetSparkleTwinkle 1.1s infinite 0.7s ease-in-out; }
+    .gadget-sparkle-4 { animation: gadgetSparkleTwinkle 1.5s infinite 0.2s ease-in-out; }
+
+    .doraemon-rainbow-text {
+      background: linear-gradient(90deg, #f59e0b, #38bdf8, #ec4899, #f59e0b);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      animation: rainbowShimmerText 3s linear infinite;
+    }
   </style>
 </head>
 <body class="min-h-screen antialiased selection:bg-amber-500 selection:text-slate-950">
@@ -143,25 +303,25 @@
 
     <!-- Fixed Top Header: "經典調酒吧" -->
     <header class="sticky top-0 z-40 w-full bg-slate-950/95 backdrop-blur-md border-b-2 border-amber-500/40 shadow-xl">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20 sm:h-24">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 sm:h-24">
           
           <!-- Title: 經典調酒吧 -->
-          <div class="flex items-center space-x-3 cursor-pointer" @click="resetFilters">
+          <div class="flex items-center space-x-2 sm:space-x-3 cursor-pointer min-w-0" @click="resetFilters">
             <!-- 8-Bit Pixel Avatar Icon -->
-            <div class="w-12 h-12 rounded-xl bg-amber-500 p-0.5 shadow-pixel-gold border-2 border-slate-950 flex items-center justify-center">
-              <div class="w-full h-full bg-slate-950 rounded-lg flex items-center justify-center relative overflow-hidden">
-                <svg class="w-7 h-7 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
+            <div class="w-9 h-9 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-amber-500 p-0.5 shadow-pixel-gold border-2 border-slate-950 flex items-center justify-center flex-shrink-0">
+              <div class="w-full h-full bg-slate-950 rounded-md sm:rounded-lg flex items-center justify-center relative overflow-hidden">
+                <svg class="w-5 h-5 sm:w-7 sm:h-7 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M4 3h16v2l-7 8v6h4v2H7v-2h4v-6L4 5V3zm3.5 4h9l1.75-2H5.75l1.75 2z"/>
                 </svg>
               </div>
             </div>
-            <div>
-              <div class="flex items-center space-x-2">
-                <h1 class="text-2xl sm:text-3xl font-black font-pixel-title tracking-widest text-amber-400 drop-shadow-[2px_2px_0px_rgba(0,0,0,0.8)]">
+            <div class="min-w-0">
+              <div class="flex items-center space-x-1.5 sm:space-x-2">
+                <h1 class="text-lg sm:text-3xl font-black font-pixel-title tracking-wider text-amber-400 drop-shadow-[2px_2px_0px_rgba(0,0,0,0.8)] truncate">
                   經典調酒吧
                 </h1>
-                <span class="hidden sm:inline-block px-2.5 py-0.5 text-xs font-bold font-pixel-title rounded bg-amber-500/20 text-amber-300 border border-amber-500/50">
+                <span class="hidden md:inline-block px-2.5 py-0.5 text-xs font-bold font-pixel-title rounded bg-amber-500/20 text-amber-300 border border-amber-500/50">
                   乙級經典 90 款
                 </span>
               </div>
@@ -169,37 +329,36 @@
             </div>
           </div>
 
-          <!-- Header Actions: Unit Switcher -> 我的吧台 -> 今晚喝什麼？ -->
-          <div class="flex items-center space-x-2 sm:space-x-3">
+          <!-- Header Actions: Unit Switcher -> 我的吧台 -> 酒保推薦 -->
+          <div class="flex items-center space-x-1.5 sm:space-x-3 flex-shrink-0">
             
             <!-- 1. Unit Switcher Button -->
             <button 
               @click="toggleUnit"
-              class="px-3 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-900 hover:bg-slate-800 text-slate-200 border-2 border-slate-700 shadow-pixel-sm transition flex items-center space-x-1.5"
+              class="px-2 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-900 hover:bg-slate-800 text-slate-200 border-2 border-slate-700 shadow-pixel-sm transition flex items-center space-x-1 sm:space-x-1.5 whitespace-nowrap flex-shrink-0"
               title="切換單位 (ml / oz)">
-              <i data-lucide="scale" class="w-4 h-4 text-amber-400"></i>
-              <span>單位: <strong class="text-amber-400 font-pixel-title">{{ unit }}</strong></span>
+              <i data-lucide="scale" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 flex-shrink-0"></i>
+              <span class="whitespace-nowrap"><span class="hidden sm:inline">單位: </span><strong class="text-amber-400 font-pixel-title">{{ unit }}</strong></span>
             </button>
 
-            <!-- 2. 「我的吧台」Button (Placed BEFORE 今晚喝什麼) -->
+            <!-- 2. 「我的吧台」Button -->
             <button 
               @click="isBarOpen = !isBarOpen"
-              class="relative px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold font-pixel-title bg-slate-900 hover:bg-slate-800 text-amber-400 border-2 border-amber-500/60 shadow-pixel-sm transition flex items-center space-x-2">
-              <i data-lucide="martini" class="w-4.5 h-4.5 text-amber-400"></i>
-              <span>我的吧台</span>
-              <span class="bg-amber-500 text-slate-950 text-xs font-black px-2 py-0.5 rounded-md font-pixel-title ml-1">
+              class="relative px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold font-pixel-title bg-slate-900 hover:bg-slate-800 text-amber-400 border-2 border-amber-500/60 shadow-pixel-sm transition flex items-center space-x-1.5 sm:space-x-2 whitespace-nowrap flex-shrink-0">
+              <i data-lucide="martini" class="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 text-amber-400 flex-shrink-0"></i>
+              <span class="whitespace-nowrap">我的吧台</span>
+              <span class="bg-amber-500 text-slate-950 text-[10px] sm:text-xs font-black px-1.5 sm:px-2 py-0.5 rounded-md font-pixel-title ml-0.5 sm:ml-1 flex-shrink-0">
                 {{ selectedIngredientsCount }}
               </span>
             </button>
 
-            <!-- 3. 「今晚喝什麼？」Random Shaker Button -->
+            <!-- 3. 「酒保推薦」Random Shaker Button -->
             <button 
               @click="triggerShaker"
-              class="px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black font-pixel-title bg-amber-500 hover:bg-amber-400 text-slate-950 border-2 border-slate-950 shadow-pixel-gold transition flex items-center space-x-2 animate-pulse-glow">
-              <svg class="w-4.5 h-4.5 text-slate-950" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M7 2h10v3H7V2zm-1 4h12v3H6V6zm-1 4h14l-1 12H6L5 10z"/>
-              </svg>
-              <span>今晚喝什麼？</span>
+              class="relative px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold font-pixel-title bg-amber-500 hover:bg-amber-400 text-slate-950 border-2 border-slate-950 shadow-pixel-sm transition flex items-center space-x-1.5 sm:space-x-2 whitespace-nowrap flex-shrink-0 animate-pulse-glow"
+              title="隨機推薦調酒">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 text-slate-950 flex-shrink-0"></i>
+              <span class="whitespace-nowrap">酒保推薦</span>
             </button>
 
           </div>
@@ -594,68 +753,69 @@
     <!-- Cocktail Detail Modal -->
     <div 
       v-if="selectedCocktail"
-      class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/85 backdrop-blur-md overflow-y-auto animate-fade-in"
+      class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md overflow-y-auto animate-fade-in"
       @click.self="selectedCocktail = null">
       
-      <div class="pixel-card rounded-3xl max-w-2xl w-full border-2 border-amber-500/70 shadow-2xl overflow-hidden relative my-8">
+      <div class="pixel-card rounded-2xl sm:rounded-3xl max-w-2xl w-full border-2 border-amber-500/70 shadow-2xl overflow-hidden relative my-auto max-h-[92vh] flex flex-col">
         
         <!-- Header Banner -->
-        <div class="p-6 sm:p-8 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-b-2 border-slate-800 relative">
+        <div class="p-4 sm:p-8 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-b-2 border-slate-800 relative flex-shrink-0">
           
           <button 
             @click="selectedCocktail = null"
-            class="absolute top-6 right-6 p-2 rounded-xl bg-slate-900 border-2 border-slate-700 text-slate-300 hover:text-amber-400 transition">
-            <i data-lucide="x" class="w-6 h-6"></i>
+            class="absolute top-3 right-3 sm:top-6 sm:right-6 p-2 rounded-xl bg-slate-900 border-2 border-slate-700 text-slate-300 hover:text-amber-400 min-w-[40px] min-h-[40px] flex items-center justify-center transition z-20"
+            title="關閉">
+            <i data-lucide="x" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </button>
 
-          <div class="flex items-center space-x-2.5 mb-3">
-            <span class="px-3.5 py-1 rounded-lg text-xs font-bold font-pixel-title bg-amber-500/20 text-amber-300 border border-amber-500/50">
+          <div class="flex items-center space-x-2 mb-2 sm:mb-3 pr-10">
+            <span class="px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-lg text-xs font-bold font-pixel-title bg-amber-500/20 text-amber-300 border border-amber-500/50">
               {{ selectedCocktail.category }}
             </span>
-            <span class="px-3.5 py-1 rounded-lg text-xs font-bold font-pixel-title bg-slate-800 text-slate-200 border border-slate-700">
+            <span class="px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-lg text-xs font-bold font-pixel-title bg-slate-800 text-slate-200 border border-slate-700">
               基酒：{{ selectedCocktail.base_spirit }}
             </span>
           </div>
 
-          <div class="flex items-center space-x-4 mb-3">
-            <div class="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 bg-slate-900 rounded-2xl border-2 border-amber-500/70 shadow-pixel-gold p-2 flex items-center justify-center">
-              <span v-html="getCocktailPixelSvg(selectedCocktail, 56)" class="inline-flex items-center justify-center"></span>
+          <div class="flex items-center space-x-3 sm:space-x-4 mb-2 sm:mb-3">
+            <div class="w-14 h-14 sm:w-20 sm:h-20 flex-shrink-0 bg-slate-900 rounded-xl sm:rounded-2xl border-2 border-amber-500/70 shadow-pixel-gold p-1.5 sm:p-2 flex items-center justify-center">
+              <span v-html="getCocktailPixelSvg(selectedCocktail, 52)" class="inline-flex items-center justify-center"></span>
             </div>
             <div class="min-w-0 flex-1">
-              <h2 class="text-3xl sm:text-4xl font-black text-slate-100 mb-1 tracking-wide">
+              <h2 class="text-2xl sm:text-4xl font-black text-slate-100 mb-0.5 sm:mb-1 tracking-wide truncate">
                 {{ selectedCocktail.name_zh }}
               </h2>
-              <p class="text-base font-bold text-amber-400 font-pixel-title tracking-wider">
+              <p class="text-xs sm:text-base font-bold text-amber-400 font-pixel-title tracking-wider truncate">
                 {{ selectedCocktail.name_en }}
               </p>
             </div>
           </div>
 
-          <p class="text-sm text-slate-300 mt-4 leading-relaxed font-medium">
+          <p class="text-xs sm:text-sm text-slate-300 mt-2 sm:mt-4 leading-relaxed font-medium line-clamp-3 sm:line-clamp-none">
             {{ selectedCocktail.description }}
           </p>
         </div>
 
         <!-- Modal Body Content -->
-        <div class="p-6 sm:p-8 space-y-7 max-h-[calc(85vh-220px)] overflow-y-auto">
+        <div class="p-4 sm:p-8 space-y-5 sm:space-y-7 overflow-y-auto overscroll-contain flex-grow">
           
-          <!-- Key Metrics Grid -->
-          <div class="grid grid-cols-4 gap-3 text-center">
-            <div class="bg-slate-900 p-3 rounded-xl border-2 border-slate-800">
-              <div class="text-xs text-slate-400 font-bold">調製手法</div>
-              <div class="text-sm font-black text-amber-400 mt-1 font-pixel-title">{{ selectedCocktail.technique }}</div>
+          <!-- Key Metrics Grid (2 columns on mobile, 4 columns on desktop) -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-center">
+            <div class="bg-slate-900 p-2.5 sm:p-3 rounded-xl border-2 border-slate-800">
+              <div class="text-[11px] sm:text-xs text-slate-400 font-bold">調製手法</div>
+              <div class="text-xs sm:text-sm font-black text-amber-400 mt-0.5 sm:mt-1 font-pixel-title">{{ selectedCocktail.technique }}</div>
             </div>
-            <div class="bg-slate-900 p-3 rounded-xl border-2 border-slate-800">
-              <div class="text-xs text-slate-400 font-bold">專用杯型</div>
-              <div class="text-sm font-bold text-slate-200 mt-1 truncate">{{ selectedCocktail.glass }}</div>
+            <div class="bg-slate-900 p-2.5 sm:p-3 rounded-xl border-2 border-slate-800">
+              <div class="text-[11px] sm:text-xs text-slate-400 font-bold">專用杯型</div>
+              <div class="text-xs sm:text-sm font-bold text-slate-200 mt-0.5 sm:mt-1 truncate">{{ selectedCocktail.glass }}</div>
             </div>
-            <div class="bg-slate-900 p-3 rounded-xl border-2 border-slate-800">
-              <div class="text-xs text-slate-400 font-bold">酒精濃度</div>
-              <div class="text-sm font-black text-rose-400 mt-1 font-pixel-title">{{ selectedCocktail.abv }}% ABV</div>
+            <div class="bg-slate-900 p-2.5 sm:p-3 rounded-xl border-2 border-slate-800">
+              <div class="text-[11px] sm:text-xs text-slate-400 font-bold">酒精濃度</div>
+              <div class="text-xs sm:text-sm font-black text-rose-400 mt-0.5 sm:mt-1 font-pixel-title">{{ selectedCocktail.abv }}% ABV</div>
             </div>
-            <div class="bg-slate-900 p-3 rounded-xl border-2 border-slate-800">
-              <div class="text-xs text-slate-400 font-bold">酒感等級</div>
-              <div class="text-sm font-black text-amber-300 mt-1 font-pixel-title">★ {{ selectedCocktail.rating }}/5</div>
+            <div class="bg-slate-900 p-2.5 sm:p-3 rounded-xl border-2 border-slate-800">
+              <div class="text-[11px] sm:text-xs text-slate-400 font-bold">酒感等級</div>
+              <div class="text-xs sm:text-sm font-black text-amber-300 mt-0.5 sm:mt-1 font-pixel-title">★ {{ selectedCocktail.rating }}/5</div>
             </div>
           </div>
 
@@ -791,80 +951,247 @@
     <!-- Shaker Animation Result Modal -->
     <div 
       v-if="isShaking || shakerPickedCocktail"
-      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md">
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md overflow-hidden">
       
-      <!-- Shaking Animation Screen -->
-      <div v-if="isShaking" class="text-center space-y-6">
-        <div class="relative inline-block">
-          <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl bg-amber-500 p-1 border-4 border-slate-950 shadow-pixel-gold flex items-center justify-center shaker-anim">
-            <div class="w-full h-full bg-slate-950 rounded-[20px] flex items-center justify-center">
-              <svg class="w-16 h-16 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M7 2h10v3H7V2zm-1 4h12v3H6V6zm-1 4h14l-1 12H6L5 10z"/>
-              </svg>
-            </div>
-          </div>
+      <!-- 1. Mario Bartender Shaking Animation Screen -->
+      <div v-if="isShaking" class="text-center space-y-5 max-w-sm w-full">
+        
+        <!-- Mario Bartender 8-Bit Pixel Character -->
+        <div class="relative inline-block p-4">
+          <svg class="w-52 h-52 sm:w-60 sm:h-60 mx-auto" viewBox="0 0 64 64" shape-rendering="crispEdges">
+            <!-- Speed Lines Background -->
+            <g class="speed-lines" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,4">
+              <line x1="2" y1="20" x2="16" y2="20" />
+              <line x1="4" y1="32" x2="14" y2="32" />
+              <line x1="1" y1="44" x2="15" y2="44" />
+              <line x1="48" y1="18" x2="62" y2="18" />
+              <line x1="50" y1="30" x2="60" y2="30" />
+              <line x1="49" y1="42" x2="63" y2="42" />
+            </g>
+
+            <!-- Shadow below Bartender -->
+            <ellipse cx="32" cy="59" rx="18" ry="4" fill="#000000" opacity="0.4" />
+
+            <!-- Flying Ice Crystals & Stars (Bursting Particles) -->
+            <g>
+              <!-- Ice Particle 1 (Top-Left) -->
+              <g class="ice-particle-1">
+                <rect x="12" y="18" width="4" height="4" fill="#93c5fd" />
+                <rect x="13" y="19" width="2" height="2" fill="#ffffff" />
+              </g>
+              <!-- Ice Particle 2 (Top-Right) -->
+              <g class="ice-particle-2">
+                <rect x="48" y="16" width="5" height="5" fill="#67e8f9" />
+                <rect x="49" y="17" width="2" height="2" fill="#ffffff" />
+              </g>
+              <!-- Star Particle 1 (Bottom-Left) -->
+              <g class="star-particle-1">
+                <rect x="10" y="42" width="2" height="6" fill="#fbbf24" />
+                <rect x="8" y="44" width="6" height="2" fill="#fbbf24" />
+                <rect x="9" y="43" width="4" height="4" fill="#fef08a" />
+              </g>
+              <!-- Star Particle 2 (Bottom-Right) -->
+              <g class="star-particle-2">
+                <rect x="52" y="40" width="2" height="6" fill="#fbbf24" />
+                <rect x="50" y="42" width="6" height="2" fill="#fbbf24" />
+                <rect x="51" y="41" width="4" height="4" fill="#fef08a" />
+              </g>
+            </g>
+
+            <!-- Mario Bartender Body Group (Bobbing Animation) -->
+            <g class="mario-body-active">
+              
+              <!-- Red Bartender Cap -->
+              <!-- Cap Crown -->
+              <rect x="22" y="10" width="20" height="6" fill="#dc2626" />
+              <rect x="18" y="16" width="28" height="6" fill="#ef4444" />
+              <!-- Cap Brim -->
+              <rect x="30" y="20" width="18" height="4" fill="#b91c1c" />
+              <!-- White Emblem Badge -->
+              <rect x="25" y="12" width="8" height="7" fill="#ffffff" />
+              <rect x="26" y="13" width="6" height="5" fill="#f8fafc" />
+              <!-- Golden Cocktail/M icon on cap -->
+              <rect x="28" y="14" width="2" height="3" fill="#d97706" />
+              <rect x="27" y="14" width="4" height="1" fill="#f59e0b" />
+
+              <!-- Face & Features -->
+              <!-- Hair / Sideburns -->
+              <rect x="17" y="20" width="5" height="10" fill="#451a03" />
+              <rect x="20" y="27" width="4" height="4" fill="#451a03" />
+              <!-- Skin Tone (Face) -->
+              <rect x="22" y="20" width="18" height="11" fill="#fed7aa" />
+              <!-- Big Mario Nose -->
+              <rect x="36" y="21" width="8" height="7" fill="#fdba74" />
+              <rect x="37" y="26" width="7" height="2" fill="#ea580c" />
+              <!-- Eye with Glint -->
+              <rect x="32" y="21" width="3" height="5" fill="#0f172a" />
+              <rect x="32" y="21" width="2" height="2" fill="#ffffff" />
+              <!-- Classic Bushy Mustache -->
+              <rect x="27" y="27" width="19" height="5" fill="#0f172a" />
+              <rect x="30" y="26" width="15" height="2" fill="#0f172a" />
+              <rect x="44" y="28" width="3" height="3" fill="#0f172a" />
+              <!-- Ear -->
+              <rect x="16" y="23" width="3" height="5" fill="#fdba74" />
+
+              <!-- Bartender Torso & Outfit -->
+              <!-- White Shirt Collar -->
+              <rect x="24" y="32" width="16" height="4" fill="#ffffff" />
+              <!-- Red Bow Tie -->
+              <rect x="28" y="33" width="8" height="3" fill="#e11d48" />
+              <rect x="30" y="33" width="4" height="3" fill="#9f1239" />
+              <!-- Bartender Black/Slate Vest -->
+              <rect x="20" y="36" width="24" height="14" fill="#0f172a" />
+              <rect x="23" y="36" width="18" height="14" fill="#1e293b" />
+              <!-- Shiny Brass Vest Buttons -->
+              <rect x="31" y="38" width="2" height="2" fill="#facc15" />
+              <rect x="31" y="43" width="2" height="2" fill="#facc15" />
+              <!-- Red Shirt Sleeves -->
+              <rect x="16" y="36" width="5" height="10" fill="#ef4444" />
+              <rect x="43" y="36" width="5" height="10" fill="#ef4444" />
+              <!-- Blue Pants / Trousers -->
+              <rect x="22" y="50" width="20" height="7" fill="#1d4ed8" />
+              <rect x="24" y="56" width="6" height="3" fill="#78350f" />
+              <rect x="34" y="56" width="6" height="3" fill="#78350f" />
+
+              <!-- Animated Sweat Drop -->
+              <g class="mario-sweat-active">
+                <path d="M47 18h3v1h1v3h-1v1h-3v-1h-1v-3h1z" fill="#38bdf8" />
+                <rect x="48" y="19" width="1" height="1" fill="#ffffff" />
+              </g>
+            </g>
+
+            <!-- Shaking Hands & Cobbler Shaker Group (Active Mario Shaker Animation) -->
+            <g class="mario-shaker-active">
+              <!-- Cocktail Cobbler Shaker -->
+              <!-- Shaker Cap (Top) -->
+              <rect x="29" y="24" width="6" height="4" fill="#e2e8f0" />
+              <rect x="30" y="23" width="4" height="2" fill="#f8fafc" />
+              <!-- Strainer Shoulder Dome -->
+              <rect x="26" y="28" width="12" height="5" fill="#94a3b8" />
+              <rect x="28" y="29" width="3" height="4" fill="#f8fafc" />
+              <!-- Main Shaker Body -->
+              <rect x="25" y="33" width="14" height="15" fill="#64748b" />
+              <rect x="27" y="33" width="4" height="14" fill="#f8fafc" opacity="0.95" />
+              <rect x="36" y="33" width="3" height="14" fill="#334155" />
+              <!-- Shaker Base -->
+              <rect x="27" y="47" width="10" height="3" fill="#94a3b8" />
+
+              <!-- White Bartender Gloves (Gripping Shaker) -->
+              <!-- Left Hand / Glove -->
+              <rect x="21" y="35" width="6" height="7" fill="#ffffff" />
+              <rect x="22" y="36" width="4" height="5" fill="#e2e8f0" />
+              <!-- Right Hand / Glove (Holding top/cap) -->
+              <rect x="37" y="31" width="6" height="7" fill="#ffffff" />
+              <rect x="37" y="32" width="4" height="5" fill="#e2e8f0" />
+            </g>
+          </svg>
         </div>
 
         <div>
           <h3 class="text-2xl sm:text-3xl font-black font-pixel-title text-amber-400 tracking-wide">
-            正在極速搖盪調酒雪克杯...
+            ⚡ 酒保極速調製中...
           </h3>
-          <p class="text-sm text-slate-300 mt-2 font-bold font-pixel-title animate-pixel-blink">ICE SHAKING & BLENDING...</p>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2 font-bold font-pixel-title animate-pixel-blink">
+            正在為您精心搖盪調配...
+          </p>
         </div>
       </div>
 
-      <!-- Shaker Result Card Modal -->
+      <!-- 2. Doraemon Secret Gadget Reveal Screen -->
       <div 
         v-else-if="shakerPickedCocktail"
-        class="pixel-card rounded-3xl max-w-md w-full border-2 border-amber-500 shadow-2xl p-7 text-center space-y-6 animate-float relative">
+        class="relative max-w-md w-full flex flex-col items-center max-h-[92vh] overflow-y-auto overscroll-contain px-1 sm:px-0 my-auto">
         
-        <button 
-          @click="shakerPickedCocktail = null"
-          class="absolute top-5 right-5 p-2 rounded-xl bg-slate-900 border-2 border-slate-700 text-slate-400 hover:text-slate-100">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
+        <!-- Rotating Sunburst Light Rays in Background -->
+        <div class="absolute -inset-16 sm:-inset-24 rounded-full pointer-events-none opacity-40 doraemon-sunburst-bg blur-sm"></div>
 
-        <div class="w-20 h-20 rounded-2xl bg-slate-900 border-2 border-amber-500/70 shadow-pixel-gold flex items-center justify-center mx-auto p-2">
-          <span v-html="getCocktailPixelSvg(shakerPickedCocktail, 56)" class="inline-flex items-center justify-center"></span>
-        </div>
+        <!-- Floating Twinkling Golden Stars -->
+        <div class="absolute -top-4 -left-2 text-amber-300 text-xl sm:text-2xl gadget-sparkle-1 pointer-events-none">✦</div>
+        <div class="absolute -top-6 right-4 text-cyan-300 text-2xl sm:text-3xl gadget-sparkle-2 pointer-events-none">✨</div>
+        <div class="absolute bottom-2 -left-4 text-amber-200 text-lg sm:text-xl gadget-sparkle-3 pointer-events-none">★</div>
+        <div class="absolute -bottom-4 right-1 text-rose-300 text-xl sm:text-2xl gadget-sparkle-4 pointer-events-none">✦</div>
 
-        <div>
-          <span class="text-xs font-black text-amber-400 font-pixel-title tracking-widest uppercase">★ 今晚特別推薦 ★</span>
-          <h3 class="text-3xl font-black text-slate-100 mt-1">
-            {{ shakerPickedCocktail.name_zh }}
-          </h3>
-          <p class="text-sm text-slate-400 font-bold font-pixel-title mt-0.5">
-            {{ shakerPickedCocktail.name_en }}
-          </p>
-        </div>
-
-        <div class="bg-slate-900 rounded-2xl p-4 border-2 border-slate-800 text-sm text-slate-200 space-y-2.5 text-left">
-          <div class="flex justify-between">
-            <span class="text-slate-400 font-bold">基酒類別：</span>
-            <span class="font-black text-amber-300 font-pixel-title">{{ shakerPickedCocktail.base_spirit }}</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-slate-400 font-bold">酒精濃度：</span>
-            <span class="font-black text-rose-400 font-pixel-title">{{ shakerPickedCocktail.abv }}% ABV</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-slate-400 font-bold">酒感星級：</span>
-            <span class="font-black text-amber-400 font-pixel-title">★ {{ shakerPickedCocktail.rating }}/5</span>
-          </div>
-        </div>
-
-        <div class="flex gap-3 pt-2">
-          <button 
-            @click="triggerShaker" 
-            class="flex-1 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold font-pixel-title border-2 border-slate-700 shadow-pixel-sm transition">
-            再搖一次
-          </button>
+        <!-- Main Gadget Card with Pop Entrance -->
+        <div class="pixel-card rounded-2xl sm:rounded-3xl w-full border-2 border-amber-400 bg-slate-950/95 shadow-2xl p-4 sm:p-7 text-center space-y-3.5 sm:space-y-5 relative doraemon-gadget-card z-10">
           
+          <!-- Close Button -->
           <button 
-            @click="openModalFromShaker(shakerPickedCocktail)" 
-            class="flex-1 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black font-pixel-title border-2 border-slate-950 shadow-pixel-gold transition">
-            查看完整酒譜
+            @click="shakerPickedCocktail = null"
+            class="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 rounded-xl bg-slate-900 border-2 border-slate-700 text-slate-400 hover:text-slate-100 hover:border-amber-400 min-w-[38px] min-h-[38px] flex items-center justify-center transition z-20"
+            title="關閉">
+            <i data-lucide="x" class="w-5 h-5"></i>
           </button>
+
+          <!-- Top Doraemon Reveal Celebration Banner -->
+          <div class="space-y-1 pt-1">
+            <h2 class="text-2xl sm:text-3xl font-black font-pixel-title tracking-wider doraemon-rainbow-text drop-shadow-[2px_2px_0px_rgba(0,0,0,0.9)]">
+              ✨ 登～登～登～登！ ✨
+            </h2>
+            <p class="text-xs text-slate-400 font-bold font-pixel-title">
+              今晚的命定特選調酒誕生囉！
+            </p>
+          </div>
+
+          <!-- Center Stage: Glowing Halo Pedestal & Pixel Drink -->
+          <div class="relative py-1 sm:py-2">
+            <!-- Pulsing Gadget Halo -->
+            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-tr from-amber-500/40 via-cyan-400/30 to-rose-400/30 gadget-halo absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-0"></div>
+            
+            <!-- Levitating Drink Box -->
+            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl sm:rounded-3xl bg-slate-900/90 border-2 border-amber-400 shadow-pixel-gold flex items-center justify-center mx-auto p-2.5 sm:p-3 relative z-10 animate-float">
+              <span v-html="getCocktailPixelSvg(shakerPickedCocktail, 60)" class="inline-flex items-center justify-center transform hover:scale-110 transition duration-200"></span>
+            </div>
+          </div>
+
+          <!-- Drink Titles -->
+          <div class="space-y-0.5 sm:space-y-1">
+            <h3 class="text-2xl sm:text-3xl font-black text-amber-300 tracking-wide font-pixel-title truncate">
+              {{ shakerPickedCocktail.name_zh }}
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-400 font-bold font-pixel-title truncate">
+              {{ shakerPickedCocktail.name_en }}
+            </p>
+          </div>
+
+          <!-- Quick Attributes Grid -->
+          <div class="bg-slate-900/90 rounded-xl sm:rounded-2xl p-3 sm:p-4 border-2 border-slate-800 text-xs sm:text-sm text-slate-200 space-y-1.5 sm:space-y-2 text-left">
+            <div class="flex justify-between items-center pb-1 sm:pb-1.5 border-b border-slate-800/80">
+              <span class="text-slate-400 font-bold flex items-center gap-1.5">
+                <i data-lucide="wine" class="w-3.5 h-3.5 text-cyan-400"></i> 基酒類別
+              </span>
+              <span class="font-black text-amber-300 font-pixel-title">{{ shakerPickedCocktail.base_spirit }}</span>
+            </div>
+            <div class="flex justify-between items-center pb-1 sm:pb-1.5 border-b border-slate-800/80">
+              <span class="text-slate-400 font-bold flex items-center gap-1.5">
+                <i data-lucide="flame" class="w-3.5 h-3.5 text-rose-400"></i> 酒精濃度
+              </span>
+              <span class="font-black text-rose-400 font-pixel-title">{{ shakerPickedCocktail.abv }}% ABV</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-400 font-bold flex items-center gap-1.5">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i> 酒感推薦
+              </span>
+              <span class="font-black text-amber-400 font-pixel-title">★ {{ shakerPickedCocktail.rating }}/5</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex gap-2.5 sm:gap-3 pt-1">
+            <button 
+              @click="triggerShaker" 
+              class="flex-1 py-2.5 sm:py-3 px-2 sm:px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold font-pixel-title border-2 border-slate-700 shadow-pixel-sm transition flex items-center justify-center space-x-1 sm:space-x-1.5">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400"></i>
+              <span>再搖一次</span>
+            </button>
+            
+            <button 
+              @click="openModalFromShaker(shakerPickedCocktail)" 
+              class="flex-1 py-2.5 sm:py-3 px-2 sm:px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black font-pixel-title border-2 border-slate-950 shadow-pixel-gold transition flex items-center justify-center space-x-1 sm:space-x-1.5">
+              <i data-lucide="book-open" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-950"></i>
+              <span>查看完整酒譜</span>
+            </button>
+          </div>
+
         </div>
 
       </div>
@@ -1485,13 +1812,29 @@
           selectedCocktail.value = cocktail;
         };
 
-        // Web Audio Synthesizer Shaker Audio Effect
+        // Mobile Haptic Vibration Feedback Helper
+        const triggerHaptic = (pattern) => {
+          if (typeof navigator !== 'undefined' && navigator.vibrate) {
+            try {
+              navigator.vibrate(pattern);
+            } catch (e) {}
+          }
+        };
+
+        // Web Audio Synthesizer: 8-Bit Mario Shaker Audio Effect (3.0s Duration + Rhythmic Haptics)
         const playShakerAudio = () => {
           try {
             const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            if (ctx.state === 'suspended') {
+              ctx.resume();
+            }
             const now = ctx.currentTime;
             
-            const bufferSize = ctx.sampleRate * 1.5;
+            // Trigger Rhythmic Shaking Haptic Feedback on Mobile
+            triggerHaptic([30, 95, 30, 95, 30, 95, 30, 95, 30, 95, 30, 95, 30, 95, 30, 95, 30, 95, 30, 95, 30, 95, 30, 95]);
+
+            // 1. Shaker Ice Rattling (Filtered Noise Pulses)
+            const bufferSize = ctx.sampleRate * 3.0;
             const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
             const data = buffer.getChannelData(0);
             for (let i = 0; i < bufferSize; i++) {
@@ -1503,16 +1846,16 @@
 
             const filter = ctx.createBiquadFilter();
             filter.type = 'bandpass';
-            filter.frequency.setValueAtTime(1200, now);
-            filter.Q.setValueAtTime(3, now);
+            filter.frequency.setValueAtTime(1400, now);
+            filter.Q.setValueAtTime(3.5, now);
 
             const gain = ctx.createGain();
             gain.gain.setValueAtTime(0.01, now);
             
-            for (let i = 0; i < 10; i++) {
-              const t = now + i * 0.15;
-              gain.gain.setValueAtTime(0.2, t);
-              gain.gain.exponentialRampToValueAtTime(0.01, t + 0.1);
+            for (let i = 0; i < 24; i++) {
+              const t = now + i * 0.125;
+              gain.gain.setValueAtTime(0.22, t);
+              gain.gain.exponentialRampToValueAtTime(0.01, t + 0.08);
             }
 
             noise.connect(filter);
@@ -1520,7 +1863,105 @@
             gain.connect(ctx.destination);
 
             noise.start(now);
-            noise.stop(now + 1.5);
+            noise.stop(now + 3.0);
+
+            // 2. 8-Bit Mario Style Rhythmic Pulse Beeps
+            const pitches = [523.25, 659.25, 783.99, 1046.5, 659.25, 783.99, 1046.5, 1318.5];
+            for (let i = 0; i < 15; i++) {
+              const osc = ctx.createOscillator();
+              const oscGain = ctx.createGain();
+              osc.type = 'square';
+              osc.frequency.setValueAtTime(pitches[i % pitches.length], now + i * 0.19);
+              
+              oscGain.gain.setValueAtTime(0.05, now + i * 0.19);
+              oscGain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.19 + 0.09);
+
+              osc.connect(oscGain);
+              oscGain.connect(ctx.destination);
+
+              osc.start(now + i * 0.19);
+              osc.stop(now + i * 0.19 + 0.1);
+            }
+          } catch (e) {
+            console.log('Audio Context error:', e);
+          }
+        };
+
+        // Web Audio Synthesizer: Doraemon Secret Gadget Reveal Fanfare ("登～登～登～登！" + Celebration Haptic)
+        const playDoraemonFanfareAudio = () => {
+          try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            if (ctx.state === 'suspended') {
+              ctx.resume();
+            }
+            const now = ctx.currentTime;
+
+            // Trigger Celebratory Gadget Reveal Haptic Fanfare
+            triggerHaptic([40, 70, 40, 70, 80, 80, 220]);
+
+            // Notes of iconic 4-step ascending reveal melody: G4 -> C5 -> E5 -> G5
+            const melody = [
+              { freq: 392.00, time: 0.00, dur: 0.10, vol: 0.22 }, // 登
+              { freq: 523.25, time: 0.11, dur: 0.10, vol: 0.25 }, // 登
+              { freq: 659.25, time: 0.22, dur: 0.12, vol: 0.28 }, // 登
+              { freq: 783.99, time: 0.35, dur: 0.85, vol: 0.32 }  // 登～！
+            ];
+
+            melody.forEach(note => {
+              const start = now + note.time;
+              
+              // 1. Brass / Lead tone (Sawtooth + Triangle blend with filter)
+              const osc1 = ctx.createOscillator();
+              const osc2 = ctx.createOscillator();
+              const oscGain = ctx.createGain();
+              const noteFilter = ctx.createBiquadFilter();
+
+              osc1.type = 'triangle';
+              osc1.frequency.setValueAtTime(note.freq, start);
+
+              osc2.type = 'sawtooth';
+              osc2.frequency.setValueAtTime(note.freq * 1.002, start);
+
+              noteFilter.type = 'lowpass';
+              noteFilter.frequency.setValueAtTime(1800, start);
+              noteFilter.frequency.exponentialRampToValueAtTime(3200, start + 0.05);
+
+              oscGain.gain.setValueAtTime(0.001, start);
+              oscGain.gain.linearRampToValueAtTime(note.vol, start + 0.02);
+              oscGain.gain.exponentialRampToValueAtTime(0.001, start + note.dur);
+
+              osc1.connect(noteFilter);
+              osc2.connect(noteFilter);
+              noteFilter.connect(oscGain);
+              oscGain.connect(ctx.destination);
+
+              osc1.start(start);
+              osc2.start(start);
+              osc1.stop(start + note.dur);
+              osc2.stop(start + note.dur);
+
+              // 2. High Shimmer Chime for the final note (Sparkle Effect)
+              if (note.freq === 783.99) {
+                const sparkles = [1567.98, 2093.00, 2637.00, 3135.96];
+                sparkles.forEach((sFreq, sIdx) => {
+                  const sOsc = ctx.createOscillator();
+                  const sGain = ctx.createGain();
+                  const sStart = start + 0.04 + sIdx * 0.06;
+
+                  sOsc.type = 'sine';
+                  sOsc.frequency.setValueAtTime(sFreq, sStart);
+
+                  sGain.gain.setValueAtTime(0.08, sStart);
+                  sGain.gain.exponentialRampToValueAtTime(0.001, sStart + 0.25);
+
+                  sOsc.connect(sGain);
+                  sGain.connect(ctx.destination);
+
+                  sOsc.start(sStart);
+                  sOsc.stop(sStart + 0.28);
+                });
+              }
+            });
           } catch (e) {
             console.log('Audio Context error:', e);
           }
@@ -1539,7 +1980,16 @@
             const pool = filteredCocktails.value.length > 0 ? filteredCocktails.value : computedCocktails.value;
             const randomIndex = Math.floor(Math.random() * pool.length);
             shakerPickedCocktail.value = pool[randomIndex];
-          }, 1500);
+
+            // Play Doraemon Gadget Reveal Fanfare
+            playDoraemonFanfareAudio();
+
+            if (window.lucide) {
+              Vue.nextTick(() => {
+                window.lucide.createIcons();
+              });
+            }
+          }, 3000);
         };
 
         const getBaseSpiritBadgeStyle = (spirit) => {
