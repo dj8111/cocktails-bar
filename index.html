@@ -366,7 +366,16 @@
               <span>考照刷題</span>
             </button>
 
-            <!-- 3. 我的吧台 -->
+            <!-- 3. 分享網站 (Share) -->
+            <button 
+              @click="openShareModal"
+              class="relative px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold font-pixel-title bg-slate-900 hover:bg-slate-800 text-emerald-300 border-2 border-emerald-500/60 shadow-pixel-sm transition flex items-center space-x-1.5 whitespace-nowrap cursor-pointer"
+              title="分享經典調酒吧網站給好友">
+              <i data-lucide="share-2" class="w-4.5 h-4.5 text-emerald-400"></i>
+              <span>分享</span>
+            </button>
+
+            <!-- 4. 我的吧台 -->
             <button 
               @click="isBarOpen = !isBarOpen"
               class="relative px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold font-pixel-title bg-slate-900 hover:bg-slate-800 text-amber-400 border-2 border-amber-500/60 shadow-pixel-sm transition flex items-center space-x-2 whitespace-nowrap cursor-pointer">
@@ -377,7 +386,7 @@
               </span>
             </button>
 
-            <!-- 4. 酒保推薦 -->
+            <!-- 5. 酒保推薦 -->
             <button 
               @click="triggerShaker"
               class="relative px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold font-pixel-title bg-amber-500 hover:bg-amber-400 text-slate-950 border-2 border-slate-950 shadow-pixel-sm transition flex items-center space-x-2 whitespace-nowrap animate-pulse-glow cursor-pointer"
@@ -387,12 +396,12 @@
             </button>
           </div>
 
-          <!-- Mobile Right Quick Actions: Unit + 考照刷題 (md:hidden) -->
+          <!-- Mobile Right Quick Actions: Unit + 考照刷題 + 分享 (md:hidden) -->
           <div class="flex md:hidden items-center space-x-1.5 flex-shrink-0">
             <!-- Unit Switcher Button -->
             <button 
               @click="toggleUnit"
-              class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-200 border border-slate-700 shadow-pixel-sm transition flex items-center space-x-1 cursor-pointer">
+              class="px-2 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-200 border border-slate-700 shadow-pixel-sm transition flex items-center space-x-1 cursor-pointer">
               <i data-lucide="scale" class="w-3.5 h-3.5 text-amber-400"></i>
               <strong class="text-amber-400 font-pixel-title">{{ unit }}</strong>
             </button>
@@ -400,9 +409,18 @@
             <!-- 考照刷題 Button -->
             <button 
               @click="openExamModal"
-              class="px-2.5 py-1.5 rounded-lg text-xs font-bold font-pixel-title bg-slate-900 text-cyan-300 border border-cyan-500/60 shadow-pixel-sm transition flex items-center space-x-1 cursor-pointer">
+              class="px-2 py-1.5 rounded-lg text-xs font-bold font-pixel-title bg-slate-900 text-cyan-300 border border-cyan-500/60 shadow-pixel-sm transition flex items-center space-x-1 cursor-pointer">
               <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-cyan-400"></i>
               <span>考照刷題</span>
+            </button>
+
+            <!-- 分享 Button -->
+            <button 
+              @click="openShareModal"
+              class="px-2 py-1.5 rounded-lg text-xs font-bold font-pixel-title bg-slate-900 text-emerald-300 border border-emerald-500/60 shadow-pixel-sm transition flex items-center space-x-1 cursor-pointer"
+              title="分享網站">
+              <i data-lucide="share-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>分享</span>
             </button>
           </div>
 
@@ -1588,6 +1606,136 @@
       class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[110] px-4 py-2.5 rounded-xl bg-cyan-950 border-2 border-cyan-400 text-cyan-200 font-bold font-pixel-title text-xs sm:text-sm shadow-2xl flex items-center space-x-2 animate-fade-in pointer-events-none">
       <i data-lucide="check-circle" class="w-4 h-4 text-cyan-400"></i>
       <span>{{ toastMessage }}</span>
+    </div>
+
+    <!-- Share & Identity Pass Modal (身分通行證風格分享彈窗) -->
+    <div 
+      v-if="isShareModalOpen" 
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-xl overflow-y-auto animate-fade-in"
+      @click.self="closeShareModal">
+      
+      <div class="pixel-card rounded-3xl max-w-lg w-full border-2 border-emerald-500/80 shadow-[0_0_50px_rgba(16,185,129,0.35)] p-6 sm:p-8 text-center space-y-5 relative bg-slate-900/95 my-auto">
+        
+        <!-- Close Button (X) -->
+        <button 
+          @click="closeShareModal" 
+          class="absolute top-4 right-4 p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-slate-100 hover:bg-slate-700 border border-slate-700 transition cursor-pointer" 
+          title="關閉視窗"
+          aria-label="關閉視窗">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Top Identity Badge Header -->
+        <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-emerald-500/20 text-emerald-400 border-2 border-emerald-500/60 shadow-pixel-sm mx-auto">
+          <i data-lucide="share-2" class="w-8 h-8 sm:w-10 sm:h-10 text-emerald-400"></i>
+        </div>
+
+        <!-- Identity / Header Text -->
+        <div class="space-y-1.5">
+          <div class="inline-block px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-xs font-black font-pixel-title tracking-wider">
+            🍸 經典調酒吧 ‧ 好友通行推薦證
+          </div>
+          
+          <h2 class="text-xl sm:text-2xl font-black text-emerald-400 tracking-wide font-pixel-title leading-snug">
+            分享調酒指南給好友
+          </h2>
+
+          <p class="text-slate-300 text-xs sm:text-sm font-medium leading-relaxed">
+            掃描 QR Code 或一鍵分享至 LINE 與 Email，邀請好友一同品飲、備考乙級！
+          </p>
+        </div>
+
+        <!-- Center: QR Code & Website URL Box -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-950/80 border-2 border-slate-800 space-y-3.5">
+          
+          <!-- High-Definition QR Code Box -->
+          <div class="inline-block p-3 sm:p-3.5 bg-white rounded-2xl shadow-pixel-sm border-2 border-slate-700 mx-auto">
+            <img 
+              :src="shareQrCodeUrl" 
+              alt="經典調酒吧 QR Code" 
+              class="w-40 h-40 sm:w-48 sm:h-48 object-contain mx-auto block rounded-lg" 
+              loading="eager" />
+          </div>
+
+          <!-- Scan Hint -->
+          <div class="text-[11px] sm:text-xs text-slate-400 font-medium flex items-center justify-center space-x-1.5">
+            <i data-lucide="qr-code" class="w-4 h-4 text-emerald-400"></i>
+            <span>手機相機對準 QR Code 即可直接開啟網站</span>
+          </div>
+
+          <!-- Website URL Box & One-Click Copy -->
+          <div class="flex items-center space-x-2 bg-slate-900 border-2 border-slate-700 rounded-xl p-1.5 sm:p-2 text-left">
+            <input 
+              type="text" 
+              readonly 
+              :value="shareUrl" 
+              class="bg-transparent text-xs sm:text-sm text-slate-200 font-mono flex-grow px-2 py-1 outline-none select-all truncate" 
+              @focus="$event.target.select()" />
+            
+            <button 
+              @click="copyShareUrl"
+              class="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black font-pixel-title border border-slate-950 shadow-pixel-sm transition flex items-center space-x-1 flex-shrink-0 cursor-pointer">
+              <i :data-lucide="isCopied ? 'check' : 'copy'" class="w-3.5 h-3.5 text-slate-950"></i>
+              <span>{{ isCopied ? '已複製！' : '複製網址' }}</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Social & Email Share Channels -->
+        <div class="space-y-2.5 pt-1">
+          <div class="text-[11px] text-slate-400 font-pixel-title font-bold flex items-center justify-center space-x-1.5">
+            <span>── 選擇分享途徑 ──</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+            
+            <!-- 1. LINE Share -->
+            <button 
+              @click="shareViaLine"
+              class="p-2.5 sm:p-3 rounded-xl bg-[#06C755] hover:bg-[#05b34c] text-white font-black text-xs sm:text-sm font-pixel-title border-2 border-slate-950 shadow-pixel-sm transition flex items-center justify-center space-x-2 cursor-pointer col-span-1">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current flex-shrink-0" viewBox="0 0 24 24">
+                <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.019 9.577.39.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.646 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.589-3.843 2.589-5.962z"/>
+              </svg>
+              <span>LINE 分享</span>
+            </button>
+
+            <!-- 2. Email Share -->
+            <button 
+              @click="shareViaEmail"
+              class="p-2.5 sm:p-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs sm:text-sm font-pixel-title border-2 border-slate-950 shadow-pixel-sm transition flex items-center justify-center space-x-2 cursor-pointer col-span-1">
+              <i data-lucide="mail" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+              <span>Email 傳送</span>
+            </button>
+
+            <!-- 3. Facebook Share -->
+            <button 
+              @click="shareViaFacebook"
+              class="p-2.5 sm:p-3 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] text-white font-black text-xs sm:text-sm font-pixel-title border-2 border-slate-950 shadow-pixel-sm transition flex items-center justify-center space-x-2 cursor-pointer col-span-2 sm:col-span-1">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current flex-shrink-0" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              <span>FB 分享</span>
+            </button>
+
+          </div>
+
+          <!-- Mobile Native Share (Optional) -->
+          <button 
+            v-if="canNativeShare"
+            @click="shareViaNative"
+            class="w-full py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold font-pixel-title border border-slate-700 shadow-pixel-sm transition flex items-center justify-center space-x-2 cursor-pointer">
+            <i data-lucide="smartphone" class="w-4 h-4 text-emerald-400"></i>
+            <span>開啟手機原生分享選單</span>
+          </button>
+        </div>
+
+        <!-- Identity Pass Footer Note -->
+        <div class="text-[11px] text-slate-500 font-medium pt-1">
+          BAR PASS ID: COCKTAIL-GUIDE-2026 ‧ STATUS: ONLINE / VERIFIED
+        </div>
+
+      </div>
     </div>
 
     <!-- Age Verification & Health Warning Modal -->
@@ -6170,6 +6318,9 @@
         
         const isBarOpen = ref(false);
         const isShoppingOpen = ref(false);
+        const isExamModalOpen = ref(false);
+        const isShareModalOpen = ref(false);
+        const isCopied = ref(false);
         const searchQuery = ref('');
         const filterStatus = ref('all'); // all, ready, missing1, favorites
         const selectedBaseSpirit = ref('all');
@@ -6274,7 +6425,7 @@
         });
 
         // Re-render icons on modal open or state change
-        watch([selectedCocktail, shakerPickedCocktail, isBarOpen, filterStatus, categoryOpenState, isShoppingOpen, showScrollTop], () => {
+        watch([selectedCocktail, shakerPickedCocktail, isBarOpen, filterStatus, categoryOpenState, isShoppingOpen, showScrollTop, isShareModalOpen], () => {
           nextTick(() => {
             if (window.lucide) {
               window.lucide.createIcons();
@@ -7053,7 +7204,6 @@
         };
 
         // Exam Quiz & Flashcard Mode State & Methods
-        const isExamModalOpen = ref(false);
         const examTab = ref('flashcard'); // 'flashcard' | 'quiz'
 
         // Flashcard State
@@ -7223,6 +7373,81 @@
           refreshLucideIcons();
         };
 
+        // Share & Identification Pass Modal State & Actions
+        const openShareModal = () => {
+          isShareModalOpen.value = true;
+          triggerHaptic(15);
+          refreshLucideIcons();
+        };
+
+        const closeShareModal = () => {
+          isShareModalOpen.value = false;
+        };
+
+        const shareUrl = computed(() => {
+          if (typeof window !== 'undefined' && window.location && window.location.protocol.startsWith('http')) {
+            return window.location.origin + window.location.pathname;
+          }
+          return 'https://dj8111.github.io/cocktails-bar/';
+        });
+
+        const shareQrCodeUrl = computed(() => {
+          return 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&margin=8&data=' + encodeURIComponent(shareUrl.value);
+        });
+
+        const copyShareUrl = () => {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(shareUrl.value).then(() => {
+              isCopied.value = true;
+              showToast('已成功複製網站網址！');
+              triggerHaptic(20);
+              setTimeout(() => {
+                isCopied.value = false;
+              }, 2000);
+            }).catch(() => {
+              showToast('已複製網址：' + shareUrl.value);
+            });
+          } else {
+            showToast('已複製網址：' + shareUrl.value);
+          }
+        };
+
+        const shareViaLine = () => {
+          triggerHaptic(15);
+          const message = '🍹【經典調酒吧】乙級 90 款調酒指南與我的吧台智能匹配系統！推薦給你：\n' + shareUrl.value;
+          window.open('https://line.me/R/msg/text/?' + encodeURIComponent(message), '_blank');
+        };
+
+        const shareViaEmail = () => {
+          triggerHaptic(15);
+          const subject = '🍹 推薦好站：經典調酒吧 | 乙級 90 款調酒指南';
+          const body = '嗨！和你分享這個超棒的調酒指南網站【經典調酒吧】！\n\n' +
+            '收錄完整 90 款乙級經典調酒配方、考照刷題模擬測驗、3D 翻轉背誦閃卡與「我的吧台」庫存匹配智能推薦：\n' +
+            shareUrl.value + '\n\n' +
+            '乾杯！🍸';
+          window.location.href = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        };
+
+        const shareViaFacebook = () => {
+          triggerHaptic(15);
+          window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl.value), '_blank', 'width=620,height=580');
+        };
+
+        const canNativeShare = computed(() => {
+          return typeof navigator !== 'undefined' && !!navigator.share;
+        });
+
+        const shareViaNative = () => {
+          if (navigator.share) {
+            triggerHaptic(15);
+            navigator.share({
+              title: '經典調酒吧 | 乙級 90 款調酒指南',
+              text: '收錄 90 款乙級經典調酒、考照刷題與吧台庫存匹配系統！',
+              url: shareUrl.value
+            }).catch(() => {});
+          }
+        };
+
         return {
           cocktails,
           myBar,
@@ -7291,7 +7516,19 @@
           selectQuizOption,
           openExamModal,
           showScrollTop,
-          scrollToTop
+          scrollToTop,
+          isShareModalOpen,
+          isCopied,
+          openShareModal,
+          closeShareModal,
+          shareUrl,
+          shareQrCodeUrl,
+          copyShareUrl,
+          shareViaLine,
+          shareViaEmail,
+          shareViaFacebook,
+          canNativeShare,
+          shareViaNative
         };
       }
     }).mount('#app');
