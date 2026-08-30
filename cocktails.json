@@ -10,16 +10,41 @@
     "abv": 30,
     "rating": 5,
     "calories": 160,
-    "flavors": ["辛辣", "草本", "強烈"],
+    "flavors": [
+      "辛辣",
+      "草本",
+      "強烈"
+    ],
     "garnish_exam": "綠橄欖 1 顆穿串於竹籤",
     "home_hack": "若無不甜苦艾酒，可用不甜白葡萄酒替代，橄欖可用酸黃瓜薄片代替。",
     "description": "調酒之王，琴酒與不甜苦艾酒的和諧交響，口感乾冽清爽，草本香氣濃郁。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 60, "amount_oz": "2", "category": "base" },
-      { "name": "不甜苦艾酒", "amount_ml": 10, "amount_oz": "1/3", "category": "liqueur" },
-      { "name": "綠橄欖", "amount_ml": 1, "amount_oz": "1顆", "category": "garnish" }
+      {
+        "name": "琴酒",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "base"
+      },
+      {
+        "name": "不甜苦艾酒",
+        "amount_ml": 10,
+        "amount_oz": "1/3",
+        "category": "liqueur"
+      },
+      {
+        "name": "綠橄欖",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
     ],
-    "steps": ["於攪拌杯中加入冰塊。", "倒入琴酒與不甜苦艾酒。", "使用吧匙攪拌約 20-30 秒至充分冷卻。", "濾入預冷的馬丁尼杯中。", "以綠橄欖裝飾。"]
+    "steps": [
+      "於攪拌杯中加入冰塊。",
+      "倒入琴酒與不甜苦艾酒。",
+      "使用吧匙攪拌約 20-30 秒至充分冷卻。",
+      "濾入預冷的馬丁尼杯中。",
+      "以綠橄欖裝飾。"
+    ]
   },
   {
     "id": 2,
@@ -32,17 +57,47 @@
     "abv": 32,
     "rating": 5,
     "calories": 175,
-    "flavors": ["香醇", "甜美", "強烈"],
+    "flavors": [
+      "香醇",
+      "甜美",
+      "強烈"
+    ],
     "garnish_exam": "酒漬紅櫻桃 1 顆沉底或竹籤穿串",
     "home_hack": "黑櫻桃罐頭汁加少許威士忌可作為急救櫻桃替代。",
     "description": "調酒女王，威士忌與甜苦艾酒的完美結合，深紅誘人，香氣層次豐富。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "甜苦艾酒", "amount_ml": 20, "amount_oz": "0.75", "category": "liqueur" },
-      { "name": "安哥斯安哥斯苦精", "amount_ml": 2, "amount_oz": "2滴", "category": "mixer" },
-      { "name": "酒漬櫻桃", "amount_ml": 1, "amount_oz": "1顆", "category": "garnish" }
+      {
+        "name": "威士忌",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "甜苦艾酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "安格斯苦精",
+        "amount_ml": 2,
+        "amount_oz": "2滴",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
     ],
-    "steps": ["攪拌杯裝滿冰塊。", "加入威士忌、甜苦艾酒及苦精。", "順暢攪拌冷卻。", "過濾倒入冷藏馬丁尼杯。", "加入酒漬櫻桃裝飾。"]
+    "steps": [
+      "攪拌杯裝滿冰塊。",
+      "加入威士忌、甜苦艾酒及苦精。",
+      "順暢攪拌冷卻。",
+      "過濾倒入冷藏馬丁尼杯。",
+      "加入酒漬櫻桃裝飾。"
+    ]
   },
   {
     "id": 3,
@@ -55,17 +110,46 @@
     "abv": 24,
     "rating": 4,
     "calories": 200,
-    "flavors": ["苦甜", "草本", "柑橘"],
+    "flavors": [
+      "苦甜",
+      "草本",
+      "柑橘"
+    ],
     "garnish_exam": "柳橙皮捲或柳橙片",
     "home_hack": "如無金巴利(Campari)，可用阿佩羅(Aperol)替代，苦味較輕微。",
     "description": "經典義大利苦甜調酒，等比例的琴酒、金巴利與甜苦艾酒，開胃首選。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 30, "amount_oz": "1", "category": "base" },
-      { "name": "金巴利利口酒", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" },
-      { "name": "甜苦艾酒", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" },
-      { "name": "新鮮柳橙", "amount_ml": 1, "amount_oz": "1片", "category": "garnish" }
+      {
+        "name": "琴酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "金巴利利口酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "甜苦艾酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮柳橙",
+        "amount_ml": 1,
+        "amount_oz": "1片",
+        "category": "garnish"
+      }
     ],
-    "steps": ["古典杯放入大冰塊。", "直接倒入琴酒、金巴利及甜苦艾酒。", "輕柔攪拌數下。", "扭轉柳橙皮釋放香氣後放入杯中裝飾。"]
+    "steps": [
+      "古典杯放入大冰塊。",
+      "直接倒入琴酒、金巴利及甜苦艾酒。",
+      "輕柔攪拌數下。",
+      "扭轉柳橙皮釋放香氣後放入杯中裝飾。"
+    ]
   },
   {
     "id": 4,
@@ -78,17 +162,47 @@
     "abv": 22,
     "rating": 3,
     "calories": 150,
-    "flavors": ["酸甜", "清爽", "果香"],
+    "flavors": [
+      "酸甜",
+      "清爽",
+      "果香"
+    ],
     "garnish_exam": "萊姆片或切角",
     "home_hack": "可以使用白糖與等量熱水混合自製簡易糖漿(1:1)。",
     "description": "海明威的最愛，白蘭姆酒、新鮮萊姆汁與糖漿的黃金酸甜比例。",
     "ingredients": [
-      { "name": "白蘭姆酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "新鮮檸檬/萊姆", "amount_ml": 1, "amount_oz": "1片", "category": "garnish" }
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1片",
+        "category": "garnish"
+      }
     ],
-    "steps": ["雪克杯加入大半杯冰塊。", "倒入白蘭姆酒、萊姆汁及糖漿。", "用力搖盪 12-15 秒至杯身結霜。", "雙重過濾倒入冰鎮雞尾酒杯。", "杯緣飾以萊姆片。"]
+    "steps": [
+      "雪克杯加入大半杯冰塊。",
+      "倒入白蘭姆酒、萊姆汁及糖漿。",
+      "用力搖盪 12-15 秒至杯身結霜。",
+      "雙重過濾倒入冰鎮雞尾酒杯。",
+      "杯緣飾以萊姆片。"
+    ]
   },
   {
     "id": 5,
@@ -101,17 +215,46 @@
     "abv": 34,
     "rating": 4,
     "calories": 160,
-    "flavors": ["醇厚", "木質", "柑橘"],
+    "flavors": [
+      "醇厚",
+      "木質",
+      "柑橘"
+    ],
     "garnish_exam": "柳橙皮與酒漬櫻桃",
-    "home_hack": "方糖可用 1/2 茶匙細砂紙或糖漿代替。",
+    "home_hack": "方糖可用 1/2 茶匙細砂糖或糖漿代替。",
     "description": "調酒始祖，以方糖、苦精與威士忌極簡堆疊，展現烈酒最原始優雅的風味。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "安哥斯安哥斯苦精", "amount_ml": 2, "amount_oz": "2滴", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 5, "amount_oz": "1顆方糖", "category": "mixer" },
-      { "name": "新鮮柳橙", "amount_ml": 1, "amount_oz": "1皮", "category": "garnish" }
+      {
+        "name": "威士忌",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "安格斯苦精",
+        "amount_ml": 2,
+        "amount_oz": "2滴",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 5,
+        "amount_oz": "1顆方糖",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮柳橙",
+        "amount_ml": 1,
+        "amount_oz": "1皮",
+        "category": "garnish"
+      }
     ],
-    "steps": ["在古典杯中放入方糖與苦精及少量水，壓碎溶解。", "放入大冰塊，倒入半量威士忌攪拌。", "再放入冰塊與剩餘威士忌攪拌。", "擠壓柳橙皮精油於杯口並入杯。"]
+    "steps": [
+      "在古典杯中放入方糖與苦精及少量水，壓碎溶解。",
+      "放入大冰塊，倒入半量威士忌攪拌。",
+      "再放入冰塊與剩餘威士忌攪拌。",
+      "擠壓柳橙皮精油於杯口並入杯。"
+    ]
   },
   {
     "id": 6,
@@ -124,17 +267,47 @@
     "abv": 18,
     "rating": 2,
     "calories": 240,
-    "flavors": ["奶油", "濃郁", "巧克醇香"],
+    "flavors": [
+      "奶油",
+      "濃郁",
+      "巧克醇香"
+    ],
     "garnish_exam": "現磨肉豆蔻粉少量撒於表面",
     "home_hack": "現磨肉豆蔻可用市售肉桂粉或可可粉替代裝飾。",
     "description": "宛如液體甜點，干邑白蘭地結合棕色可可酒與鮮奶油，口感綿密滑順。",
     "ingredients": [
-      { "name": "白蘭地", "amount_ml": 30, "amount_oz": "1", "category": "base" },
-      { "name": "可可香甜酒", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" },
-      { "name": "鮮奶油/牛奶", "amount_ml": 30, "amount_oz": "1", "category": "mixer" },
-      { "name": "肉豆蔻/肉桂粉", "amount_ml": 1, "amount_oz": "適量", "category": "garnish" }
+      {
+        "name": "白蘭地",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "可可香甜酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "鮮奶油/牛奶",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "肉豆蔻/肉桂粉",
+        "amount_ml": 1,
+        "amount_oz": "適量",
+        "category": "garnish"
+      }
     ],
-    "steps": ["雪克杯裝入冰塊。", "加入白蘭地、可可利口酒及鮮奶油。", "快速強烈搖盪至充分乳化。", "過濾倒入雞尾酒杯。", "表面輕撒肉豆蔻粉。"]
+    "steps": [
+      "雪克杯裝入冰塊。",
+      "加入白蘭地、可可利口酒及鮮奶油。",
+      "快速強烈搖盪至充分乳化。",
+      "過濾倒入雞尾酒杯。",
+      "表面輕撒肉豆蔻粉。"
+    ]
   },
   {
     "id": 7,
@@ -147,17 +320,47 @@
     "abv": 28,
     "rating": 4,
     "calories": 170,
-    "flavors": ["酸甜", "果香", "高雅"],
+    "flavors": [
+      "酸甜",
+      "果香",
+      "高雅"
+    ],
     "garnish_exam": "糖口杯 (Sugar Rim) 與檸檬皮",
-    "home_hack": "用切開檸檬擦拭杯口後沾細砂紙即可做出標準糖口杯。",
+    "home_hack": "用切開檸檬擦拭杯口後沾細砂糖即可做出標準糖口杯。",
     "description": "經典酸酒家族代表，白蘭地、橙酒與檸檬汁三位一體，搭配糖口甜酸交織。",
     "ingredients": [
-      { "name": "白蘭地", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "橙酒", "amount_ml": 20, "amount_oz": "0.75", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 20, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "鹽/砂糖", "amount_ml": 1, "amount_oz": "適量", "category": "garnish" }
+      {
+        "name": "白蘭地",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "鹽/砂糖",
+        "amount_ml": 1,
+        "amount_oz": "適量",
+        "category": "garnish"
+      }
     ],
-    "steps": ["預先製作雞尾酒杯糖口。", "雪克杯加冰塊，倒入白蘭地、橙酒及檸檬汁。", "搖盪冷卻。", "細網過濾入糖口杯。", "掛檸檬皮裝飾。"]
+    "steps": [
+      "預先製作雞尾酒杯糖口。",
+      "雪克杯加冰塊，倒入白蘭地、橙酒及檸檬汁。",
+      "搖盪冷卻。",
+      "細網過濾入糖口杯。",
+      "掛檸檬皮裝飾。"
+    ]
   },
   {
     "id": 8,
@@ -170,17 +373,47 @@
     "abv": 18,
     "rating": 3,
     "calories": 165,
-    "flavors": ["水果酸甜", "粉紅時尚", "清爽"],
+    "flavors": [
+      "水果酸甜",
+      "粉紅時尚",
+      "清爽"
+    ],
     "garnish_exam": "橙皮扭轉或切片",
     "home_hack": "若無蔓越莓汁可用紅葡萄汁加少許檸檬汁代替色彩。",
     "description": "慾望城市女主角的最愛，粉紅迷人色彩，檸檬伏特加與蔓越莓的完美結合。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 40, "amount_oz": "1.33", "category": "base" },
-      { "name": "橙酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "蔓越莓汁", "amount_ml": 30, "amount_oz": "1", "category": "mixer" }
+      {
+        "name": "伏特加",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "蔓越莓汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加入冰塊。", "加入伏特加、橙酒、萊姆汁與蔓越莓汁。", "均勻搖盪至極致冰涼。", "濾入馬丁尼杯中。", "以柳橙皮裝飾。"]
+    "steps": [
+      "雪克杯加入冰塊。",
+      "加入伏特加、橙酒、萊姆汁與蔓越莓汁。",
+      "均勻搖盪至極致冰涼。",
+      "濾入馬丁尼杯中。",
+      "以柳橙皮裝飾。"
+    ]
   },
   {
     "id": 9,
@@ -193,18 +426,53 @@
     "abv": 12,
     "rating": 2,
     "calories": 180,
-    "flavors": ["薄荷清爽", "柑橘", "氣泡"],
+    "flavors": [
+      "薄荷清爽",
+      "柑橘",
+      "氣泡"
+    ],
     "garnish_exam": "新鮮薄荷枝葉與萊姆角",
     "home_hack": "薄荷葉輕拍即可釋放香氣，切勿過度搗碎以免生苦味。",
     "description": "古巴夏日清涼象徵，搗碎薄荷、萊姆與蔗糖，搭配白蘭姆酒與氣泡水。",
     "ingredients": [
-      { "name": "白蘭姆酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 20, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "氣泡水", "amount_ml": 60, "amount_oz": "2", "category": "mixer" },
-      { "name": "新鮮薄荷葉", "amount_ml": 1, "amount_oz": "6-8葉", "category": "garnish" }
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮薄荷葉",
+        "amount_ml": 1,
+        "amount_oz": "6-8葉",
+        "category": "garnish"
+      }
     ],
-    "steps": ["杯中放入薄荷葉、萊姆汁與糖漿，輕壓釋放香氣。", "加入碎冰至半滿，倒入白蘭姆酒。", "攪拌混合後補滿碎冰。", "頂層倒滿氣泡水。", "插上薄荷枝飾。"]
+    "steps": [
+      "杯中放入薄荷葉、萊姆汁與糖漿，輕壓釋放香氣。",
+      "加入碎冰至半滿，倒入白蘭姆酒。",
+      "攪拌混合後補滿碎冰。",
+      "頂層倒滿氣泡水。",
+      "插上薄荷枝飾。"
+    ]
   },
   {
     "id": 10,
@@ -217,17 +485,47 @@
     "abv": 10,
     "rating": 2,
     "calories": 140,
-    "flavors": ["咸辣", "番茄濃郁", "獨特鹹香"],
+    "flavors": [
+      "咸辣",
+      "番茄濃郁",
+      "獨特鹹香"
+    ],
     "garnish_exam": "芹菜棒 1 根與檸檬角",
     "home_hack": "可用市售番茄汁，加入少許黑胡椒與Tabasco辣醬模擬鹹辣風味。",
     "description": "早午餐早安酒，伏特加搭配濃郁番茄汁、辣醬與香料，口感豐富鹹辣。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "番茄汁", "amount_ml": 90, "amount_oz": "3", "category": "mixer" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "新鮮芹菜", "amount_ml": 1, "amount_oz": "1根", "category": "garnish" }
+      {
+        "name": "伏特加",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "番茄汁",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮芹菜",
+        "amount_ml": 1,
+        "amount_oz": "1根",
+        "category": "garnish"
+      }
     ],
-    "steps": ["高球杯加滿冰塊。", "倒入伏特加、檸檬汁與番茄汁。", "加入少許辣醬、梅林辣醬與鹽胡椒。", "用吧匙溫和攪拌。", "插入芹菜棒與檸檬片。"]
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入伏特加、檸檬汁與番茄汁。",
+      "加入少許辣醬、梅林辣醬與鹽胡椒。",
+      "用吧匙溫和攪拌。",
+      "插入芹菜棒與檸檬片。"
+    ]
   },
   {
     "id": 11,
@@ -240,17 +538,47 @@
     "abv": 26,
     "rating": 4,
     "calories": 190,
-    "flavors": ["鹹酸", "龍舌蘭香", "清爽"],
+    "flavors": [
+      "鹹酸",
+      "龍舌蘭香",
+      "清爽"
+    ],
     "garnish_exam": "鹽口杯 (Salt Rim) 與萊姆片",
     "home_hack": "食用鹽粒切角擦拭杯口即可快速做鹽口杯。",
     "description": "墨西哥烈酒傳奇，龍舌蘭、橙酒與萊姆汁搭配杯口鹽圈，鹹酸帶勁。",
     "ingredients": [
-      { "name": "龍舌蘭酒", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "橙酒", "amount_ml": 20, "amount_oz": "0.75", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "鹽/砂糖", "amount_ml": 1, "amount_oz": "適量", "category": "garnish" }
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "鹽/砂糖",
+        "amount_ml": 1,
+        "amount_oz": "適量",
+        "category": "garnish"
+      }
     ],
-    "steps": ["製作瑪格麗特杯鹽口。", "雪克杯加冰塊，倒入龍舌蘭、橙酒及萊姆汁。", "強力搖盪冷卻。", "濾入鹽口杯中。", "飾以萊姆輪片。"]
+    "steps": [
+      "製作瑪格麗特杯鹽口。",
+      "雪克杯加冰塊，倒入龍舌蘭、橙酒及萊姆汁。",
+      "強力搖盪冷卻。",
+      "濾入鹽口杯中。",
+      "飾以萊姆輪片。"
+    ]
   },
   {
     "id": 12,
@@ -263,16 +591,41 @@
     "abv": 12,
     "rating": 1,
     "calories": 140,
-    "flavors": ["奎寧苦甜", "草本清爽", "氣泡"],
+    "flavors": [
+      "奎寧苦甜",
+      "草本清爽",
+      "氣泡"
+    ],
     "garnish_exam": "萊姆角或切片",
     "home_hack": "若無通寧水(Tonic Water)，可用氣泡水加少許檸檬汁代替。",
     "description": "最普及的經典 Highball，琴酒的松針草本與通寧水的微苦氣泡完美交融。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "通寧水", "amount_ml": 120, "amount_oz": "4", "category": "mixer" },
-      { "name": "新鮮檸檬/萊姆", "amount_ml": 1, "amount_oz": "1角", "category": "garnish" }
+      {
+        "name": "琴酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "通寧水",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1角",
+        "category": "garnish"
+      }
     ],
-    "steps": ["高球杯加滿冰塊。", "倒入琴酒。", "沿冰塊緩緩注入通寧水。", "提拉吧匙一次保持氣泡。", "放入萊姆角。"]
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入琴酒。",
+      "沿冰塊緩緩注入通寧水。",
+      "提拉吧匙一次保持氣泡。",
+      "放入萊姆角。"
+    ]
   },
   {
     "id": 13,
@@ -285,17 +638,47 @@
     "abv": 14,
     "rating": 2,
     "calories": 160,
-    "flavors": ["酸甜", "綿密氣泡", "解渴"],
+    "flavors": [
+      "酸甜",
+      "綿密氣泡",
+      "解渴"
+    ],
     "garnish_exam": "檸檬片",
     "home_hack": "使用雪碧可代替氣泡水加糖漿。",
     "description": "琴酒、檸檬汁與糖漿搖勻後加入氣泡水，產生持久細緻的酸甜氣泡綿密感。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 30, "amount_oz": "1", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" },
-      { "name": "氣泡水", "amount_ml": 80, "amount_oz": "2.5", "category": "mixer" }
+      {
+        "name": "琴酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 80,
+        "amount_oz": "2.5",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯放入琴酒、檸檬汁、糖漿與冰塊。", "用力搖盪 15 秒。", "濾入加有冰塊的高球杯。", "補滿氣泡水至頂端泡沫上升。", "放置檸檬片裝飾。"]
+    "steps": [
+      "雪克杯放入琴酒、檸檬汁、糖漿與冰塊。",
+      "用力搖盪 15 秒。",
+      "濾入加有冰塊的高球杯。",
+      "補滿氣泡水至頂端泡沫上升。",
+      "放置檸檬片裝飾。"
+    ]
   },
   {
     "id": 14,
@@ -308,16 +691,41 @@
     "abv": 11,
     "rating": 1,
     "calories": 155,
-    "flavors": ["可樂焦糖", "柑橘酸甜", "輕鬆"],
+    "flavors": [
+      "可樂焦糖",
+      "柑橘酸甜",
+      "輕鬆"
+    ],
     "garnish_exam": "萊姆角 1-2 個",
     "home_hack": "擠入新鮮萊姆汁是自由古巴與普通蘭姆可樂的分水嶺！",
     "description": "歡慶古巴獨立的派對必備款，白蘭姆酒、可樂與現擠萊姆汁。",
     "ingredients": [
-      { "name": "白蘭姆酒", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "可樂", "amount_ml": 120, "amount_oz": "4", "category": "mixer" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" }
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "可樂",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      }
     ],
-    "steps": ["高球杯填滿冰塊。", "倒入白蘭姆酒與擠入萊姆汁。", "倒滿可樂。", "輕微攪拌混合。", "放入萊姆角裝飾。"]
+    "steps": [
+      "高球杯填滿冰塊。",
+      "倒入白蘭姆酒與擠入萊姆汁。",
+      "倒滿可樂。",
+      "輕微攪拌混合。",
+      "放入萊姆角裝飾。"
+    ]
   },
   {
     "id": 15,
@@ -330,17 +738,47 @@
     "abv": 12,
     "rating": 2,
     "calories": 190,
-    "flavors": ["果香甘甜", "漸層美麗", "陽光"],
+    "flavors": [
+      "果香甘甜",
+      "漸層美麗",
+      "陽光"
+    ],
     "garnish_exam": "柳橙片與酒漬櫻桃",
     "home_hack": "紅石榴糖漿沿杯壁緩緩沉底即可創造出日出漸層層次。",
     "description": "如滾滾朝陽般熱情繽紛，龍舌蘭、柳橙汁與沉底紅石榴糖漿形成的漸層奇觀。",
     "ingredients": [
-      { "name": "龍舌蘭酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "柳橙汁", "amount_ml": 90, "amount_oz": "3", "category": "mixer" },
-      { "name": "紅石榴糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "酒漬櫻桃", "amount_ml": 1, "amount_oz": "1顆", "category": "garnish" }
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
     ],
-    "steps": ["高球杯裝滿冰塊。", "倒入龍舌蘭酒與柳橙汁攪拌。", "沿杯內壁緩緩注入紅石榴糖漿沉底。", "不可攪拌以維持漸層。", "飾以柳橙片與櫻桃。"]
+    "steps": [
+      "高球杯裝滿冰塊。",
+      "倒入龍舌蘭酒與柳橙汁攪拌。",
+      "沿杯內壁緩緩注入紅石榴糖漿沉底。",
+      "不可攪拌以維持漸層。",
+      "飾以柳橙片與櫻桃。"
+    ]
   },
   {
     "id": 16,
@@ -353,16 +791,41 @@
     "abv": 15,
     "rating": 1,
     "calories": 210,
-    "flavors": ["薄荷巧克", "甜美奶香", "滑順"],
+    "flavors": [
+      "薄荷巧克",
+      "甜美奶香",
+      "滑順"
+    ],
     "garnish_exam": "薄荷葉",
     "home_hack": "綠薄荷利口酒與白可可利口酒等比例混合濃醇鮮奶油。",
     "description": "經典綠色薄荷巧克力甜點調酒，濃郁薄荷香與可可甜味搭配鮮奶油。",
     "ingredients": [
-      { "name": "薄荷香甜酒", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" },
-      { "name": "可可香甜酒", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" },
-      { "name": "鮮奶油/牛奶", "amount_ml": 30, "amount_oz": "1", "category": "mixer" }
+      {
+        "name": "薄荷香甜酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "可可香甜酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "鮮奶油/牛奶",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加入冰塊。", "倒入綠薄荷酒、白可可酒與鮮奶油。", "用力搖盪至乳化結霜。", "過濾倒入雞尾酒杯。", "以薄荷葉裝飾。"]
+    "steps": [
+      "雪克杯加入冰塊。",
+      "倒入綠薄荷酒、白可可酒與鮮奶油。",
+      "用力搖盪至乳化結霜。",
+      "過濾倒入雞尾酒杯。",
+      "以薄荷葉裝飾。"
+    ]
   },
   {
     "id": 17,
@@ -375,17 +838,47 @@
     "abv": 13,
     "rating": 2,
     "calories": 185,
-    "flavors": ["蜜桃甜美", "熱帶水果", "果香"],
+    "flavors": [
+      "蜜桃甜美",
+      "熱帶水果",
+      "果香"
+    ],
     "garnish_exam": "柳橙片",
     "home_hack": "水蜜桃酒可以水蜜桃糖漿加伏特加替代。",
     "description": "充滿度假風情，伏特加、水蜜桃香甜酒、柳橙汁與蔓越莓汁交織。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 40, "amount_oz": "1.33", "category": "base" },
-      { "name": "水蜜桃香甜酒", "amount_ml": 20, "amount_oz": "0.66", "category": "liqueur" },
-      { "name": "柳橙汁", "amount_ml": 40, "amount_oz": "1.33", "category": "mixer" },
-      { "name": "蔓越莓汁", "amount_ml": 40, "amount_oz": "1.33", "category": "mixer" }
+      {
+        "name": "伏特加",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "水蜜桃香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "mixer"
+      },
+      {
+        "name": "蔓越莓汁",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "mixer"
+      }
     ],
-    "steps": ["高球杯加入冰塊。", "倒入伏特加與水蜜桃利口酒。", "加入柳橙汁與蔓越莓汁。", "攪拌均勻。", "飾以柳橙切片。"]
+    "steps": [
+      "高球杯加入冰塊。",
+      "倒入伏特加與水蜜桃利口酒。",
+      "加入柳橙汁與蔓越莓汁。",
+      "攪拌均勻。",
+      "飾以柳橙切片。"
+    ]
   },
   {
     "id": 18,
@@ -398,21 +891,71 @@
     "abv": 22,
     "rating": 5,
     "calories": 280,
-    "flavors": ["檸檬紅茶味", "勁道十足", "易口易醉"],
+    "flavors": [
+      "檸檬紅茶味",
+      "勁道十足",
+      "易口易醉"
+    ],
     "garnish_exam": "檸檬片 1 片於杯緣",
     "home_hack": "雖然完全不含茶葉，但五烈酒加可樂混色極像凍檸茶！",
     "description": "著名烈酒大集合！琴酒、伏特加、蘭姆酒、龍舌蘭、橙酒五白烈酒加上檸檬汁與可樂。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 15, "amount_oz": "0.5", "category": "base" },
-      { "name": "伏特加", "amount_ml": 15, "amount_oz": "0.5", "category": "base" },
-      { "name": "白蘭姆酒", "amount_ml": 15, "amount_oz": "0.5", "category": "base" },
-      { "name": "龍舌蘭酒", "amount_ml": 15, "amount_oz": "0.5", "category": "base" },
-      { "name": "橙酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "可樂", "amount_ml": 30, "amount_oz": "1", "category": "mixer" }
+      {
+        "name": "琴酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "base"
+      },
+      {
+        "name": "伏特加",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "base"
+      },
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "base"
+      },
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "可樂",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加入冰塊與所有烈酒、橙酒、檸檬汁及糖漿。", "快速搖盪。", "倒入加滿冰塊的可林杯中。", "上方淋上少許可樂上色。", "飾以檸檬片。"]
+    "steps": [
+      "雪克杯加入冰塊與所有烈酒、橙酒、檸檬汁及糖漿。",
+      "快速搖盪。",
+      "倒入加滿冰塊的可林杯中。",
+      "上方淋上少許可樂上色。",
+      "飾以檸檬片。"
+    ]
   },
   {
     "id": 19,
@@ -425,17 +968,47 @@
     "abv": 14,
     "rating": 2,
     "calories": 210,
-    "flavors": ["藍海熱帶", "鳳梨甜美", "椰香"],
+    "flavors": [
+      "藍海熱帶",
+      "鳳梨甜美",
+      "椰香"
+    ],
     "garnish_exam": "鳳梨角與酒漬櫻桃",
     "home_hack": "藍柑橘酒(Blue Curacao)給予其夢幻海洋藍色彩。",
     "description": "太平洋夏威夷群島風采，白蘭姆酒、藍柑橘酒、鳳梨汁與椰子膏/鮮奶油。",
     "ingredients": [
-      { "name": "白蘭姆酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "藍柑橘香甜酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-      { "name": "鳳梨汁", "amount_ml": 90, "amount_oz": "3", "category": "mixer" },
-      { "name": "椰子香甜酒/椰奶", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" }
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "藍柑橘香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      },
+      {
+        "name": "椰子香甜酒/椰奶",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      }
     ],
-    "steps": ["雪克杯加滿碎冰。", "加入蘭姆酒、藍柑橘酒、鳳梨汁及椰奶。", "用力搖勻。", "倒入颶風杯中。", "以鳳梨角與紅櫻桃裝飾。"]
+    "steps": [
+      "雪克杯加滿碎冰。",
+      "加入蘭姆酒、藍柑橘酒、鳳梨汁及椰奶。",
+      "用力搖勻。",
+      "倒入颶風杯中。",
+      "以鳳梨角與紅櫻桃裝飾。"
+    ]
   },
   {
     "id": 20,
@@ -448,17 +1021,46 @@
     "abv": 13,
     "rating": 2,
     "calories": 260,
-    "flavors": ["濃醇椰香", "鳳梨酸甜", "冰沙感"],
+    "flavors": [
+      "濃醇椰香",
+      "鳳梨酸甜",
+      "冰沙感"
+    ],
     "garnish_exam": "鳳梨切片與櫻桃",
     "home_hack": "可用椰奶罐頭加砂糖替代濃縮椰子膏。",
     "description": "波多黎各國酒，蘭姆酒與鳳梨汁、椰奶打成綿密冰沙，充滿熱帶海灘氣息。",
     "ingredients": [
-      { "name": "白蘭姆酒", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "鳳梨汁", "amount_ml": 90, "amount_oz": "3", "category": "mixer" },
-      { "name": "椰子香甜酒/椰奶", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" }
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      },
+      {
+        "name": "椰子香甜酒/椰奶",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      }
     ],
-    "steps": ["果汁機放入冰塊、白蘭姆酒、鳳梨汁、椰奶與萊姆汁。", "高速打成綿密冰沙。", "倒入颶風杯中。", "插入小雨傘、鳳梨片與櫻桃裝飾。"]
+    "steps": [
+      "果汁機放入冰塊、白蘭姆酒、鳳梨汁、椰奶與萊姆汁。",
+      "高速打成綿密冰沙。",
+      "倒入颶風杯中。",
+      "插入小雨傘、鳳梨片與櫻桃裝飾。"
+    ]
   },
   {
     "id": 21,
@@ -471,15 +1073,33 @@
     "abv": 28,
     "rating": 4,
     "calories": 190,
-    "flavors": ["咖啡苦甜", "醇厚", "烈酒強勁"],
+    "flavors": [
+      "咖啡苦甜",
+      "醇厚",
+      "烈酒強勁"
+    ],
     "garnish_exam": "無或酒漬櫻桃",
     "home_hack": "卡魯哇(Kahlúa)咖啡酒搭配純伏特加。",
     "description": "極簡冷冽，伏特加與卡魯哇咖啡香甜酒的直接碰撞，深沉濃郁。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "咖啡香甜酒", "amount_ml": 20, "amount_oz": "0.75", "category": "liqueur" }
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "咖啡香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      }
     ],
-    "steps": ["古典杯加滿冰塊。", "倒入伏特加與咖啡香甜酒。", "吧匙溫柔攪拌至冷卻。"]
+    "steps": [
+      "古典杯加滿冰塊。",
+      "倒入伏特加與咖啡香甜酒。",
+      "吧匙溫柔攪拌至冷卻。"
+    ]
   },
   {
     "id": 22,
@@ -492,16 +1112,39 @@
     "abv": 20,
     "rating": 3,
     "calories": 230,
-    "flavors": ["咖啡拿鐵", "奶香順口", "滑順"],
+    "flavors": [
+      "咖啡拿鐵",
+      "奶香順口",
+      "滑順"
+    ],
     "garnish_exam": "無",
     "home_hack": "鮮奶油可用全脂牛奶或植物奶(燕麥奶)替代。",
     "description": "黑色俄羅斯的變體，頂層淋上濃郁鮮奶油，宛如冰拿鐵般絲滑。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "咖啡香甜酒", "amount_ml": 20, "amount_oz": "0.75", "category": "liqueur" },
-      { "name": "鮮奶油/牛奶", "amount_ml": 30, "amount_oz": "1", "category": "mixer" }
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "咖啡香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "鮮奶油/牛奶",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
     ],
-    "steps": ["古典杯加滿冰塊。", "倒入伏特加與咖啡酒攪拌。", "緩緩在頂層倒上鮮奶油形成分層或輕微混勻。"]
+    "steps": [
+      "古典杯加滿冰塊。",
+      "倒入伏特加與咖啡酒攪拌。",
+      "緩緩在頂層倒上鮮奶油形成分層或輕微混勻。"
+    ]
   },
   {
     "id": 23,
@@ -514,17 +1157,46 @@
     "abv": 8,
     "rating": 1,
     "calories": 130,
-    "flavors": ["苦甜開胃", "草本", "氣泡"],
+    "flavors": [
+      "苦甜開胃",
+      "草本",
+      "氣泡"
+    ],
     "garnish_exam": "柳橙片與檸檬皮",
     "home_hack": "尼格羅尼去琴酒補氣泡水即為美式苦味！",
     "description": "義大利經典開胃酒，金巴利與甜苦艾酒加氣泡水，清爽低酒精。",
     "ingredients": [
-      { "name": "金巴利利口酒", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" },
-      { "name": "甜苦艾酒", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" },
-      { "name": "氣泡水", "amount_ml": 60, "amount_oz": "2", "category": "mixer" },
-      { "name": "新鮮柳橙", "amount_ml": 1, "amount_oz": "1片", "category": "garnish" }
+      {
+        "name": "金巴利利口酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "甜苦艾酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮柳橙",
+        "amount_ml": 1,
+        "amount_oz": "1片",
+        "category": "garnish"
+      }
     ],
-    "steps": ["高球杯加滿冰塊。", "倒入金巴利與甜苦艾酒。", "補上氣泡水。", "輕攪一下，飾以柳橙片。"]
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入金巴利與甜苦艾酒。",
+      "補上氣泡水。",
+      "輕攪一下，飾以柳橙片。"
+    ]
   },
   {
     "id": 24,
@@ -537,17 +1209,46 @@
     "abv": 11,
     "rating": 1,
     "calories": 150,
-    "flavors": ["甜橙微苦", "歡樂氣泡", "開胃"],
+    "flavors": [
+      "甜橙微苦",
+      "歡樂氣泡",
+      "開胃"
+    ],
     "garnish_exam": "柳橙切片",
     "home_hack": "普羅賽克(Prosecco)不甜氣泡白酒搭配阿佩羅(Aperol)與氣泡水。",
     "description": "歐洲陽光露天酒吧的最愛，亮橙色澤，苦甜阿佩羅搭配氣泡酒。",
     "ingredients": [
-      { "name": "阿佩羅/金巴利利口酒", "amount_ml": 60, "amount_oz": "2", "category": "liqueur" },
-      { "name": "氣泡白葡萄酒/香檳", "amount_ml": 90, "amount_oz": "3", "category": "liqueur" },
-      { "name": "氣泡水", "amount_ml": 30, "amount_oz": "1", "category": "mixer" },
-      { "name": "新鮮柳橙", "amount_ml": 1, "amount_oz": "1片", "category": "garnish" }
+      {
+        "name": "阿佩羅/金巴利利口酒",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡白葡萄酒/香檳",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮柳橙",
+        "amount_ml": 1,
+        "amount_oz": "1片",
+        "category": "garnish"
+      }
     ],
-    "steps": ["大號紅酒杯填滿冰塊。", "倒入氣泡白酒與阿佩羅。", "淋上氣泡水。", "放入柳橙片裝飾。"]
+    "steps": [
+      "大號紅酒杯填滿冰塊。",
+      "倒入氣泡白酒與阿佩羅。",
+      "淋上氣泡水。",
+      "放入柳橙片裝飾。"
+    ]
   },
   {
     "id": 25,
@@ -560,15 +1261,33 @@
     "abv": 9,
     "rating": 1,
     "calories": 120,
-    "flavors": ["蜜桃甜香", "氣泡細緻", "優雅"],
+    "flavors": [
+      "蜜桃甜香",
+      "氣泡細緻",
+      "優雅"
+    ],
     "garnish_exam": "桃子片或無",
     "home_hack": "水蜜桃泥加少許水蜜桃香甜酒，再注入冰鎮氣泡酒。",
     "description": "威尼斯哈利酒吧發明，新鮮白桃泥與普羅賽克氣泡酒的優純組合。",
     "ingredients": [
-      { "name": "水蜜桃香甜酒", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" },
-      { "name": "氣泡白葡萄酒/香檳", "amount_ml": 100, "amount_oz": "3.5", "category": "liqueur" }
+      {
+        "name": "水蜜桃香甜酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡白葡萄酒/香檳",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "liqueur"
+      }
     ],
-    "steps": ["笛形香檳杯中加入冰鎮蜜桃果泥/蜜桃酒。", "緩緩注入冰鎮氣泡白酒。", "用吧匙輕提一次混合。"]
+    "steps": [
+      "笛形香檳杯中加入冰鎮蜜桃果泥/蜜桃酒。",
+      "緩緩注入冰鎮氣泡白酒。",
+      "用吧匙輕提一次混合。"
+    ]
   },
   {
     "id": 26,
@@ -581,15 +1300,32 @@
     "abv": 12,
     "rating": 2,
     "calories": 135,
-    "flavors": ["黑加侖果香", "香檳高貴", "慶典"],
+    "flavors": [
+      "黑加侖果香",
+      "香檳高貴",
+      "慶典"
+    ],
     "garnish_exam": "黑加侖或黑莓",
     "home_hack": "黑加侖香甜酒(Cassis)搭配任何冰鎮氣泡酒。",
     "description": "法國高貴開胃酒，黑莓/黑加侖利口酒底倒入高雅香檳氣泡酒。",
     "ingredients": [
-      { "name": "黑加侖香甜酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-      { "name": "氣泡白葡萄酒/香檳", "amount_ml": 90, "amount_oz": "3", "category": "liqueur" }
+      {
+        "name": "黑加侖香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡白葡萄酒/香檳",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "liqueur"
+      }
     ],
-    "steps": ["香檳杯底倒入黑加侖香甜酒。", "注入冰鎮香檳或氣泡酒至八分滿。"]
+    "steps": [
+      "香檳杯底倒入黑加侖香甜酒。",
+      "注入冰鎮香檳或氣泡酒至八分滿。"
+    ]
   },
   {
     "id": 27,
@@ -602,15 +1338,31 @@
     "abv": 11,
     "rating": 1,
     "calories": 125,
-    "flavors": ["果酸清爽", "白酒優雅"],
+    "flavors": [
+      "果酸清爽",
+      "白酒優雅"
+    ],
     "garnish_exam": "無",
     "home_hack": "黑加侖酒搭配一般干白葡萄酒。",
     "description": "勃艮第經典開胃酒，黑加侖利口酒與乾白葡萄酒的完美融合。",
     "ingredients": [
-      { "name": "黑加侖香甜酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-      { "name": "氣泡白葡萄酒/香檳", "amount_ml": 90, "amount_oz": "3", "category": "liqueur" }
+      {
+        "name": "黑加侖香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "不甜白葡萄酒",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "liqueur"
+      }
     ],
-    "steps": ["白酒杯倒入黑加侖利口酒。", "加入冰鎮勃艮第乾白葡萄酒。"]
+    "steps": [
+      "白酒杯倒入黑加侖利口酒。",
+      "加入冰鎮勃艮第乾白葡萄酒。"
+    ]
   },
   {
     "id": 28,
@@ -623,15 +1375,32 @@
     "abv": 8,
     "rating": 1,
     "calories": 110,
-    "flavors": ["鮮橙果香", "歡樂氣泡", "輕盈"],
+    "flavors": [
+      "鮮橙果香",
+      "歡樂氣泡",
+      "輕盈"
+    ],
     "garnish_exam": "柳橙皮",
     "home_hack": "等比例現榨柳橙汁與香檳氣泡酒。",
     "description": "早午餐歡慶之酒，鮮榨柳橙汁與香檳各半，色澤宛如含羞草黃花。",
     "ingredients": [
-      { "name": "柳橙汁", "amount_ml": 60, "amount_oz": "2", "category": "mixer" },
-      { "name": "氣泡白葡萄酒/香檳", "amount_ml": 60, "amount_oz": "2", "category": "liqueur" }
+      {
+        "name": "柳橙汁",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡白葡萄酒/香檳",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "liqueur"
+      }
     ],
-    "steps": ["香檳杯倒入冰鎮柳橙汁。", "緩緩補入冰鎮香檳。"]
+    "steps": [
+      "香檳杯倒入冰鎮柳橙汁。",
+      "緩緩補入冰鎮香檳。"
+    ]
   },
   {
     "id": 29,
@@ -644,17 +1413,47 @@
     "abv": 20,
     "rating": 3,
     "calories": 180,
-    "flavors": ["濃縮咖啡", "微甜醇厚", "提神"],
+    "flavors": [
+      "濃縮咖啡",
+      "微甜醇厚",
+      "提神"
+    ],
     "garnish_exam": "咖啡豆 3 顆浮於油脂泡沫上",
     "home_hack": "現打 Espresso 或冷萃濃縮咖啡搭配伏特加與卡魯哇。",
     "description": "提神醒腦的當代名酒，伏特加、濃縮咖啡與咖啡利口酒搖出綿密咖啡油脂泡沫。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "咖啡香甜酒", "amount_ml": 20, "amount_oz": "0.75", "category": "liqueur" },
-      { "name": "濃縮咖啡/黑咖啡", "amount_ml": 30, "amount_oz": "1", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" }
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "咖啡香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "濃縮咖啡/黑咖啡",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯裝滿大冰塊。", "倒入伏特加、咖啡酒、現萃濃縮咖啡與糖漿。", "強烈極速搖盪 15 秒。", "雙重過濾倒入馬丁尼杯。", "表面擺上 3 顆咖啡豆。"]
+    "steps": [
+      "雪克杯裝滿大冰塊。",
+      "倒入伏特加、咖啡酒、現萃濃縮咖啡與糖漿。",
+      "強烈極速搖盪 15 秒。",
+      "雙重過濾倒入馬丁尼杯。",
+      "表面擺上 3 顆咖啡豆。"
+    ]
   },
   {
     "id": 30,
@@ -667,17 +1466,46 @@
     "abv": 20,
     "rating": 3,
     "calories": 175,
-    "flavors": ["酸甜平衡", "威士忌香", "蛋白綿密"],
+    "flavors": [
+      "酸甜平衡",
+      "威士忌香",
+      "蛋白綿密"
+    ],
     "garnish_exam": "檸檬片與櫻桃",
     "home_hack": "加入 15ml 蛋白做 Dry Shake 可產生精緻滑順蛋白泡沫層。",
     "description": "波本威士忌酸酒代表，威士忌、新鮮檸檬汁與糖漿，可選加蛋白添增滑順度。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 20, "amount_oz": "0.66", "category": "mixer" },
-      { "name": "蛋白", "amount_ml": 15, "amount_oz": "0.5", "category": "garnish" }
+      {
+        "name": "威士忌",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "mixer"
+      },
+      {
+        "name": "蛋白",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "garnish"
+      }
     ],
-    "steps": ["雪克杯加入所有原料（無冰）先進行乾搖(Dry Shake)。", "加入冰塊強烈搖盪冷卻。", "濾倒入加冰古典杯。", "滴上苦精或裝飾檸檬櫻桃。"]
+    "steps": [
+      "雪克杯加入所有原料（無冰）先進行乾搖(Dry Shake)。",
+      "加入冰塊強烈搖盪冷卻。",
+      "濾倒入加冰古典杯。",
+      "滴上苦精或裝飾檸檬櫻桃。"
+    ]
   },
   {
     "id": 31,
@@ -690,17 +1518,46 @@
     "abv": 25,
     "rating": 4,
     "calories": 170,
-    "flavors": ["威士忌香", "紅石榴果酸", "層次"],
+    "flavors": [
+      "威士忌香",
+      "紅石榴果酸",
+      "層次"
+    ],
     "garnish_exam": "柳橙皮扭轉",
     "home_hack": "威士忌加檸檬汁與紅石榴糖漿(Grenadine)。",
     "description": "美式大都會代表，威士忌基底加入酸檸檬與紅石榴糖漿帶來誘人酒紅光澤。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 20, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" },
-      { "name": "紅石榴糖漿", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" }
+      {
+        "name": "威士忌",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加冰塊，倒入威士忌、檸檬汁、糖漿與紅石榴糖漿。", "搖勻至冷卻。", "過濾倒入雞尾酒杯。", "以扭轉柳橙皮飾之。"]
+    "steps": [
+      "雪克杯加冰塊，倒入威士忌、檸檬汁、糖漿與紅石榴糖漿。",
+      "搖勻至冷卻。",
+      "過濾倒入雞尾酒杯。",
+      "以扭轉柳橙皮飾之。"
+    ]
   },
   {
     "id": 32,
@@ -713,16 +1570,40 @@
     "abv": 28,
     "rating": 4,
     "calories": 190,
-    "flavors": ["薄荷清涼", "美式波本香", "極致冰涼"],
+    "flavors": [
+      "薄荷清涼",
+      "美式波本香",
+      "極致冰涼"
+    ],
     "garnish_exam": "大量薄荷葉山與糖粉",
     "home_hack": "金屬銀杯外部會結滿極致冰霜，沒有銀杯可用高球杯配滿滿碎冰。",
     "description": "肯塔基德比馬術大賽指定飲品，波本威士忌搭配新鮮薄荷與滿滿碎冰。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 60, "amount_oz": "2", "category": "base" },
-      { "name": "糖漿", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" },
-      { "name": "新鮮薄荷葉", "amount_ml": 1, "amount_oz": "8-10葉", "category": "garnish" }
+      {
+        "name": "威士忌",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "base"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮薄荷葉",
+        "amount_ml": 1,
+        "amount_oz": "8-10葉",
+        "category": "garnish"
+      }
     ],
-    "steps": ["杯中放入薄荷葉與糖漿輕搗。", "填入半滿碎冰，倒入 30ml 威士忌攪拌。", "補滿碎冰，倒入剩餘威士忌。", "插入一大束薄荷枝，撒少許糖粉。"]
+    "steps": [
+      "杯中放入薄荷葉與糖漿輕搗。",
+      "填入半滿碎冰，倒入 30ml 威士忌攪拌。",
+      "補滿碎冰，倒入剩餘威士忌。",
+      "插入一大束薄荷枝，撒少許糖粉。"
+    ]
   },
   {
     "id": 33,
@@ -735,17 +1616,47 @@
     "abv": 32,
     "rating": 5,
     "calories": 175,
-    "flavors": ["蘇格蘭泥煤", "甜美深沉", "烈酒"],
+    "flavors": [
+      "蘇格蘭泥煤",
+      "甜美深沉",
+      "烈酒"
+    ],
     "garnish_exam": "酒漬櫻桃",
     "home_hack": "蘇格蘭威士忌版本的曼哈頓。",
     "description": "蘇格蘭羅賓漢傳奇，以蘇格蘭威士忌取代波本，結合甜苦艾酒與安哥斯苦精。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "甜苦艾酒", "amount_ml": 25, "amount_oz": "0.75", "category": "liqueur" },
-      { "name": "安哥斯安哥斯苦精", "amount_ml": 2, "amount_oz": "2滴", "category": "mixer" },
-      { "name": "酒漬櫻桃", "amount_ml": 1, "amount_oz": "1顆", "category": "garnish" }
+      {
+        "name": "威士忌",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "甜苦艾酒",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "安格斯苦精",
+        "amount_ml": 2,
+        "amount_oz": "2滴",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
     ],
-    "steps": ["攪拌杯加滿冰塊。", "加入蘇格蘭威士忌、甜苦艾酒與苦精。", "攪拌降溫。", "濾入馬丁尼杯。", "以酒漬櫻桃裝飾。"]
+    "steps": [
+      "攪拌杯加滿冰塊。",
+      "加入蘇格蘭威士忌、甜苦艾酒與苦精。",
+      "攪拌降溫。",
+      "濾入馬丁尼杯。",
+      "以酒漬櫻桃裝飾。"
+    ]
   },
   {
     "id": 34,
@@ -758,18 +1669,52 @@
     "abv": 15,
     "rating": 2,
     "calories": 150,
-    "flavors": ["溫暖蜂蜜", "檸檬辛香", "舒緩"],
+    "flavors": [
+      "溫暖蜂蜜",
+      "檸檬辛香",
+      "舒緩"
+    ],
     "garnish_exam": "檸檬片插丁香與肉桂棒",
     "home_hack": "感冒冬日首選溫熱調酒，熱水加蜂蜜與威士忌。",
     "description": "英倫暖心禦寒必備，熱水沖泡威士忌、蜂蜜、檸檬與肉桂辛香料。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 20, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 20, "amount_oz": "1大匙蜂蜜", "category": "mixer" },
-      { "name": "熱水", "amount_ml": 120, "amount_oz": "4", "category": "mixer" },
-      { "name": "肉豆蔻/肉桂粉", "amount_ml": 1, "amount_oz": "1棒", "category": "garnish" }
+      {
+        "name": "威士忌",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 20,
+        "amount_oz": "1大匙蜂蜜",
+        "category": "mixer"
+      },
+      {
+        "name": "熱水",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "肉豆蔻/肉桂粉",
+        "amount_ml": 1,
+        "amount_oz": "1棒",
+        "category": "garnish"
+      }
     ],
-    "steps": ["耐熱杯中加入蜂蜜與檸檬汁。", "倒入熱水攪拌溶解。", "加入威士忌。", "放入肉桂棒與插有丁香的檸檬片。"]
+    "steps": [
+      "耐熱杯中加入蜂蜜與檸檬汁。",
+      "倒入熱水攪拌溶解。",
+      "加入威士忌。",
+      "放入肉桂棒與插有丁香的檸檬片。"
+    ]
   },
   {
     "id": 35,
@@ -782,15 +1727,33 @@
     "abv": 32,
     "rating": 4,
     "calories": 185,
-    "flavors": ["杏仁甜香", "威士忌醇厚", "極簡"],
+    "flavors": [
+      "杏仁甜香",
+      "威士忌醇厚",
+      "極簡"
+    ],
     "garnish_exam": "無",
     "home_hack": "杏仁香甜酒(Amaretto)搭配威士忌。",
     "description": "向同名電影致敬，威士忌與義大利杏仁香甜酒，口感甜中帶烈，沉穩有型。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "杏仁香甜酒", "amount_ml": 20, "amount_oz": "0.75", "category": "liqueur" }
+      {
+        "name": "威士忌",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "杏仁香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      }
     ],
-    "steps": ["古典杯放入大冰塊。", "倒入威士忌與杏仁香甜酒。", "攪拌冷卻。"]
+    "steps": [
+      "古典杯放入大冰塊。",
+      "倒入威士忌與杏仁香甜酒。",
+      "攪拌冷卻。"
+    ]
   },
   {
     "id": 36,
@@ -803,15 +1766,32 @@
     "abv": 30,
     "rating": 3,
     "calories": 180,
-    "flavors": ["杏仁甜香", "純淨順口"],
+    "flavors": [
+      "杏仁甜香",
+      "純淨順口"
+    ],
     "garnish_exam": "無",
     "home_hack": "伏特加代替威士忌與杏仁酒調合。",
     "description": "教父的溫柔姊妹款，以純淨伏特加突顯杏仁香甜酒的濃郁堅果香感。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "杏仁香甜酒", "amount_ml": 20, "amount_oz": "0.75", "category": "liqueur" }
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "杏仁香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      }
     ],
-    "steps": ["古典杯加滿冰塊。", "倒入伏特加與杏仁利口酒。", "輕柔攪拌。"]
+    "steps": [
+      "古典杯加滿冰塊。",
+      "倒入伏特加與杏仁利口酒。",
+      "輕柔攪拌。"
+    ]
   },
   {
     "id": 37,
@@ -824,15 +1804,34 @@
     "abv": 33,
     "rating": 5,
     "calories": 190,
-    "flavors": ["蜂蜜石楠花", "草本辛香", "濃烈"],
+    "flavors": [
+      "蜂蜜石楠花",
+      "草本辛香",
+      "濃烈"
+    ],
     "garnish_exam": "柳橙皮扭轉",
     "home_hack": "吉姆賓或吉寶吉(Drambuie)威士忌利口酒搭配蘇格蘭威士忌。",
     "description": "老派威士忌迷的最愛，蘇格蘭威士忌與蜂蜜草本吉寶吉利口酒，色如金鏽。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "吉寶吉/草本香甜酒", "amount_ml": 25, "amount_oz": "0.75", "category": "liqueur" }
+      {
+        "name": "威士忌",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "吉寶吉/草本香甜酒",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      }
     ],
-    "steps": ["古典杯加冰塊。", "倒入蘇格蘭威士忌與 Drambuie。", "慢速攪拌降溫。", "附上擰轉柳橙皮。"]
+    "steps": [
+      "古典杯加冰塊。",
+      "倒入蘇格蘭威士忌與 Drambuie。",
+      "慢速攪拌降溫。",
+      "附上擰轉柳橙皮。"
+    ]
   },
   {
     "id": 38,
@@ -845,17 +1844,46 @@
     "abv": 18,
     "rating": 3,
     "calories": 145,
-    "flavors": ["清涼柑橘", "氣泡震撼", "華麗"],
+    "flavors": [
+      "清涼柑橘",
+      "氣泡震撼",
+      "華麗"
+    ],
     "garnish_exam": "檸檬皮捲",
     "home_hack": "琴酒檸檬酸酒為底注入香檳，威力如同一戰法國 75 毫米野戰砲！",
     "description": "優雅中帶著猛烈後勁，琴酒、檸檬汁與糖漿搖勻後注入氣泡香檳。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 30, "amount_oz": "1", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" },
-      { "name": "氣泡白葡萄酒/香檳", "amount_ml": 60, "amount_oz": "2", "category": "liqueur" }
+      {
+        "name": "琴酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡白葡萄酒/香檳",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "liqueur"
+      }
     ],
-    "steps": ["雪克杯加冰塊，倒入琴酒、檸檬汁與糖漿搖勻。", "濾入香檳杯中。", "補注入冰鎮香檳。", "飾以長檸檬皮捲。"]
+    "steps": [
+      "雪克杯加冰塊，倒入琴酒、檸檬汁與糖漿搖勻。",
+      "濾入香檳杯中。",
+      "補注入冰鎮香檳。",
+      "飾以長檸檬皮捲。"
+    ]
   },
   {
     "id": 39,
@@ -868,17 +1896,46 @@
     "abv": 12,
     "rating": 2,
     "calories": 160,
-    "flavors": ["檸檬汽水", "清爽解渴", "草本"],
+    "flavors": [
+      "檸檬汽水",
+      "清爽解渴",
+      "草本"
+    ],
     "garnish_exam": "檸檬片與酒漬櫻桃",
     "home_hack": "經典 Highball 氣泡長飲，琴酒加上新鮮檸檬汁與氣泡水。",
     "description": "經典夏日解渴大眾最愛，琴酒、檸檬汁、糖漿與氣泡水於柯林杯直接堆疊。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 30, "amount_oz": "1", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "氣泡水", "amount_ml": 90, "amount_oz": "3", "category": "mixer" }
+      {
+        "name": "琴酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      }
     ],
-    "steps": ["柯林杯填滿冰塊。", "加入琴酒、檸檬汁及糖漿。", "注入氣泡水並攪拌。", "以檸檬片與櫻桃裝飾。"]
+    "steps": [
+      "柯林杯填滿冰塊。",
+      "加入琴酒、檸檬汁及糖漿。",
+      "注入氣泡水並攪拌。",
+      "以檸檬片與櫻桃裝飾。"
+    ]
   },
   {
     "id": 40,
@@ -891,19 +1948,58 @@
     "abv": 16,
     "rating": 3,
     "calories": 220,
-    "flavors": ["熱帶果香", "櫻桃甜美", "香料微苦"],
+    "flavors": [
+      "熱帶果香",
+      "櫻桃甜美",
+      "香料微苦"
+    ],
     "garnish_exam": "鳳梨片與酒漬櫻桃",
     "home_hack": "萊佛士酒店傳奇，琴酒、櫻桃白蘭地、廊酒與鳳梨汁組合。",
     "description": "東方熱帶雞尾酒傳奇，琴酒搭配櫻桃白蘭地、草本利口酒、鳳梨汁與紅石榴糖漿。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 30, "amount_oz": "1", "category": "base" },
-      { "name": "櫻桃香甜酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-      { "name": "橙酒", "amount_ml": 7.5, "amount_oz": "0.25", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "鳳梨汁", "amount_ml": 120, "amount_oz": "4", "category": "mixer" },
-      { "name": "紅石榴糖漿", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" }
+      {
+        "name": "琴酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "櫻桃香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 7.5,
+        "amount_oz": "0.25",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加入大滿冰塊與所有材料。", "用力搖盪產生豐富泡沫。", "濾入加有冰塊的颶風杯。", "飾以鳳梨角與酒漬櫻桃。"]
+    "steps": [
+      "雪克杯加入大滿冰塊與所有材料。",
+      "用力搖盪產生豐富泡沫。",
+      "濾入加有冰塊的颶風杯。",
+      "飾以鳳梨角與酒漬櫻桃。"
+    ]
   },
   {
     "id": 41,
@@ -916,16 +2012,41 @@
     "abv": 26,
     "rating": 4,
     "calories": 150,
-    "flavors": ["強烈萊姆酸", "松針草本", "乾脆"],
+    "flavors": [
+      "強烈萊姆酸",
+      "松針草本",
+      "乾脆"
+    ],
     "garnish_exam": "萊姆輪片",
     "home_hack": "雷蒙德·錢德勒小說名言：『真正的 Gimlet 是一半琴酒一半 Rose's 萊姆汁』",
     "description": "海軍預防壞血病傳奇酒譜，琴酒與萊姆汁的極簡辛辣酸甜碰撞。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" }
+      {
+        "name": "琴酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加滿冰塊。", "加入琴酒、萊姆汁與糖漿。", "冰鎮搖盪 15 秒。", "過濾倒入雞尾酒杯。", "附上萊姆圓片。"]
+    "steps": [
+      "雪克杯加滿冰塊。",
+      "加入琴酒、萊姆汁與糖漿。",
+      "冰鎮搖盪 15 秒。",
+      "過濾倒入雞尾酒杯。",
+      "附上萊姆圓片。"
+    ]
   },
   {
     "id": 42,
@@ -938,17 +2059,53 @@
     "abv": 25,
     "rating": 4,
     "calories": 160,
-    "flavors": ["紫羅蘭花香", "櫻桃甜美", "天空藍紫"],
+    "flavors": [
+      "紫羅蘭花香",
+      "櫻桃甜美",
+      "天空藍紫"
+    ],
     "garnish_exam": "酒漬櫻桃 1 顆沉底",
     "home_hack": "紫羅蘭利口酒(Crème de Violette)賦予其絕美航太天藍色彩。",
     "description": "航空飛行黃金年代致敬，琴酒、黑櫻桃利口酒、檸檬汁與紫羅蘭酒。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "櫻桃香甜酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "酒漬櫻桃", "amount_ml": 1, "amount_oz": "1顆", "category": "garnish" }
+      {
+        "name": "琴酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "櫻桃香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "紫羅蘭香甜酒",
+        "amount_ml": 7.5,
+        "amount_oz": "0.25",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
     ],
-    "steps": ["雪克杯加冰塊。", "倒入琴酒、黑櫻桃酒與檸檬汁。", "搖勻降溫。", "濾入馬丁尼杯。", "沉底放入黑櫻桃。"]
+    "steps": [
+      "雪克杯加冰塊。",
+      "倒入琴酒、黑櫻桃酒與檸檬汁。",
+      "搖勻降溫。",
+      "濾入馬丁尼杯。",
+      "沉底放入黑櫻桃。"
+    ]
   },
   {
     "id": 43,
@@ -961,16 +2118,40 @@
     "abv": 22,
     "rating": 3,
     "calories": 160,
-    "flavors": ["溫潤蜂蜜", "檸檬鮮亮", "草本"],
+    "flavors": [
+      "溫潤蜂蜜",
+      "檸檬鮮亮",
+      "草本"
+    ],
     "garnish_exam": "檸檬皮扭轉",
     "home_hack": "禁酒令時期經典，蜂蜜水與琴酒、檸檬汁調合掩蓋劣質酒味。",
     "description": "頂級絕妙之意！琴酒、新鮮檸檬汁與純天然蜂蜜糖漿（蜂蜜:水 = 3:1）。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 20, "amount_oz": "1大匙蜂蜜", "category": "mixer" }
+      {
+        "name": "琴酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 20,
+        "amount_oz": "1大匙蜂蜜",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加入琴酒、檸檬汁及蜂蜜糖漿。", "加冰塊強力搖盪溶解蜂蜜。", "細濾倒入預冷雞尾酒杯。", "扭轉檸檬皮裝飾。"]
+    "steps": [
+      "雪克杯加入琴酒、檸檬汁及蜂蜜糖漿。",
+      "加冰塊強力搖盪溶解蜂蜜。",
+      "細濾倒入預冷雞尾酒杯。",
+      "扭轉檸檬皮裝飾。"
+    ]
   },
   {
     "id": 44,
@@ -983,17 +2164,46 @@
     "abv": 18,
     "rating": 3,
     "calories": 175,
-    "flavors": ["黑莓酸甜", "杜鬆子香", "碎冰清涼"],
+    "flavors": [
+      "黑莓酸甜",
+      "杜鬆子香",
+      "碎冰清涼"
+    ],
     "garnish_exam": "黑莓與檸檬切角",
     "home_hack": "琴酒 Sour 為底，頂層淋上黑莓利口酒(Chambord)如同瀑布降落。",
     "description": "80 年代倫敦現代經典，琴酒、檸檬酸酒淋上滿滿碎冰與深紫黑莓香甜酒。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 12.5, "amount_oz": "0.4", "category": "mixer" },
-      { "name": "黑加侖香甜酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" }
+      {
+        "name": "琴酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 12.5,
+        "amount_oz": "0.4",
+        "category": "mixer"
+      },
+      {
+        "name": "黑加侖香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      }
     ],
-    "steps": ["雪克杯搖盪琴酒、檸檬汁與糖漿。", "濾入裝滿碎冰的古典杯。", "頂層淋上黑莓/黑加侖香甜酒。", "飾以黑莓與檸檬角。"]
+    "steps": [
+      "雪克杯搖盪琴酒、檸檬汁與糖漿。",
+      "濾入裝滿碎冰的古典杯。",
+      "頂層淋上黑莓/黑加侖香甜酒。",
+      "飾以黑莓與檸檬角。"
+    ]
   },
   {
     "id": 45,
@@ -1006,16 +2216,41 @@
     "abv": 33,
     "rating": 5,
     "calories": 155,
-    "flavors": ["極乾草本", "強烈辛辣", "純粹"],
+    "flavors": [
+      "極乾草本",
+      "強烈辛辣",
+      "純粹"
+    ],
     "garnish_exam": "檸檬皮或綠橄欖",
     "home_hack": "苦艾酒僅涮杯即倒掉(In & Out Martini)，追求極致純粹琴酒感。",
     "description": "極致乾冽的馬丁尼變體，極低比例的不甜苦艾酒，凸顯高品質琴酒松針風味。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 60, "amount_oz": "2", "category": "base" },
-      { "name": "不甜苦艾酒", "amount_ml": 5, "amount_oz": "1/6", "category": "liqueur" },
-      { "name": "綠橄欖", "amount_ml": 1, "amount_oz": "1顆", "category": "garnish" }
+      {
+        "name": "琴酒",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "base"
+      },
+      {
+        "name": "不甜苦艾酒",
+        "amount_ml": 5,
+        "amount_oz": "1/6",
+        "category": "liqueur"
+      },
+      {
+        "name": "綠橄欖",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
     ],
-    "steps": ["攪拌杯加滿大冰塊。", "加入琴酒與微量不甜苦艾酒。", "靜速攪拌 30 秒。", "過濾入冰鎮馬丁尼杯。", "放入綠橄欖。"]
+    "steps": [
+      "攪拌杯加滿大冰塊。",
+      "加入琴酒與微量不甜苦艾酒。",
+      "靜速攪拌 30 秒。",
+      "過濾入冰鎮馬丁尼杯。",
+      "放入綠橄欖。"
+    ]
   },
   {
     "id": 46,
@@ -1028,16 +2263,41 @@
     "abv": 30,
     "rating": 4,
     "calories": 165,
-    "flavors": ["鹹香橄欖", "美味鹹辛", "醇厚"],
+    "flavors": [
+      "鹹香橄欖",
+      "美味鹹辛",
+      "醇厚"
+    ],
     "garnish_exam": "綠橄欖 3 顆串籤",
     "home_hack": "加入 10-15ml 綠橄欖罐頭裡面的橄欖鹹鹽水(Olive Brine)。",
     "description": "橄欖愛好者至高饗宴，琴酒、不甜苦艾酒加入鹹香橄欖鹽汁，色澤呈微渾濁。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 60, "amount_oz": "2", "category": "base" },
-      { "name": "不甜苦艾酒", "amount_ml": 10, "amount_oz": "0.33", "category": "liqueur" },
-      { "name": "綠橄欖", "amount_ml": 1, "amount_oz": "3顆+鹽水", "category": "garnish" }
+      {
+        "name": "琴酒",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "base"
+      },
+      {
+        "name": "不甜苦艾酒",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "liqueur"
+      },
+      {
+        "name": "綠橄欖",
+        "amount_ml": 1,
+        "amount_oz": "3顆+鹽水",
+        "category": "garnish"
+      }
     ],
-    "steps": ["攪拌杯加冰塊。", "倒入琴酒、苦艾酒與橄欖汁。", "順暢攪拌冷卻。", "濾入馬丁尼杯。", "串上 3 顆綠橄欖裝飾。"]
+    "steps": [
+      "攪拌杯加冰塊。",
+      "倒入琴酒、苦艾酒與橄欖汁。",
+      "順暢攪拌冷卻。",
+      "濾入馬丁尼杯。",
+      "串上 3 顆綠橄欖裝飾。"
+    ]
   },
   {
     "id": 47,
@@ -1050,16 +2310,40 @@
     "abv": 31,
     "rating": 4,
     "calories": 155,
-    "flavors": ["純淨冰冷", "清爽烈酒"],
+    "flavors": [
+      "純淨冰冷",
+      "清爽烈酒"
+    ],
     "garnish_exam": "檸檬皮扭轉或橄欖",
     "home_hack": "詹姆士·龐德 007 的『Shaken, not stirred』即為搖盪版的 Vodka Martini！",
     "description": "純淨無瑕，伏特加取代琴酒，口感極度順暢冷俐。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 60, "amount_oz": "2", "category": "base" },
-      { "name": "不甜苦艾酒", "amount_ml": 10, "amount_oz": "0.33", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆", "amount_ml": 1, "amount_oz": "1皮", "category": "garnish" }
+      {
+        "name": "伏特加",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "base"
+      },
+      {
+        "name": "不甜苦艾酒",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1皮",
+        "category": "garnish"
+      }
     ],
-    "steps": ["攪拌杯加滿冰塊。", "加入伏特加與不甜苦艾酒。", "充分攪拌冰鎮。", "濾入馬丁尼杯。", "噴擠檸檬皮精油裝飾。"]
+    "steps": [
+      "攪拌杯加滿冰塊。",
+      "加入伏特加與不甜苦艾酒。",
+      "充分攪拌冰鎮。",
+      "濾入馬丁尼杯。",
+      "噴擠檸檬皮精油裝飾。"
+    ]
   },
   {
     "id": 48,
@@ -1072,16 +2356,40 @@
     "abv": 12,
     "rating": 1,
     "calories": 135,
-    "flavors": ["奎寧苦甜", "純淨氣泡", "清爽"],
+    "flavors": [
+      "奎寧苦甜",
+      "純淨氣泡",
+      "清爽"
+    ],
     "garnish_exam": "萊姆角",
     "home_hack": "伏特加無色無味，能完美放大通寧水的柑橘草本氣泡。",
     "description": "簡潔純粹的高球長飲，伏特加加通寧水與檸檬角。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "通寧水", "amount_ml": 120, "amount_oz": "4", "category": "mixer" },
-      { "name": "新鮮檸檬/萊姆", "amount_ml": 1, "amount_oz": "1角", "category": "garnish" }
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "通寧水",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1角",
+        "category": "garnish"
+      }
     ],
-    "steps": ["高球杯填滿冰塊。", "倒入伏特加。", "注入冰鎮通寧水。", "輕攪放入萊姆角。"]
+    "steps": [
+      "高球杯填滿冰塊。",
+      "倒入伏特加。",
+      "注入冰鎮通寧水。",
+      "輕攪放入萊姆角。"
+    ]
   },
   {
     "id": 49,
@@ -1094,17 +2402,46 @@
     "abv": 12,
     "rating": 2,
     "calories": 160,
-    "flavors": ["薑辣清香", "柑橘酸甜", "極致冰爽"],
+    "flavors": [
+      "薑辣清香",
+      "柑橘酸甜",
+      "極致冰爽"
+    ],
     "garnish_exam": "萊姆角與薄荷枝",
     "home_hack": "紅銅杯能傳導極致冰涼感，使用薑汁啤酒(Ginger Beer)帶有真實辛辣薑味！",
     "description": "銅杯傳奇，伏特加、新鮮萊姆汁與辛辣薑汁啤酒，如踢腿騾子般帶勁。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "薑汁汽水/薑汁啤酒", "amount_ml": 120, "amount_oz": "4", "category": "mixer" },
-      { "name": "新鮮檸檬/萊姆", "amount_ml": 1, "amount_oz": "1角", "category": "garnish" }
+      {
+        "name": "伏特加",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "薑汁汽水/薑汁啤酒",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1角",
+        "category": "garnish"
+      }
     ],
-    "steps": ["銅杯或高球杯裝滿冰塊。", "倒入伏特加與現擠萊姆汁。", "補滿薑汁啤酒。", "提拉攪拌後飾以萊姆角。"]
+    "steps": [
+      "銅杯或高球杯裝滿冰塊。",
+      "倒入伏特加與現擠萊姆汁。",
+      "補滿薑汁啤酒。",
+      "提拉攪拌後飾以萊姆角。"
+    ]
   },
   {
     "id": 50,
@@ -1117,16 +2454,39 @@
     "abv": 11,
     "rating": 1,
     "calories": 150,
-    "flavors": ["柳橙鮮甜", "順口易飲"],
+    "flavors": [
+      "柳橙鮮甜",
+      "順口易飲"
+    ],
     "garnish_exam": "柳橙片",
     "home_hack": "傳說石油工人用螺絲起子攪拌伏特加與柳橙汁因而得名。",
     "description": "入門調酒基石，伏特加與鮮榨柳橙汁的完美比例。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "柳橙汁", "amount_ml": 100, "amount_oz": "3.5", "category": "mixer" },
-      { "name": "新鮮柳橙", "amount_ml": 1, "amount_oz": "1片", "category": "garnish" }
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮柳橙",
+        "amount_ml": 1,
+        "amount_oz": "1片",
+        "category": "garnish"
+      }
     ],
-    "steps": ["高球杯加冰塊。", "倒入伏特加。", "注滿新鮮柳橙汁。", "攪拌均勻，附柳橙片。"]
+    "steps": [
+      "高球杯加冰塊。",
+      "倒入伏特加。",
+      "注滿新鮮柳橙汁。",
+      "攪拌均勻，附柳橙片。"
+    ]
   },
   {
     "id": 51,
@@ -1139,16 +2499,40 @@
     "abv": 12,
     "rating": 2,
     "calories": 145,
-    "flavors": ["葡萄柚酸甜", "鹹口層次", "清涼"],
+    "flavors": [
+      "葡萄柚酸甜",
+      "鹹口層次",
+      "清涼"
+    ],
     "garnish_exam": "鹽口杯與葡萄柚片",
     "home_hack": "杯口抹上粗鹽粒，葡萄柚汁的果酸與鹽粒交織引出清甜。",
     "description": "英國水手最愛，伏特加與葡萄柚汁配合杯口粗鹽圈，鹹甜提味。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "葡萄柚汁/汽水", "amount_ml": 100, "amount_oz": "3.5", "category": "mixer" },
-      { "name": "鹽/砂糖", "amount_ml": 1, "amount_oz": "適量鹽口", "category": "garnish" }
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "葡萄柚汁/汽水",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "mixer"
+      },
+      {
+        "name": "鹽/砂糖",
+        "amount_ml": 1,
+        "amount_oz": "適量鹽口",
+        "category": "garnish"
+      }
     ],
-    "steps": ["高球杯製作半圈或全圈鹽口。", "加入冰塊。", "倒入伏特加與葡萄柚汁。", "輕輕攪拌。"]
+    "steps": [
+      "高球杯製作半圈或全圈鹽口。",
+      "加入冰塊。",
+      "倒入伏特加與葡萄柚汁。",
+      "輕輕攪拌。"
+    ]
   },
   {
     "id": 52,
@@ -1161,15 +2545,32 @@
     "abv": 12,
     "rating": 1,
     "calories": 140,
-    "flavors": ["葡萄柚酸甜", "清爽微苦"],
+    "flavors": [
+      "葡萄柚酸甜",
+      "清爽微苦"
+    ],
     "garnish_exam": "檸檬片",
     "home_hack": "鹹狗去鹽口杯即為 Greyhound 獵犬調酒。",
     "description": "灰狗巴士站酒吧招牌，伏特加與葡萄柚汁無鹽口極簡版。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "葡萄柚汁/汽水", "amount_ml": 100, "amount_oz": "3.5", "category": "mixer" }
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "葡萄柚汁/汽水",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "mixer"
+      }
     ],
-    "steps": ["高球杯加冰塊。", "倒入伏特加與葡萄柚汁。", "攪拌均勻。"]
+    "steps": [
+      "高球杯加冰塊。",
+      "倒入伏特加與葡萄柚汁。",
+      "攪拌均勻。"
+    ]
   },
   {
     "id": 53,
@@ -1182,16 +2583,39 @@
     "abv": 11,
     "rating": 1,
     "calories": 150,
-    "flavors": ["葡萄柚蔓越莓", "海洋果酸", "解熱"],
+    "flavors": [
+      "葡萄柚蔓越莓",
+      "海洋果酸",
+      "解熱"
+    ],
     "garnish_exam": "萊姆輪片",
     "home_hack": "伏特加、蔓越莓汁與葡萄柚汁 1:2:1 比例。",
     "description": "海岸派對涼爽之風，伏特加混和酸甜蔓越莓汁與清爽葡萄柚汁。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 40, "amount_oz": "1.33", "category": "base" },
-      { "name": "蔓越莓汁", "amount_ml": 75, "amount_oz": "2.5", "category": "mixer" },
-      { "name": "葡萄柚汁/汽水", "amount_ml": 30, "amount_oz": "1", "category": "mixer" }
+      {
+        "name": "伏特加",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "蔓越莓汁",
+        "amount_ml": 75,
+        "amount_oz": "2.5",
+        "category": "mixer"
+      },
+      {
+        "name": "葡萄柚汁/汽水",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
     ],
-    "steps": ["高球杯加滿冰塊。", "依次倒入伏特加、蔓越莓汁與葡萄柚汁。", "攪拌並加上萊姆片。"]
+    "steps": [
+      "高球杯加滿冰塊。",
+      "依次倒入伏特加、蔓越莓汁與葡萄柚汁。",
+      "攪拌並加上萊姆片。"
+    ]
   },
   {
     "id": 54,
@@ -1204,16 +2628,38 @@
     "abv": 11,
     "rating": 1,
     "calories": 160,
-    "flavors": ["鳳梨熱帶", "蔓越莓酸甜"],
+    "flavors": [
+      "鳳梨熱帶",
+      "蔓越莓酸甜"
+    ],
     "garnish_exam": "萊姆片",
     "home_hack": "海風把葡萄柚汁替換成鳳梨汁即為灣風(Hawaiian Sea Breeze)。",
     "description": "熱帶微風吹拂，伏特加、蔓越莓汁與甘甜鳳梨汁。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 40, "amount_oz": "1.33", "category": "base" },
-      { "name": "蔓越莓汁", "amount_ml": 75, "amount_oz": "2.5", "category": "mixer" },
-      { "name": "鳳梨汁", "amount_ml": 30, "amount_oz": "1", "category": "mixer" }
+      {
+        "name": "伏特加",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "蔓越莓汁",
+        "amount_ml": 75,
+        "amount_oz": "2.5",
+        "category": "mixer"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
     ],
-    "steps": ["高球杯加滿冰塊。", "倒入伏特加、蔓越莓汁與鳳梨汁。", "攪拌服下。"]
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入伏特加、蔓越莓汁與鳳梨汁。",
+      "攪拌服下。"
+    ]
   },
   {
     "id": 55,
@@ -1226,17 +2672,45 @@
     "abv": 14,
     "rating": 2,
     "calories": 170,
-    "flavors": ["藍色海洋", "檸檬柑橘", "夢幻"],
+    "flavors": [
+      "藍色海洋",
+      "檸檬柑橘",
+      "夢幻"
+    ],
     "garnish_exam": "檸檬片與櫻桃",
     "home_hack": "伏特加、藍柑橘酒加檸檬汽水(雪碧)。",
     "description": "蔚藍瀉湖夢幻視覺，伏特加、藍柑橘香甜酒與檸檬汁汽水。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 40, "amount_oz": "1.33", "category": "base" },
-      { "name": "藍柑橘香甜酒", "amount_ml": 20, "amount_oz": "0.66", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 20, "amount_oz": "0.66", "category": "mixer" },
-      { "name": "氣泡水", "amount_ml": 60, "amount_oz": "2", "category": "mixer" }
+      {
+        "name": "伏特加",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "藍柑橘香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加入伏特加、藍柑橘酒與檸檬汁加冰搖勻。", "濾入加冰颶風杯中。", "補滿氣泡水或檸檬汽水。"]
+    "steps": [
+      "雪克杯加入伏特加、藍柑橘酒與檸檬汁加冰搖勻。",
+      "濾入加冰颶風杯中。",
+      "補滿氣泡水或檸檬汽水。"
+    ]
   },
   {
     "id": 56,
@@ -1249,16 +2723,40 @@
     "abv": 25,
     "rating": 3,
     "calories": 180,
-    "flavors": ["甘蔗烈香", "濃郁萊姆酸", "原甜"],
+    "flavors": [
+      "甘蔗烈香",
+      "濃郁萊姆酸",
+      "原甜"
+    ],
     "garnish_exam": "切塊萊姆與粗糖",
     "home_hack": "使用巴西甘蔗酒(Cachaça)或白蘭姆酒，壓碎整顆切塊萊姆與兩茶匙紅砂糖。",
     "description": "巴西國家國酒，新鮮萊姆切塊與蔗糖強烈搗碎，結合甘蔗烈酒與大量碎冰。",
     "ingredients": [
-      { "name": "白蘭姆酒", "amount_ml": 60, "amount_oz": "2", "category": "base" },
-      { "name": "新鮮檸檬/萊姆", "amount_ml": 1, "amount_oz": "1顆切塊", "category": "garnish" },
-      { "name": "糖漿", "amount_ml": 15, "amount_oz": "2茶匙砂糖", "category": "mixer" }
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1顆切塊",
+        "category": "garnish"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "2茶匙砂糖",
+        "category": "mixer"
+      }
     ],
-    "steps": ["古典杯中放入切塊萊姆與砂糖，用力搗壓出果汁。", "加入滿滿碎冰。", "倒入甘蔗酒/白蘭姆酒。", "充分攪拌上桌。"]
+    "steps": [
+      "古典杯中放入切塊萊姆與砂糖，用力搗壓出果汁。",
+      "加入滿滿碎冰。",
+      "倒入甘蔗酒/白蘭姆酒。",
+      "充分攪拌上桌。"
+    ]
   },
   {
     "id": 57,
@@ -1271,18 +2769,52 @@
     "abv": 26,
     "rating": 4,
     "calories": 230,
-    "flavors": ["堅果杏仁", "雙蘭姆醇厚", "熱帶風情"],
+    "flavors": [
+      "堅果杏仁",
+      "雙蘭姆醇厚",
+      "熱帶風情"
+    ],
     "garnish_exam": "薄荷枝、萊姆皮殼與鳳梨角",
     "home_hack": "大溪地語意為『至高無上！』，雙色蘭姆酒、橙酒與法式杏仁糖漿(Orgeat)。",
     "description": "Tiki 熱帶調酒之王，深淺蘭姆酒結合橙酒、杏仁糖漿與萊姆汁。",
     "ingredients": [
-      { "name": "白蘭姆酒", "amount_ml": 30, "amount_oz": "1", "category": "base" },
-      { "name": "黑蘭姆酒", "amount_ml": 30, "amount_oz": "1", "category": "base" },
-      { "name": "橙酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-      { "name": "杏仁香甜酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" }
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "黑蘭姆酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "杏仁香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加入白蘭姆、橙酒、杏仁糖漿與萊姆汁加冰搖勻。", "濾入加滿碎冰的古典杯。", "頂層淋上黑蘭姆酒(Float)。", "裝飾薄荷枝與萊姆殼。"]
+    "steps": [
+      "雪克杯加入白蘭姆、橙酒、杏仁糖漿與萊姆汁加冰搖勻。",
+      "濾入加滿碎冰的古典杯。",
+      "頂層淋上黑蘭姆酒(Float)。",
+      "裝飾薄荷枝與萊姆殼。"
+    ]
   },
   {
     "id": 58,
@@ -1295,19 +2827,58 @@
     "abv": 30,
     "rating": 5,
     "calories": 290,
-    "flavors": ["多重烈酒", "熱帶百香果", "後勁極強"],
+    "flavors": [
+      "多重烈酒",
+      "熱帶百香果",
+      "後勁極強"
+    ],
     "garnish_exam": "薄荷枝與櫻桃",
     "home_hack": "傳說喝三杯就會變成殭屍！三種蘭姆酒加百香果與紅石榴糖漿。",
     "description": "Tiki 文化終極烈酒，白蘭姆、金蘭姆與高濃度過熱蘭姆酒，搭配熱帶果汁與苦精。",
     "ingredients": [
-      { "name": "白蘭姆酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "黑蘭姆酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 20, "amount_oz": "0.66", "category": "mixer" },
-      { "name": "鳳梨汁", "amount_ml": 30, "amount_oz": "1", "category": "mixer" },
-      { "name": "葡萄柚汁/汽水", "amount_ml": 30, "amount_oz": "1", "category": "mixer" },
-      { "name": "紅石榴糖漿", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" }
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "黑蘭姆酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "mixer"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "葡萄柚汁/汽水",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加入所有蘭姆酒、果汁與糖漿及冰塊。", "極力搖勻。", "濾入裝滿碎冰的高球杯。", "飾以薄荷枝與水果串。"]
+    "steps": [
+      "雪克杯加入所有蘭姆酒、果汁與糖漿及冰塊。",
+      "極力搖勻。",
+      "濾入裝滿碎冰的高球杯。",
+      "飾以薄荷枝與水果串。"
+    ]
   },
   {
     "id": 59,
@@ -1320,18 +2891,52 @@
     "abv": 22,
     "rating": 3,
     "calories": 240,
-    "flavors": ["百香果甘甜", "雙蘭姆濃郁", "熱帶狂歡"],
+    "flavors": [
+      "百香果甘甜",
+      "雙蘭姆濃郁",
+      "熱帶狂歡"
+    ],
     "garnish_exam": "柳橙片與酒漬櫻桃",
     "home_hack": "紐奧良派對招牌，高腳颶風燈籠杯裝載繽紛果香。",
     "description": "美國紐奧良狂歡節經典，深淺雙蘭姆酒搭配百香果汁、柳橙汁與紅石榴糖漿。",
     "ingredients": [
-      { "name": "白蘭姆酒", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "黑蘭姆酒", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "柳橙汁", "amount_ml": 50, "amount_oz": "1.75", "category": "mixer" },
-      { "name": "紅石榴糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" }
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "黑蘭姆酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加入冰塊與所有材料。", "均勻搖盪至發霜。", "濾入填滿碎冰的颶風杯。", "飾以柳橙與櫻桃。"]
+    "steps": [
+      "雪克杯加入冰塊與所有材料。",
+      "均勻搖盪至發霜。",
+      "濾入填滿碎冰的颶風杯。",
+      "飾以柳橙與櫻桃。"
+    ]
   },
   {
     "id": 60,
@@ -1344,21 +2949,50 @@
     "abv": 15,
     "rating": 3,
     "calories": 170,
-    "flavors": ["黑焦糖濃郁", "辛辣薑味", "風暴漸層"],
+    "flavors": [
+      "黑焦糖濃郁",
+      "辛辣薑味",
+      "風暴漸層"
+    ],
     "garnish_exam": "萊姆角",
     "home_hack": "百慕達國酒，辛辣薑汁啤酒上層浮著黑蘭姆酒(Gosling's Black Seal)。",
     "description": "百慕達三角洲風暴意象，辛辣薑汁啤酒上飄浮著濃郁焦糖黑蘭姆酒層。",
     "ingredients": [
-      { "name": "黑蘭姆酒", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "薑汁汽水/薑汁啤酒", "amount_ml": 100, "amount_oz": "3.5", "category": "mixer" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" },
-      { "name": "新鮮檸檬/萊姆", "amount_ml": 1, "amount_oz": "1角", "category": "garnish" }
+      {
+        "name": "黑蘭姆酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "薑汁汽水/薑汁啤酒",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1角",
+        "category": "garnish"
+      }
     ],
-    "steps": ["高球杯加滿冰塊。", "倒入薑汁啤酒與萊姆汁。", "沿吧匙緩緩倒入黑蘭姆酒於頂層形成烏雲分層。", "附上萊姆角。"]
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入薑汁啤酒與萊姆汁。",
+      "沿吧匙緩緩倒入黑蘭姆酒於頂層形成烏雲分層。",
+      "附上萊姆角。"
+    ]
   },
   {
     "id": 61,
-    "name_zh": "熱帶水果蘭姆 punch",
+    "name_zh": "種植者潘趣",
     "name_en": "Planter's Punch",
     "base_spirit": "蘭姆酒",
     "category": "難忘經典",
@@ -1367,22 +3001,56 @@
     "abv": 16,
     "rating": 2,
     "calories": 200,
-    "flavors": ["牙買加果香", "香料微苦", "消暑"],
+    "flavors": [
+      "牙買加果香",
+      "香料微苦",
+      "消暑"
+    ],
     "garnish_exam": "柳橙片與薄荷枝",
     "home_hack": "古老黃金口訣：『1酸 2甜 3強烈 4稀釋』(1 Sour, 2 Sweet, 3 Strong, 4 Weak)。",
     "description": "牙買加莊園古老特調，黑蘭姆酒加柳橙汁、檸檬汁、糖漿與安哥斯苦精。",
     "ingredients": [
-      { "name": "黑蘭姆酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 30, "amount_oz": "1", "category": "mixer" },
-      { "name": "柳橙汁", "amount_ml": 30, "amount_oz": "1", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "安哥斯安哥斯苦精", "amount_ml": 2, "amount_oz": "2滴", "category": "mixer" }
+      {
+        "name": "黑蘭姆酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "安格斯苦精",
+        "amount_ml": 2,
+        "amount_oz": "2滴",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加入黑蘭姆、檸檬汁、柳橙汁與糖漿搖勻。", "濾入加冰高球杯。", "頂層滴入安哥斯苦精。", "飾以柳橙與薄荷。"]
+    "steps": [
+      "雪克杯加入黑蘭姆、檸檬汁、柳橙汁與糖漿搖勻。",
+      "濾入加冰高球杯。",
+      "頂層滴入安哥斯苦精。",
+      "飾以柳橙與薄荷。"
+    ]
   },
   {
     "id": 62,
-    "name_zh": "伯明罕蘭姆",
+    "name_zh": "百慕達斯威茲",
     "name_en": "Bermuda Swizzle",
     "base_spirit": "蘭姆酒",
     "category": "當代經典",
@@ -1391,17 +3059,45 @@
     "abv": 18,
     "rating": 3,
     "calories": 190,
-    "flavors": ["草本木香", "鳳梨果甘", "冰沙感"],
+    "flavors": [
+      "草本木香",
+      "鳳梨果甘",
+      "冰沙感"
+    ],
     "garnish_exam": "鳳梨葉與薄荷枝",
     "home_hack": "使用 Swizzle 攪拌棒在滿滿碎冰中快速旋轉產生表面厚密冰霜。",
     "description": "百慕達特產，雙色蘭姆酒、鳳梨汁、柳橙汁、杏仁糖漿與苦精旋轉攪勻。",
     "ingredients": [
-      { "name": "白蘭姆酒", "amount_ml": 30, "amount_oz": "1", "category": "base" },
-      { "name": "黑蘭姆酒", "amount_ml": 30, "amount_oz": "1", "category": "base" },
-      { "name": "鳳梨汁", "amount_ml": 45, "amount_oz": "1.5", "category": "mixer" },
-      { "name": "柳橙汁", "amount_ml": 45, "amount_oz": "1.5", "category": "mixer" }
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "黑蘭姆酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "mixer"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "mixer"
+      }
     ],
-    "steps": ["高球杯填滿碎冰與所有材料。", "用吧匙雙手快速旋轉(Swizzle)至杯壁凝結濃霜。", "插上鳳梨葉裝飾。"]
+    "steps": [
+      "高球杯填滿碎冰與所有材料。",
+      "用吧匙雙手快速旋轉(Swizzle)至杯壁凝結濃霜。",
+      "插上鳳梨葉裝飾。"
+    ]
   },
   {
     "id": 63,
@@ -1414,17 +3110,46 @@
     "abv": 12,
     "rating": 1,
     "calories": 140,
-    "flavors": ["葡萄柚清甜", "龍舌蘭香", "鹽味氣泡"],
+    "flavors": [
+      "葡萄柚清甜",
+      "龍舌蘭香",
+      "鹽味氣泡"
+    ],
     "garnish_exam": "鹽口杯與葡萄柚角",
     "home_hack": "墨西哥在地消費量超越瑪格麗特的平民之王！龍舌蘭加葡萄柚汽水。",
     "description": "墨西哥最受歡迎龍舌蘭長飲，龍舌蘭酒、葡萄柚汽水與現擠萊姆汁配鹽邊。",
     "ingredients": [
-      { "name": "龍舌蘭酒", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "葡萄柚汁/汽水", "amount_ml": 100, "amount_oz": "3.5", "category": "mixer" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "鹽/砂糖", "amount_ml": 1, "amount_oz": "鹽口", "category": "garnish" }
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "葡萄柚汁/汽水",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "鹽/砂糖",
+        "amount_ml": 1,
+        "amount_oz": "鹽口",
+        "category": "garnish"
+      }
     ],
-    "steps": ["高球杯沾少許鹽邊。", "加入滿滿冰塊、龍舌蘭酒與萊姆汁。", "補滿葡萄柚汽水輕攪。", "附上葡萄柚切角。"]
+    "steps": [
+      "高球杯沾少許鹽邊。",
+      "加入滿滿冰塊、龍舌蘭酒與萊姆汁。",
+      "補滿葡萄柚汽水輕攪。",
+      "附上葡萄柚切角。"
+    ]
   },
   {
     "id": 64,
@@ -1437,16 +3162,40 @@
     "abv": 18,
     "rating": 3,
     "calories": 160,
-    "flavors": ["鳳梨酸甜", "龍舌蘭辛香", "滑順"],
+    "flavors": [
+      "鳳梨酸甜",
+      "龍舌蘭辛香",
+      "滑順"
+    ],
     "garnish_exam": "萊姆片",
     "home_hack": "龍舌蘭、鳳梨汁與萊姆汁搖勻，簡單而絕妙的熱帶風味。",
     "description": "勇敢無畏的勇士，龍舌蘭醇香結合濃郁鳳梨汁與清酸萊姆汁。",
     "ingredients": [
-      { "name": "龍舌蘭酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "鳳梨汁", "amount_ml": 60, "amount_oz": "2", "category": "mixer" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" }
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯裝滿冰塊。", "加入龍舌蘭、鳳梨汁與萊姆汁。", "用力搖勻發霜。", "過濾倒入雞尾酒杯。"]
+    "steps": [
+      "雪克杯裝滿冰塊。",
+      "加入龍舌蘭、鳳梨汁與萊姆汁。",
+      "用力搖勻發霜。",
+      "過濾倒入雞尾酒杯。"
+    ]
   },
   {
     "id": 65,
@@ -1459,15 +3208,34 @@
     "abv": 20,
     "rating": 4,
     "calories": 100,
-    "flavors": ["強勁氣泡", "直衝腦門", "歡樂派對"],
+    "flavors": [
+      "強勁氣泡",
+      "直衝腦門",
+      "歡樂派對"
+    ],
     "garnish_exam": "無",
     "home_hack": "Shot 杯裝龍舌蘭與七喜/雪碧，蓋住杯口在桌上重敲(Boom!)隨即一飲而盡！",
     "description": "派對熱鬧必備，龍舌蘭酒搭配檸檬汽水，桌上重擊激起爆發性氣泡後一口飲盡。",
     "ingredients": [
-      { "name": "龍舌蘭酒", "amount_ml": 30, "amount_oz": "1", "category": "base" },
-      { "name": "氣泡水", "amount_ml": 30, "amount_oz": "1", "category": "mixer" }
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
     ],
-    "steps": ["Shot 杯中倒入龍舌蘭與雪碧。", "用手掌或杯墊緊蓋杯口。", "在桌面上重敲一次發出 Boom 聲引起強烈泡沫。", "迅速乾杯！"]
+    "steps": [
+      "Shot 杯中倒入龍舌蘭與雪碧。",
+      "用手掌或杯墊緊蓋杯口。",
+      "在桌面上重敲一次發出 Boom 聲引起強烈泡沫。",
+      "迅速乾杯！"
+    ]
   },
   {
     "id": 66,
@@ -1480,18 +3248,52 @@
     "abv": 22,
     "rating": 3,
     "calories": 195,
-    "flavors": ["鳳梨果甘", "鹹酸精緻", "果香濃郁"],
+    "flavors": [
+      "鳳梨果甘",
+      "鹹酸精緻",
+      "果香濃郁"
+    ],
     "garnish_exam": "鹽口與鳳梨片",
     "home_hack": "經典瑪格麗特加入 30ml 鮮鳳梨汁增添優涼熱帶果甘。",
     "description": "瑪格麗特的夏日果香昇華版，龍舌蘭、橙酒、萊姆汁與鮮榨鳳梨汁。",
     "ingredients": [
-      { "name": "龍舌蘭酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "橙酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-      { "name": "鳳梨汁", "amount_ml": 30, "amount_oz": "1", "category": "mixer" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "鹽/砂糖", "amount_ml": 1, "amount_oz": "鹽口", "category": "garnish" }
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "鹽/砂糖",
+        "amount_ml": 1,
+        "amount_oz": "鹽口",
+        "category": "garnish"
+      }
     ],
-    "steps": ["杯邊沾鹽口。", "雪克杯加冰塊，倒入龍舌蘭、橙酒、鳳梨汁及萊姆汁。", "搖勻濾入杯中。", "飾以鳳梨切片。"]
+    "steps": [
+      "杯邊沾鹽口。",
+      "雪克杯加冰塊，倒入龍舌蘭、橙酒、鳳梨汁及萊姆汁。",
+      "搖勻濾入杯中。",
+      "飾以鳳梨切片。"
+    ]
   },
   {
     "id": 67,
@@ -1504,16 +3306,40 @@
     "abv": 18,
     "rating": 2,
     "calories": 170,
-    "flavors": ["冰沙細致", "極致清酸", "解暑"],
+    "flavors": [
+      "冰沙細致",
+      "極致清酸",
+      "解暑"
+    ],
     "garnish_exam": "萊姆輪片",
     "home_hack": "白蘭姆酒加萊姆汁與冰塊直接打成綿密白雪冰沙。",
     "description": "哈瓦那佛羅里達酒吧經典，白蘭姆酒、萊姆汁、糖漿與冰塊攪打成絕美綿密冰沙。",
     "ingredients": [
-      { "name": "白蘭姆酒", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" }
+      {
+        "name": "白蘭姆酒",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      }
     ],
-    "steps": ["果汁機放入白蘭姆酒、萊姆汁、糖漿與滿滿冰塊。", "高速攪打成綿密冰沙。", "倒入預冷雞尾酒杯。", "飾以萊姆片。"]
+    "steps": [
+      "果汁機放入白蘭姆酒、萊姆汁、糖漿與滿滿冰塊。",
+      "高速攪打成綿密冰沙。",
+      "倒入預冷雞尾酒杯。",
+      "飾以萊姆片。"
+    ]
   },
   {
     "id": 68,
@@ -1526,16 +3352,40 @@
     "abv": 26,
     "rating": 4,
     "calories": 140,
-    "flavors": ["咖啡奶香", "橙酒甜辣", "三層視覺"],
+    "flavors": [
+      "咖啡奶香",
+      "橙酒甜辣",
+      "三層視覺"
+    ],
     "garnish_exam": "無（可點燃頂層）",
     "home_hack": "利用密度差異沿吧匙背面依序注入：咖啡酒(底) -> 貝禮詩奶酒(中) -> 橙酒(頂)。",
     "description": "視覺系分層 Shot 經典，咖啡酒、貝禮詩奶酒與金曼怡/橙酒完美三分層。",
     "ingredients": [
-      { "name": "咖啡香甜酒", "amount_ml": 20, "amount_oz": "0.66", "category": "liqueur" },
-      { "name": "奶酒/奶精利口酒", "amount_ml": 20, "amount_oz": "0.66", "category": "liqueur" },
-      { "name": "橙酒", "amount_ml": 20, "amount_oz": "0.66", "category": "liqueur" }
+      {
+        "name": "咖啡香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "奶酒/奶精利口酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      }
     ],
-    "steps": ["Shot 杯最底層倒入咖啡香甜酒。", "沿吧匙背面極慢倒第二層奶酒。", "再沿吧匙倒第三層橙酒。", "維持清晰三分層上桌。"]
+    "steps": [
+      "Shot 杯最底層倒入咖啡香甜酒。",
+      "沿吧匙背面極慢倒第二層奶酒。",
+      "再沿吧匙倒第三層橙酒。",
+      "維持清晰三分層上桌。"
+    ]
   },
   {
     "id": 69,
@@ -1548,16 +3398,39 @@
     "abv": 30,
     "rating": 4,
     "calories": 145,
-    "flavors": ["伏特加烈香", "咖啡奶甜", "三層視覺"],
+    "flavors": [
+      "伏特加烈香",
+      "咖啡奶甜",
+      "三層視覺"
+    ],
     "garnish_exam": "無",
     "home_hack": "將 B-52 頂層的橙酒替換為伏特加，酒勁更為強烈！",
     "description": "B-52 的烈酒升級版，咖啡酒、貝禮詩奶酒與頂層純伏特加分層。",
     "ingredients": [
-      { "name": "咖啡香甜酒", "amount_ml": 20, "amount_oz": "0.66", "category": "liqueur" },
-      { "name": "奶酒/奶精利口酒", "amount_ml": 20, "amount_oz": "0.66", "category": "liqueur" },
-      { "name": "伏特加", "amount_ml": 20, "amount_oz": "0.66", "category": "base" }
+      {
+        "name": "咖啡香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "奶酒/奶精利口酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "伏特加",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "base"
+      }
     ],
-    "steps": ["Shot 杯底倒入咖啡酒。", "中間分層注入奶酒。", "頂層分層注入伏特加。"]
+    "steps": [
+      "Shot 杯底倒入咖啡酒。",
+      "中間分層注入奶酒。",
+      "頂層分層注入伏特加。"
+    ]
   },
   {
     "id": 70,
@@ -1570,18 +3443,51 @@
     "abv": 22,
     "rating": 3,
     "calories": 160,
-    "flavors": ["純白甜美", "柑橘香氣", "蛋白綿密"],
+    "flavors": [
+      "純白甜美",
+      "柑橘香氣",
+      "蛋白綿密"
+    ],
     "garnish_exam": "玫瑰花瓣或檸檬皮",
     "home_hack": "琴酒、橙酒、檸檬汁、柳橙汁與蛋白搖出純白如玫瑰般泡沫。",
     "description": "高雅純白象徵，琴酒、柑橘利口酒與蛋白搖盪出絲滑純白奶泡層。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "橙酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "柳橙汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "蛋白", "amount_ml": 15, "amount_oz": "0.5", "category": "garnish" }
+      {
+        "name": "琴酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "蛋白",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "garnish"
+      }
     ],
-    "steps": ["所有原料無冰乾搖(Dry Shake)。", "加入冰塊強搖冷卻。", "雙重過濾倒入雞尾酒杯。"]
+    "steps": [
+      "所有原料無冰乾搖(Dry Shake)。",
+      "加入冰塊強搖冷卻。",
+      "雙重過濾倒入雞尾酒杯。"
+    ]
   },
   {
     "id": 71,
@@ -1594,16 +3500,41 @@
     "abv": 26,
     "rating": 4,
     "calories": 165,
-    "flavors": ["琴酒草本", "酸甜高雅", "潔白"],
+    "flavors": [
+      "琴酒草本",
+      "酸甜高雅",
+      "潔白"
+    ],
     "garnish_exam": "檸檬皮扭轉",
     "home_hack": "邊車(Sidecar)的琴酒版本！琴酒、君度橙酒與新鮮檸檬汁。",
     "description": "薩伏伊酒店傳奇調酒師發明，琴酒、君度橙酒與檸檬汁黃金三角。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 40, "amount_oz": "1.33", "category": "base" },
-      { "name": "橙酒", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 20, "amount_oz": "0.66", "category": "mixer" }
+      {
+        "name": "琴酒",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加入大半杯冰塊。", "倒入琴酒、君度橙酒及檸檬汁。", "極速冰鎮搖盪。", "過濾倒入雞尾酒杯。", "扭轉檸檬皮裝飾。"]
+    "steps": [
+      "雪克杯加入大半杯冰塊。",
+      "倒入琴酒、君度橙酒及檸檬汁。",
+      "極速冰鎮搖盪。",
+      "過濾倒入雞尾酒杯。",
+      "扭轉檸檬皮裝飾。"
+    ]
   },
   {
     "id": 72,
@@ -1616,17 +3547,46 @@
     "abv": 20,
     "rating": 3,
     "calories": 175,
-    "flavors": ["櫻桃香醇", "蘇格蘭煙燻", "橙汁甘甜"],
+    "flavors": [
+      "櫻桃香醇",
+      "蘇格蘭煙燻",
+      "橙汁甘甜"
+    ],
     "garnish_exam": "柳橙皮",
     "home_hack": "同名鬥牛鬥士電影致敬，四種等比例材料：威士忌、黑櫻桃酒、甜苦艾酒與鮮柳橙汁。",
     "description": "罕見的威士忌水果調酒，蘇格蘭威士忌、黑櫻桃利口酒、甜苦艾酒與鮮柳橙汁。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 25, "amount_oz": "0.75", "category": "base" },
-      { "name": "甜苦艾酒", "amount_ml": 25, "amount_oz": "0.75", "category": "liqueur" },
-      { "name": "櫻桃香甜酒", "amount_ml": 25, "amount_oz": "0.75", "category": "liqueur" },
-      { "name": "柳橙汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" }
+      {
+        "name": "威士忌",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "base"
+      },
+      {
+        "name": "甜苦艾酒",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "櫻桃香甜酒",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "liqueur"
+      },
+      {
+        "name": "柳橙汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯裝滿冰塊與等比例四種材料。", "用力搖勻。", "濾入預冷雞尾酒杯。", "飾以柳橙皮。"]
+    "steps": [
+      "雪克杯裝滿冰塊與等比例四種材料。",
+      "用力搖勻。",
+      "濾入預冷雞尾酒杯。",
+      "飾以柳橙皮。"
+    ]
   },
   {
     "id": 73,
@@ -1639,16 +3599,41 @@
     "abv": 30,
     "rating": 4,
     "calories": 170,
-    "flavors": ["蘇格蘭煙燻", "黑加侖甘甜", "悲劇美感"],
+    "flavors": [
+      "蘇格蘭煙燻",
+      "黑加侖甘甜",
+      "悲劇美感"
+    ],
     "garnish_exam": "酒漬櫻桃",
     "home_hack": "莎士比亞名劇主題，蘇格蘭威士忌加黑加侖利口酒與安哥斯苦精。",
     "description": "莎翁經典悲劇意象，蘇格蘭威士忌的泥煤煙燻與黑加侖果香微苦交織。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "黑加侖香甜酒", "amount_ml": 20, "amount_oz": "0.66", "category": "liqueur" },
-      { "name": "安哥斯安哥斯苦精", "amount_ml": 2, "amount_oz": "2滴", "category": "mixer" }
+      {
+        "name": "威士忌",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "黑加侖香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "安格斯苦精",
+        "amount_ml": 2,
+        "amount_oz": "2滴",
+        "category": "mixer"
+      }
     ],
-    "steps": ["攪拌杯加冰塊。", "加入威士忌、黑加侖酒與苦精。", "攪拌冰鎮。", "濾入馬丁尼杯。", "放酒漬櫻桃裝飾。"]
+    "steps": [
+      "攪拌杯加冰塊。",
+      "加入威士忌、黑加侖酒與苦精。",
+      "攪拌冰鎮。",
+      "濾入馬丁尼杯。",
+      "放酒漬櫻桃裝飾。"
+    ]
   },
   {
     "id": 74,
@@ -1661,16 +3646,41 @@
     "abv": 28,
     "rating": 4,
     "calories": 175,
-    "flavors": ["白蘭地醇香", "甜苦艾微甘", "都會風采"],
+    "flavors": [
+      "白蘭地醇香",
+      "甜苦艾微甘",
+      "都會風采"
+    ],
     "garnish_exam": "柳橙皮",
     "home_hack": "曼哈頓的白蘭地版本，口感更為圓潤葡萄果香。",
     "description": "白蘭地愛好者的曼哈頓變體，干邑白蘭地搭配甜苦艾酒與安哥斯苦精。",
     "ingredients": [
-      { "name": "白蘭地", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "甜苦艾酒", "amount_ml": 20, "amount_oz": "0.66", "category": "liqueur" },
-      { "name": "安哥斯安哥斯苦精", "amount_ml": 2, "amount_oz": "2滴", "category": "mixer" }
+      {
+        "name": "白蘭地",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "甜苦艾酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "安格斯苦精",
+        "amount_ml": 2,
+        "amount_oz": "2滴",
+        "category": "mixer"
+      }
     ],
-    "steps": ["攪拌杯加滿冰塊。", "倒入白蘭地、甜苦艾酒與苦精。", "慢速攪拌冷卻。", "濾入馬丁尼杯。", "飾以柳橙皮。"]
+    "steps": [
+      "攪拌杯加滿冰塊。",
+      "倒入白蘭地、甜苦艾酒與苦精。",
+      "慢速攪拌冷卻。",
+      "濾入馬丁尼杯。",
+      "飾以柳橙皮。"
+    ]
   },
   {
     "id": 75,
@@ -1683,17 +3693,46 @@
     "abv": 13,
     "rating": 2,
     "calories": 165,
-    "flavors": ["波本酸甜", "檸檬氣泡", "清爽"],
+    "flavors": [
+      "波本酸甜",
+      "檸檬氣泡",
+      "清爽"
+    ],
     "garnish_exam": "檸檬片與櫻桃",
     "home_hack": "湯姆柯林斯改用美式威士忌即為約翰柯林斯！",
     "description": "柯林斯家族威士忌代表，美式威士忌、檸檬汁、糖漿與氣泡水。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 30, "amount_oz": "1", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "氣泡水", "amount_ml": 90, "amount_oz": "3", "category": "mixer" }
+      {
+        "name": "威士忌",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      }
     ],
-    "steps": ["柯林杯填滿冰塊。", "倒入威士忌、檸檬汁及糖漿。", "倒滿氣泡水輕攪。", "飾以檸檬與櫻桃。"]
+    "steps": [
+      "柯林杯填滿冰塊。",
+      "倒入威士忌、檸檬汁及糖漿。",
+      "倒滿氣泡水輕攪。",
+      "飾以檸檬與櫻桃。"
+    ]
   },
   {
     "id": 76,
@@ -1706,17 +3745,45 @@
     "abv": 12,
     "rating": 1,
     "calories": 150,
-    "flavors": ["純淨酸甜", "氣泡爽口"],
+    "flavors": [
+      "純淨酸甜",
+      "氣泡爽口"
+    ],
     "garnish_exam": "檸檬片",
     "home_hack": "伏特加加新鮮檸檬汁與氣泡水。",
     "description": "最純粹無瑕的清爽氣泡特調，伏特加、檸檬汁與糖漿氣泡水。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 30, "amount_oz": "1", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "氣泡水", "amount_ml": 90, "amount_oz": "3", "category": "mixer" }
+      {
+        "name": "伏特加",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      }
     ],
-    "steps": ["柯林杯加冰塊。", "加入伏特加、檸檬汁與糖漿。", "注入氣泡水。", "飾檸檬片。"]
+    "steps": [
+      "柯林杯加冰塊。",
+      "加入伏特加、檸檬汁與糖漿。",
+      "注入氣泡水。",
+      "飾檸檬片。"
+    ]
   },
   {
     "id": 77,
@@ -1729,16 +3796,41 @@
     "abv": 9,
     "rating": 1,
     "calories": 110,
-    "flavors": ["麥芽氣泡", "極爽佐餐", "解膩"],
+    "flavors": [
+      "麥芽氣泡",
+      "極爽佐餐",
+      "解膩"
+    ],
     "garnish_exam": "檸檬皮角",
     "home_hack": "日式居酒屋神器！威士忌 1 : 4 強氣泡水，杯子與水皆極致冰鎮。",
     "description": "風靡亞洲居酒屋餐酒首選，威士忌與冰涼強氣泡水，極致順口解膩。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 40, "amount_oz": "1.33", "category": "base" },
-      { "name": "氣泡水", "amount_ml": 160, "amount_oz": "5.33", "category": "mixer" },
-      { "name": "新鮮檸檬/萊姆", "amount_ml": 1, "amount_oz": "1皮", "category": "garnish" }
+      {
+        "name": "威士忌",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 160,
+        "amount_oz": "5.33",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆",
+        "amount_ml": 1,
+        "amount_oz": "1皮",
+        "category": "garnish"
+      }
     ],
-    "steps": ["高球杯裝滿滿冰塊。", "倒入威士忌攪拌冷卻杯壁。", "沿冰塊緩緩注入冰氣泡水。", "垂直提拉吧匙一次保持氣泡。", "擰檸檬皮香氣於頂層。"]
+    "steps": [
+      "高球杯裝滿滿冰塊。",
+      "倒入威士忌攪拌冷卻杯壁。",
+      "沿冰塊緩緩注入冰氣泡水。",
+      "垂直提拉吧匙一次保持氣泡。",
+      "擰檸檬皮香氣於頂層。"
+    ]
   },
   {
     "id": 78,
@@ -1751,16 +3843,39 @@
     "abv": 10,
     "rating": 1,
     "calories": 140,
-    "flavors": ["果香麥芽", "氣泡甜美"],
+    "flavors": [
+      "果香麥芽",
+      "氣泡甜美"
+    ],
     "garnish_exam": "鳳梨切片",
     "home_hack": "威士忌加鳳梨汁與氣泡水。",
     "description": "威士忌高球的熱帶果香版，微甜鳳梨汁與威士忌麥芽香氣氣泡混合。",
     "ingredients": [
-      { "name": "威士忌", "amount_ml": 40, "amount_oz": "1.33", "category": "base" },
-      { "name": "鳳梨汁", "amount_ml": 40, "amount_oz": "1.33", "category": "mixer" },
-      { "name": "氣泡水", "amount_ml": 100, "amount_oz": "3.5", "category": "mixer" }
+      {
+        "name": "威士忌",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "base"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 100,
+        "amount_oz": "3.5",
+        "category": "mixer"
+      }
     ],
-    "steps": ["高球杯加冰塊。", "倒入威士忌與鳳梨汁攪拌。", "補滿氣泡水。", "飾鳳梨片。"]
+    "steps": [
+      "高球杯加冰塊。",
+      "倒入威士忌與鳳梨汁攪拌。",
+      "補滿氣泡水。",
+      "飾鳳梨片。"
+    ]
   },
   {
     "id": 79,
@@ -1773,18 +3888,53 @@
     "abv": 24,
     "rating": 3,
     "calories": 165,
-    "flavors": ["黑櫻桃濃郁", "白蘭地果香", "高雅"],
+    "flavors": [
+      "黑櫻桃濃郁",
+      "白蘭地果香",
+      "高雅"
+    ],
     "garnish_exam": "酒漬櫻桃",
     "home_hack": "白蘭地、櫻桃利口酒、橙酒與檸檬汁。",
     "description": "日本橫濱新港飯店發明，如櫻花盛開般絢爛浪漫，白蘭地與黑櫻桃香甜酒。",
     "ingredients": [
-      { "name": "白蘭地", "amount_ml": 30, "amount_oz": "1", "category": "base" },
-      { "name": "櫻桃香甜酒", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" },
-      { "name": "橙酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "酒漬櫻桃", "amount_ml": 1, "amount_oz": "1顆", "category": "garnish" }
+      {
+        "name": "白蘭地",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "base"
+      },
+      {
+        "name": "櫻桃香甜酒",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      },
+      {
+        "name": "橙酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
     ],
-    "steps": ["雪克杯加滿冰塊。", "倒入白蘭地、櫻桃酒、橙酒與檸檬汁。", "冰鎮搖勻。", "濾入雞尾酒杯。", "放入酒漬櫻桃。"]
+    "steps": [
+      "雪克杯加滿冰塊。",
+      "倒入白蘭地、櫻桃酒、橙酒與檸檬汁。",
+      "冰鎮搖勻。",
+      "濾入雞尾酒杯。",
+      "放入酒漬櫻桃。"
+    ]
   },
   {
     "id": 80,
@@ -1797,18 +3947,52 @@
     "abv": 14,
     "rating": 2,
     "calories": 195,
-    "flavors": ["杏仁甜香", "檸檬清酸", "蛋白滑順"],
+    "flavors": [
+      "杏仁甜香",
+      "檸檬清酸",
+      "蛋白滑順"
+    ],
     "garnish_exam": "檸檬片與櫻桃",
     "home_hack": "義大利杏仁利口酒(Disaronno)加上檸檬汁與少量波本威士忌提味！",
     "description": "最受女性與甜酒愛好者歡迎，杏仁酒濃郁糖香與新鮮檸檬酸度完美對比。",
     "ingredients": [
-      { "name": "杏仁香甜酒", "amount_ml": 45, "amount_oz": "1.5", "category": "liqueur" },
-      { "name": "威士忌", "amount_ml": 15, "amount_oz": "0.5", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" },
-      { "name": "蛋白", "amount_ml": 15, "amount_oz": "0.5", "category": "garnish" }
+      {
+        "name": "杏仁香甜酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "威士忌",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "蛋白",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "garnish"
+      }
     ],
-    "steps": ["所有材料進行 Dry Shake。", "加冰塊強搖發霜。", "濾入加冰古典杯中。", "飾以檸檬與櫻桃。"]
+    "steps": [
+      "所有材料進行 Dry Shake。",
+      "加冰塊強搖發霜。",
+      "濾入加冰古典杯中。",
+      "飾以檸檬與櫻桃。"
+    ]
   },
   {
     "id": 81,
@@ -1821,16 +4005,40 @@
     "abv": 10,
     "rating": 1,
     "calories": 130,
-    "flavors": ["黑加侖甘甜", "草本苦甘", "氣泡"],
+    "flavors": [
+      "黑加侖甘甜",
+      "草本苦甘",
+      "氣泡"
+    ],
     "garnish_exam": "檸檬皮扭轉",
     "home_hack": "不甜苦艾酒加黑加侖利口酒與氣泡水。",
     "description": "法式優雅低酒精開胃酒，不甜苦艾酒草本香與黑加侖果香交織。",
     "ingredients": [
-      { "name": "不甜苦艾酒", "amount_ml": 60, "amount_oz": "2", "category": "liqueur" },
-      { "name": "黑加侖香甜酒", "amount_ml": 20, "amount_oz": "0.66", "category": "liqueur" },
-      { "name": "氣泡水", "amount_ml": 60, "amount_oz": "2", "category": "mixer" }
+      {
+        "name": "不甜苦艾酒",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "liqueur"
+      },
+      {
+        "name": "黑加侖香甜酒",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 60,
+        "amount_oz": "2",
+        "category": "mixer"
+      }
     ],
-    "steps": ["高球杯加滿冰塊。", "倒入苦艾酒與黑加侖酒。", "注滿氣泡水輕攪。", "飾以檸檬皮。"]
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入苦艾酒與黑加侖酒。",
+      "注滿氣泡水輕攪。",
+      "飾以檸檬皮。"
+    ]
   },
   {
     "id": 82,
@@ -1843,15 +4051,33 @@
     "abv": 15,
     "rating": 3,
     "calories": 160,
-    "flavors": ["草本藥草", "提神能量", "派對沸騰"],
+    "flavors": [
+      "草本藥草",
+      "提神能量",
+      "派對沸騰"
+    ],
     "garnish_exam": "無",
     "home_hack": "將裝滿野格(Jägermeister)草本利口酒的 Shot 杯直接丟入半杯紅牛能量飲料中一飲而盡！",
     "description": "夜店派對必備，德國野格草本利口酒丟入能量飲料，氣泡爆發提神酒感。",
     "ingredients": [
-      { "name": "草本香甜酒", "amount_ml": 45, "amount_oz": "1.5", "category": "liqueur" },
-      { "name": "氣泡水", "amount_ml": 120, "amount_oz": "4", "category": "mixer" }
+      {
+        "name": "草本香甜酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "能量飲料/紅牛",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      }
     ],
-    "steps": ["大高球杯中倒入半罐紅牛能量飲料/氣泡飲料。", "Shot 杯倒滿野格酒。", "將 Shot 杯直接投擲入大杯中立即乾杯。"]
+    "steps": [
+      "大高球杯中倒入半罐紅牛能量飲料/氣泡飲料。",
+      "Shot 杯倒滿野格酒。",
+      "將 Shot 杯直接投擲入大杯中立即乾杯。"
+    ]
   },
   {
     "id": 83,
@@ -1864,17 +4090,46 @@
     "abv": 14,
     "rating": 2,
     "calories": 170,
-    "flavors": ["龍舌蘭辛香", "黑加侖甜酸", "薑汁氣泡"],
+    "flavors": [
+      "龍舌蘭辛香",
+      "黑加侖甜酸",
+      "薑汁氣泡"
+    ],
     "garnish_exam": "萊姆角與黑莓",
     "home_hack": "龍舌蘭、黑加侖酒、萊姆汁加薑汁汽水。",
     "description": "魅惑惡魔紅光，龍舌蘭酒、黑加侖香甜酒、萊姆汁與辛辣薑汁汽水。",
     "ingredients": [
-      { "name": "龍舌蘭酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "黑加侖香甜酒", "amount_ml": 15, "amount_oz": "0.5", "category": "liqueur" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "薑汁汽水/薑汁啤酒", "amount_ml": 90, "amount_oz": "3", "category": "mixer" }
+      {
+        "name": "龍舌蘭酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "黑加侖香甜酒",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "薑汁汽水/薑汁啤酒",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      }
     ],
-    "steps": ["高球杯加滿冰塊。", "倒入龍舌蘭、黑加侖酒與萊姆汁。", "倒滿薑汁汽水輕攪。", "飾以萊姆角。"]
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入龍舌蘭、黑加侖酒與萊姆汁。",
+      "倒滿薑汁汽水輕攪。",
+      "飾以萊姆角。"
+    ]
   },
   {
     "id": 84,
@@ -1887,17 +4142,46 @@
     "abv": 10,
     "rating": 1,
     "calories": 140,
-    "flavors": ["微苦草本", "氣泡甘甜", "水都意象"],
+    "flavors": [
+      "微苦草本",
+      "氣泡甘甜",
+      "水都意象"
+    ],
     "garnish_exam": "綠橄欖與柳橙片",
     "home_hack": "金巴利或 Select 利口酒加普羅賽克氣泡酒與氣泡水。",
     "description": "水都威尼斯運河邊經典，微苦利口酒搭配氣泡白酒與一顆鹹綠橄欖。",
     "ingredients": [
-      { "name": "金巴利利口酒", "amount_ml": 45, "amount_oz": "1.5", "category": "liqueur" },
-      { "name": "氣泡白葡萄酒/香檳", "amount_ml": 75, "amount_oz": "2.5", "category": "liqueur" },
-      { "name": "氣泡水", "amount_ml": 30, "amount_oz": "1", "category": "mixer" },
-      { "name": "綠橄欖", "amount_ml": 1, "amount_oz": "1顆", "category": "garnish" }
+      {
+        "name": "金巴利利口酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡白葡萄酒/香檳",
+        "amount_ml": 75,
+        "amount_oz": "2.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      },
+      {
+        "name": "綠橄欖",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
     ],
-    "steps": ["紅酒杯加冰塊。", "倒入金巴利與氣泡酒。", "淋上氣泡水。", "放入綠橄欖與柳橙片。"]
+    "steps": [
+      "紅酒杯加冰塊。",
+      "倒入金巴利與氣泡酒。",
+      "淋上氣泡水。",
+      "放入綠橄欖與柳橙片。"
+    ]
   },
   {
     "id": 85,
@@ -1910,16 +4194,39 @@
     "abv": 18,
     "rating": 2,
     "calories": 150,
-    "flavors": ["可可濃甜", "鮮奶油綿密", "浪漫"],
+    "flavors": [
+      "可可濃甜",
+      "鮮奶油綿密",
+      "浪漫"
+    ],
     "garnish_exam": "紅櫻桃插於竹籤橫跨杯口",
     "home_hack": "棕可可酒底層，頂層輕浮鮮奶油與櫻桃。",
     "description": "浪漫告白調酒，深色可可香甜酒上分層浮著純白鮮奶油，如天使親吻。",
     "ingredients": [
-      { "name": "可可香甜酒", "amount_ml": 45, "amount_oz": "1.5", "category": "liqueur" },
-      { "name": "鮮奶油/牛奶", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "酒漬櫻桃", "amount_ml": 1, "amount_oz": "1顆", "category": "garnish" }
+      {
+        "name": "可可香甜酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "liqueur"
+      },
+      {
+        "name": "鮮奶油/牛奶",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "1顆",
+        "category": "garnish"
+      }
     ],
-    "steps": ["小利口杯中倒入可可香甜酒。", "沿吧匙背面注入鮮奶油浮於頂層。", "橫跨竹籤穿櫻桃於杯口。"]
+    "steps": [
+      "小利口杯中倒入可可香甜酒。",
+      "沿吧匙背面注入鮮奶油浮於頂層。",
+      "橫跨竹籤穿櫻桃於杯口。"
+    ]
   },
   {
     "id": 86,
@@ -1932,16 +4239,40 @@
     "abv": 13,
     "rating": 2,
     "calories": 250,
-    "flavors": ["伏特加濃純", "鳳梨椰香", "冰沙感"],
+    "flavors": [
+      "伏特加濃純",
+      "鳳梨椰香",
+      "冰沙感"
+    ],
     "garnish_exam": "鳳梨片與櫻桃",
     "home_hack": "椰林風情(Piña Colada)將蘭姆酒替換為伏特加即為 Chi-Chi！",
     "description": "夏威夷渡假熱帶冰沙，伏特加取代蘭姆酒，融合鳳梨汁與濃醇椰奶。",
     "ingredients": [
-      { "name": "伏特加", "amount_ml": 50, "amount_oz": "1.75", "category": "base" },
-      { "name": "鳳梨汁", "amount_ml": 90, "amount_oz": "3", "category": "mixer" },
-      { "name": "椰子香甜酒/椰奶", "amount_ml": 30, "amount_oz": "1", "category": "liqueur" }
+      {
+        "name": "伏特加",
+        "amount_ml": 50,
+        "amount_oz": "1.75",
+        "category": "base"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 90,
+        "amount_oz": "3",
+        "category": "mixer"
+      },
+      {
+        "name": "椰子香甜酒/椰奶",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "liqueur"
+      }
     ],
-    "steps": ["果汁機中加入冰塊、伏特加、鳳梨汁與椰奶。", "高速打成綿密冰沙。", "倒入颶風杯中。", "飾鳳梨切片與紅櫻桃。"]
+    "steps": [
+      "果汁機中加入冰塊、伏特加、鳳梨汁與椰奶。",
+      "高速打成綿密冰沙。",
+      "倒入颶風杯中。",
+      "飾鳳梨切片與紅櫻桃。"
+    ]
   },
   {
     "id": 87,
@@ -1954,17 +4285,46 @@
     "abv": 20,
     "rating": 3,
     "calories": 170,
-    "flavors": ["紅石榴粉紅", "琴酒香氣", "蛋白綿密"],
+    "flavors": [
+      "紅石榴粉紅",
+      "琴酒香氣",
+      "蛋白綿密"
+    ],
     "garnish_exam": "酒漬櫻桃",
     "home_hack": "琴酒、蘋果白蘭地/橙酒、檸檬汁、紅石榴糖漿與蛋白搖出柔美粉紅泡沫。",
     "description": "百老匯名劇同名慶功酒，極致柔美粉紅色澤，蛋白賦予綿密細緻奶泡感。",
     "ingredients": [
-      { "name": "琴酒", "amount_ml": 45, "amount_oz": "1.5", "category": "base" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "紅石榴糖漿", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" },
-      { "name": "蛋白", "amount_ml": 15, "amount_oz": "0.5", "category": "garnish" }
+      {
+        "name": "琴酒",
+        "amount_ml": 45,
+        "amount_oz": "1.5",
+        "category": "base"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "蛋白",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "garnish"
+      }
     ],
-    "steps": ["雪克杯加入琴酒、檸檬汁、紅石榴糖漿與蛋白無冰乾搖。", "加入冰塊強搖冰鎮。", "雙重過濾倒入雞尾酒杯。", "放酒漬櫻桃。"]
+    "steps": [
+      "雪克杯加入琴酒、檸檬汁、紅石榴糖漿與蛋白無冰乾搖。",
+      "加入冰塊強搖冰鎮。",
+      "雙重過濾倒入雞尾酒杯。",
+      "放酒漬櫻桃。"
+    ]
   },
   {
     "id": 88,
@@ -1977,18 +4337,52 @@
     "abv": 0,
     "rating": 1,
     "calories": 130,
-    "flavors": ["三果酸甜", "清爽歡樂", "無酒精"],
+    "flavors": [
+      "三果酸甜",
+      "清爽歡樂",
+      "無酒精"
+    ],
     "garnish_exam": "鳳梨片與櫻桃",
     "home_hack": "三種等比例果汁：柳橙汁 + 鳳梨汁 + 檸檬汁加少許糖漿搖勻。",
     "description": "乙級檢定無酒精經典代表，三大柑橘熱帶果汁平衡混和，清爽無負擔。",
     "ingredients": [
-      { "name": "柳橙汁", "amount_ml": 40, "amount_oz": "1.33", "category": "mixer" },
-      { "name": "鳳梨汁", "amount_ml": 40, "amount_oz": "1.33", "category": "mixer" },
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 20, "amount_oz": "0.66", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 10, "amount_oz": "0.33", "category": "mixer" },
-      { "name": "氣泡水", "amount_ml": 30, "amount_oz": "1", "category": "mixer" }
+      {
+        "name": "柳橙汁",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "mixer"
+      },
+      {
+        "name": "鳳梨汁",
+        "amount_ml": 40,
+        "amount_oz": "1.33",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 10,
+        "amount_oz": "0.33",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 30,
+        "amount_oz": "1",
+        "category": "mixer"
+      }
     ],
-    "steps": ["雪克杯加滿冰塊與果汁及糖漿。", "用力搖勻。", "濾入加冰高球杯中。", "補少許氣泡水，飾以鳳梨與櫻桃。"]
+    "steps": [
+      "雪克杯加滿冰塊與果汁及糖漿。",
+      "用力搖勻。",
+      "濾入加冰高球杯中。",
+      "補少許氣泡水，飾以鳳梨與櫻桃。"
+    ]
   },
   {
     "id": 89,
@@ -2001,16 +4395,40 @@
     "abv": 0,
     "rating": 1,
     "calories": 120,
-    "flavors": ["紅石榴甜香", "薑汁氣泡", "好玩童趣"],
+    "flavors": [
+      "紅石榴甜香",
+      "薑汁氣泡",
+      "好玩童趣"
+    ],
     "garnish_exam": "酒漬櫻桃 2 顆",
     "home_hack": "荷里活童星命名，薑汁汽水(Ginger Ale)淋上紅石榴糖漿沉底。",
     "description": "全球無酒精特調始祖，薑汁汽水或雪碧加上紅石榴糖漿與兩顆紅櫻桃。",
     "ingredients": [
-      { "name": "薑汁汽水/薑汁啤酒", "amount_ml": 150, "amount_oz": "5", "category": "mixer" },
-      { "name": "紅石榴糖漿", "amount_ml": 15, "amount_oz": "0.5", "category": "mixer" },
-      { "name": "酒漬櫻桃", "amount_ml": 1, "amount_oz": "2顆", "category": "garnish" }
+      {
+        "name": "薑汁汽水/薑汁啤酒",
+        "amount_ml": 150,
+        "amount_oz": "5",
+        "category": "mixer"
+      },
+      {
+        "name": "紅石榴糖漿",
+        "amount_ml": 15,
+        "amount_oz": "0.5",
+        "category": "mixer"
+      },
+      {
+        "name": "酒漬櫻桃",
+        "amount_ml": 1,
+        "amount_oz": "2顆",
+        "category": "garnish"
+      }
     ],
-    "steps": ["高球杯加滿冰塊。", "倒入薑汁汽水/雪碧。", "緩緩注入紅石榴糖漿形成紅底漸層。", "飾以兩顆黑櫻桃。"]
+    "steps": [
+      "高球杯加滿冰塊。",
+      "倒入薑汁汽水/雪碧。",
+      "緩緩注入紅石榴糖漿形成紅底漸層。",
+      "飾以兩顆黑櫻桃。"
+    ]
   },
   {
     "id": 90,
@@ -2023,16 +4441,44 @@
     "abv": 0,
     "rating": 1,
     "calories": 90,
-    "flavors": ["薄荷極致清爽", "清酸氣泡"],
+    "flavors": [
+      "薄荷極致清爽",
+      "清酸氣泡"
+    ],
     "garnish_exam": "薄荷枝與萊姆片",
     "home_hack": "莫希托去蘭姆酒，以滿滿氣泡水、現壓薄荷葉與新鮮萊姆汁做成超爽夏日無酒精飲料。",
     "description": "無酒精版的莫希托，新鮮薄荷葉與萊姆汁清爽拍碎，滿滿碎冰與強氣泡水。",
     "ingredients": [
-      { "name": "新鮮檸檬/萊姆汁", "amount_ml": 25, "amount_oz": "0.75", "category": "mixer" },
-      { "name": "糖漿", "amount_ml": 20, "amount_oz": "0.66", "category": "mixer" },
-      { "name": "氣泡水", "amount_ml": 120, "amount_oz": "4", "category": "mixer" },
-      { "name": "新鮮薄荷葉", "amount_ml": 1, "amount_oz": "8-10葉", "category": "garnish" }
+      {
+        "name": "新鮮檸檬/萊姆汁",
+        "amount_ml": 25,
+        "amount_oz": "0.75",
+        "category": "mixer"
+      },
+      {
+        "name": "糖漿",
+        "amount_ml": 20,
+        "amount_oz": "0.66",
+        "category": "mixer"
+      },
+      {
+        "name": "氣泡水",
+        "amount_ml": 120,
+        "amount_oz": "4",
+        "category": "mixer"
+      },
+      {
+        "name": "新鮮薄荷葉",
+        "amount_ml": 1,
+        "amount_oz": "8-10葉",
+        "category": "garnish"
+      }
     ],
-    "steps": ["杯中放入薄荷葉、萊姆汁與糖漿輕搗。", "加入滿滿碎冰。", "倒滿氣泡水充分攪拌。", "插入新鮮薄荷枝。"]
+    "steps": [
+      "杯中放入薄荷葉、萊姆汁與糖漿輕搗。",
+      "加入滿滿碎冰。",
+      "倒滿氣泡水充分攪拌。",
+      "插入新鮮薄荷枝。"
+    ]
   }
 ]
